@@ -43,6 +43,13 @@ All colors MUST be HSL.
     --sage-gray: 180 9% 61%;
     --lavender-fog: 286 24% 82%;
     --dark-graphite: 0 0% 17%;
+    
+    /* Case Study Brand Colors */
+    --rose-quartz-case: 351 82% 82%;
+    --sage-gray-case: 126 11% 69%;
+    --lavender-fog-case: 243 28% 70%;
+    --ivory-white: 60 20% 99%;
+    --dark-graphite-case: 180 2% 17%;
 
     /* Gradient Colors */
     --gradient-start: 4 32% 66%;

@@ -61,11 +61,18 @@ export default {
         "sage-gray": "hsl(var(--sage-gray))",
         "lavender-fog": "hsl(var(--lavender-fog))",
         "dark-graphite": "hsl(var(--dark-graphite))",
+        "rose-quartz-case": "hsl(var(--rose-quartz-case))",
+        "sage-gray-case": "hsl(var(--sage-gray-case))",
+        "lavender-fog-case": "hsl(var(--lavender-fog-case))",
+        "ivory-white": "hsl(var(--ivory-white))",
+        "dark-graphite-case": "hsl(var(--dark-graphite-case))",
       },
       fontFamily: {
         rainbow: ["Over the Rainbow", "cursive"],
         code: ["Fira Code", "monospace"],
         sans: ["Montserrat", "sans-serif"],
+        shadows: ["Shadows Into Light", "cursive"],
+        narrow: ["PT Sans Narrow", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
