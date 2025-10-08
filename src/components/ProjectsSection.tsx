@@ -5,9 +5,9 @@ const ProjectsSection = () => {
     {
       id: 1,
       icon: "🤖",
-      title: "Sentiment Analysis Tool",
-      description: "A Python-based tool that analyzes customer feedback sentiment using natural language processing techniques.",
-      tags: ["Python", "NLTK", "Pandas"],
+      title: "Intelligent AI Story Builder",
+      description: "Enterprise Generative AI platform that converts product ideas into structured Agile user stories.",
+      tags: ["Python", "APIs", "GenAI"],
       bgColor: "bg-rose-quartz",
     },
     {
