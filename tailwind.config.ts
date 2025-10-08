@@ -57,6 +57,15 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "rose-quartz": "hsl(var(--rose-quartz))",
+        "sage-gray": "hsl(var(--sage-gray))",
+        "lavender-fog": "hsl(var(--lavender-fog))",
+        "dark-graphite": "hsl(var(--dark-graphite))",
+      },
+      fontFamily: {
+        rainbow: ["Over the Rainbow", "cursive"],
+        code: ["Fira Code", "monospace"],
+        sans: ["Montserrat", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
