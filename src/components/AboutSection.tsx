@@ -1,10 +1,10 @@
 const AboutSection = () => {
   const skills = ["Python", "TensorFlow", "Scikit-learn", "AWS", "Docker"];
   const learningFocus = [
-    "Machine Learning Fundamentals",
-    "Natural Language Processing",
-    "Computer Vision",
     "AI Ethics & Responsible AI",
+    "Generative AI in Agile SDLC",
+    "Evaluation Frameworks",
+    "Agentic AI",
   ];
 
   return (
@@ -15,12 +15,13 @@ const AboutSection = () => {
           <div>
             <h3 className="text-2xl font-semibold text-dark-graphite mb-6">My Journey into AI</h3>
             <p className="text-sage-gray mb-6 leading-relaxed">
-              With over 8 years as a product manager, I've always been fascinated by technology's potential to solve real problems.
-              Recently, I've embarked on an exciting journey into artificial intelligence and machine learning.
+              With more than 15 years in product management at companies like Cigna, Express Scripts, and American Express, I have built my career at the intersection of technology, business, and human needs. My work is guided by a belief that great products do more than deliver features; they solve meaningful problems in smart, scalable ways.
             </p>
             <p className="text-sage-gray mb-6 leading-relaxed">
-              This portfolio showcases my learning process, projects, and insights as I transition from product management to the cutting-edge world of AI.
-              Every project here represents a step forward in my understanding and application of AI technologies.
+              Over the past year, I have led the rollout of generative AI initiatives at Charles River Laboratories and earned a Generative AI Specialization, strengthening my expertise in AI governance, enablement, and prompt systems. This portfolio highlights my evolution from a traditional product director to an AI-focused leader who bridges strategy with emerging technology.
+            </p>
+            <p className="text-sage-gray mb-6 leading-relaxed">
+              Each project featured here represents both curiosity and intent: a commitment to making AI usable, ethical, and impactful within the enterprise.
             </p>
             <div className="flex flex-wrap gap-3">
               {skills.map((skill) => (

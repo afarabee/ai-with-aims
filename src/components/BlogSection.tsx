@@ -5,7 +5,7 @@ const BlogSection = () => {
     {
       id: 1,
       date: "March 15, 2024",
-      title: "My First Month Learning Machine Learning",
+      title: "My AI Journey",
       description: "Reflecting on the challenges, breakthroughs, and resources that helped me get started with ML. From linear regression to neural networks - here's what I learned.",
       readTime: "5 min read",
       gradient: "from-rose-quartz/15 to-lavender-fog/15",
@@ -13,7 +13,7 @@ const BlogSection = () => {
     {
       id: 2,
       date: "March 8, 2024",
-      title: "Transitioning from Product Management to AI: Lessons Learned",
+      title: "Prompting for PMs",
       description: "How my background in product strategy actually gave me advantages in understanding AI systems, and what skills transferred over.",
       readTime: "7 min read",
       gradient: "from-sage-gray/15 to-rose-quartz/15",
@@ -21,7 +21,7 @@ const BlogSection = () => {
     {
       id: 3,
       date: "February 28, 2024",
-      title: "Building My First Neural Network",
+      title: "Case Study: Rolling out AI @ CRL",
       description: "Step-by-step walkthrough of creating a simple neural network from scratch. The mistakes I made and how I debugged them.",
       readTime: "10 min read",
       gradient: "from-lavender-fog/15 to-sage-gray/15",
@@ -29,7 +29,7 @@ const BlogSection = () => {
     {
       id: 4,
       date: "February 20, 2024",
-      title: "AI Ethics: Why It Matters for Beginners",
+      title: "Bridging the Gap",
       description: "Exploring the importance of responsible AI development from day one. Key principles every AI practitioner should understand.",
       readTime: "6 min read",
       gradient: "from-rose-quartz/15 to-sage-gray/15",

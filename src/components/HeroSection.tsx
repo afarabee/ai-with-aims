@@ -57,8 +57,7 @@ const HeroSection = () => {
               <span className="font-code typing-animation">{displayText}</span>
             </div>
             <p className="text-lg text-white/90 mb-8 leading-relaxed">
-              Bridging the gap between product management and the exciting world of artificial intelligence.
-              Join me on my journey as I explore, learn, and build amazing AI-powered solutions.
+              My mission is to explore how AI can amplify human intelligence, not replace it, by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
