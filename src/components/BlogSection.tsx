@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const BlogSection = () => {
   const blogPosts = [
@@ -41,22 +42,39 @@ const BlogSection = () => {
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="font-rainbow text-4xl md:text-5xl text-center text-rose-quartz mb-16">Latest Blog Posts</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
-            <article
-              key={post.id}
-              className={`bg-gradient-to-br ${post.gradient} rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-md border border-sage-gray/10`}
-            >
-              <div className="text-sage-gray text-sm mb-2 font-code">{post.date}</div>
-              <h3 className="text-2xl font-semibold text-dark-graphite mb-4">{post.title}</h3>
-              <p className="text-sage-gray mb-4 leading-relaxed">{post.description}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-rose-quartz text-sm">{post.readTime}</span>
-                <button className="text-rose-quartz hover:text-dark-graphite font-medium flex items-center gap-1">
-                  Read More <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </article>
-          ))}
+          {blogPosts.map((post) => {
+            const isMyAIJourney = post.id === 1;
+            const content = (
+              <>
+                <div className="text-sage-gray text-sm mb-2 font-code">{post.date}</div>
+                <h3 className="text-2xl font-semibold text-dark-graphite mb-4">{post.title}</h3>
+                <p className="text-sage-gray mb-4 leading-relaxed">{post.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-rose-quartz text-sm">{post.readTime}</span>
+                  <span className="text-rose-quartz hover:text-dark-graphite font-medium flex items-center gap-1">
+                    Read More <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </>
+            );
+
+            return isMyAIJourney ? (
+              <Link
+                key={post.id}
+                to="/my-ai-journey"
+                className={`bg-gradient-to-br ${post.gradient} rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-md border border-sage-gray/10 block`}
+              >
+                {content}
+              </Link>
+            ) : (
+              <article
+                key={post.id}
+                className={`bg-gradient-to-br ${post.gradient} rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-md border border-sage-gray/10`}
+              >
+                {content}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
