@@ -41,6 +41,25 @@ const AIStoryBuilderCase = () => {
 
       <div className="border-t border-lavender-fog-case/30"></div>
 
+      {/* Demo Video Placeholder */}
+      <section className="py-16 animate-fade-in">
+        <div className="max-w-6xl mx-auto px-6">
+          <h2 className="font-shadows text-4xl text-dark-graphite-case mb-8">Demo Video</h2>
+          <div className="relative w-full aspect-video bg-gradient-to-br from-lavender-fog-case/20 via-rose-quartz-case/10 to-sage-gray-case/20 rounded-lg border-2 border-dashed border-sage-gray-case/30 flex items-center justify-center">
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-rose-quartz-case/20 flex items-center justify-center">
+                <span className="text-4xl">🎥</span>
+              </div>
+              <p className="font-narrow text-lg text-dark-graphite-case/60">
+                Demo video coming soon
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div className="border-t border-rose-quartz-case/30"></div>
+
       {/* System Architecture Section */}
       <section className="py-16 bg-lavender-fog-case/10 animate-fade-in">
         <div className="max-w-6xl mx-auto px-6">
