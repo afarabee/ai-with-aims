@@ -163,10 +163,10 @@ const MyAIJourney = () => {
             </div>
             <div>
               <p className="font-narrow text-base text-dark-graphite mb-2">
-                <span className="font-semibold">Written by Aimee Farabee</span> — Product Director turned AI Enablement Champion.
+                <span className="font-semibold">Written by Aimee Farabee</span> — Product Director turned AI Governance Leader.
               </p>
               <p className="font-narrow text-base text-sage-gray italic">
-                Founder of AI with Aims — intelligence with a twist
+                Founder of <span className="font-rainbow text-rose-quartz">Aims</span>, where curiosity meets accountability.
               </p>
             </div>
           </div>
