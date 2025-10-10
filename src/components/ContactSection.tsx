@@ -36,12 +36,12 @@ const ContactSection = () => {
         </p>
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <a
-            href="mailto:aimee.farabee@email.com"
+            href="mailto:genai-aims@gmail.com"
             className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300"
           >
             <Mail className="w-8 h-8 text-white mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">Email</h3>
-            <p className="text-white/80 font-code text-sm">aimee.farabee@email.com</p>
+            <p className="text-white/80 font-code text-sm">genai-aims@gmail.com</p>
           </a>
           <a
             href="https://linkedin.com/in/aimeefarabee"
@@ -51,17 +51,17 @@ const ContactSection = () => {
           >
             <Linkedin className="w-8 h-8 text-white mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">LinkedIn</h3>
-            <p className="text-white/80 font-code text-sm">linkedin.com/in/aimeefarabee</p>
+            <p className="text-white/80 font-code text-sm text-center">linkedin.com/in/aimeefarabee</p>
           </a>
           <a
-            href="https://github.com/aimeefarabee"
+            href="https://github.com/afarabee"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/30 transition-all duration-300"
           >
             <Github className="w-8 h-8 text-white mx-auto mb-4" />
             <h3 className="text-white font-semibold mb-2">GitHub</h3>
-            <p className="text-white/80 font-code text-sm">github.com/aimeefarabee</p>
+            <p className="text-white/80 font-code text-sm">github.com/afarabee</p>
           </a>
         </div>
         <div className="bg-white/25 backdrop-blur-sm rounded-2xl p-8 border border-sage-gray/30 shadow-xl">
