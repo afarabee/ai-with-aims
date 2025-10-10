@@ -1,94 +1,57 @@
 const AIBrainLogo = () => {
-  // Define nodes for feed-forward neural network (organic positioning)
-  const layer1 = [
-    { x: 20, y: 35 },
-    { x: 20, y: 60 },
-    { x: 20, y: 85 },
-  ];
-  
-  const layer2 = [
-    { x: 45, y: 25 },
-    { x: 45, y: 50 },
-    { x: 45, y: 65 },
-    { x: 45, y: 90 },
-  ];
-  
-  const layer3 = [
-    { x: 70, y: 30 },
-    { x: 70, y: 52 },
-    { x: 70, y: 73 },
-    { x: 70, y: 95 },
-  ];
-  
-  const layer4 = [
-    { x: 95, y: 45 },
-    { x: 95, y: 70 },
-  ];
-
-  // Generate connections between layers
-  const connections = [
-    // Layer 1 to Layer 2
-    ...layer1.flatMap((n1, i) => 
-      layer2.map((n2, j) => ({ x1: n1.x, y1: n1.y, x2: n2.x, y2: n2.y, delay: i * 0.2 + j * 0.1 }))
-    ),
-    // Layer 2 to Layer 3
-    ...layer2.flatMap((n2, i) => 
-      layer3.map((n3, j) => ({ x1: n2.x, y1: n2.y, x2: n3.x, y2: n3.y, delay: i * 0.15 + j * 0.12 }))
-    ),
-    // Layer 3 to Layer 4
-    ...layer3.flatMap((n3, i) => 
-      layer4.map((n4, j) => ({ x1: n3.x, y1: n3.y, x2: n4.x, y2: n4.y, delay: i * 0.18 + j * 0.13 }))
-    ),
-  ];
-
-  const allNodes = [...layer1, ...layer2, ...layer3, ...layer4];
-
   return (
-    <div className="w-80 h-80 bg-rose-quartz/60 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-white/30 shadow-lg">
-      <div className="relative w-64 h-64">
-        <svg className="w-full h-full" viewBox="0 0 120 120" fill="none">
-          {/* Draw connections */}
-          {connections.map((conn, i) => (
-            <line
-              key={`conn-${i}`}
-              x1={conn.x1}
-              y1={conn.y1}
-              x2={conn.x2}
-              y2={conn.y2}
-              stroke="white"
-              strokeWidth="1.5"
-              opacity="0.4"
-            >
-              <animate
-                attributeName="opacity"
-                values="0.3;0.6;0.3"
-                dur="3s"
-                begin={`${conn.delay}s`}
-                repeatCount="indefinite"
-              />
-            </line>
-          ))}
-          
-          {/* Draw nodes */}
-          {allNodes.map((node, i) => (
-            <circle
-              key={`node-${i}`}
-              cx={node.x}
-              cy={node.y}
-              r="5"
-              fill="white"
-              opacity="0.9"
-            >
-              <animate
-                attributeName="r"
-                values="5;6.5;5"
-                dur="2.5s"
-                begin={`${i * 0.15}s`}
-                repeatCount="indefinite"
-              />
-            </circle>
-          ))}
-        </svg>
+    <div className="w-80 h-80 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-white/30">
+      <div className="relative">
+        <div className="w-48 h-48 relative">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/20 rounded-full transform rotate-12"></div>
+          <div className="absolute inset-2 bg-gradient-to-br from-white/30 to-white/10 rounded-full transform -rotate-6"></div>
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg className="w-32 h-32 text-white" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="8" fill="currentColor" opacity="0.9">
+                <animate attributeName="r" values="8;12;8" dur="3s" repeatCount="indefinite" />
+              </circle>
+
+              <circle cx="30" cy="30" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="90" cy="30" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="30" cy="90" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="90" cy="90" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="60" cy="20" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="60" cy="100" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="20" cy="60" r="4" fill="currentColor" opacity="0.8" />
+              <circle cx="100" cy="60" r="4" fill="currentColor" opacity="0.8" />
+
+              <line x1="60" y1="60" x2="30" y2="30" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="90" y2="30" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.3s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="30" y2="90" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.6s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="90" y2="90" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="0.9s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="60" y2="20" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1.2s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="60" y2="100" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1.5s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="20" y2="60" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1.8s" repeatCount="indefinite" />
+              </line>
+              <line x1="60" y1="60" x2="100" y2="60" stroke="currentColor" strokeWidth="2" opacity="0.6">
+                <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="2.1s" repeatCount="indefinite" />
+              </line>
+            </svg>
+          </div>
+
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+            <span className="text-white text-2xl font-bold font-code tracking-wider">AI</span>
+          </div>
+        </div>
       </div>
     </div>
   );
