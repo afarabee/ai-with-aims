@@ -44,9 +44,35 @@ const AIBrainLogo = () => {
   const allNodes = [...layer1, ...layer2, ...layer3, ...layer4];
 
   return (
-    <div className="w-80 h-80 bg-rose-quartz/60 rounded-full flex items-center justify-center backdrop-blur-sm border-2 border-white/30 shadow-lg">
+    <div className="w-80 h-80 bg-gradient-to-br from-lavender-fog/40 via-rose-quartz/30 to-sage-gray/20 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-white/20 shadow-2xl">
       <div className="relative w-64 h-64">
         <svg className="w-full h-full" viewBox="0 0 120 120" fill="none">
+          {/* Define drop shadow filters */}
+          <defs>
+            <filter id="nodeShadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+              <feOffset dx="0" dy="2" result="offsetblur"/>
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.4"/>
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="lineShadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+              <feOffset dx="0" dy="1" result="offsetblur"/>
+              <feComponentTransfer>
+                <feFuncA type="linear" slope="0.3"/>
+              </feComponentTransfer>
+              <feMerge>
+                <feMergeNode/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
           {/* Draw connections */}
           {connections.map((conn, i) => (
             <line
@@ -57,11 +83,12 @@ const AIBrainLogo = () => {
               y2={conn.y2}
               stroke="white"
               strokeWidth="1.5"
-              opacity="0.4"
+              opacity="0.5"
+              filter="url(#lineShadow)"
             >
               <animate
                 attributeName="opacity"
-                values="0.3;0.6;0.3"
+                values="0.4;0.7;0.4"
                 dur="3s"
                 begin={`${conn.delay}s`}
                 repeatCount="indefinite"
@@ -77,7 +104,8 @@ const AIBrainLogo = () => {
               cy={node.y}
               r="5"
               fill="white"
-              opacity="0.9"
+              opacity="0.95"
+              filter="url(#nodeShadow)"
             >
               <animate
                 attributeName="r"
