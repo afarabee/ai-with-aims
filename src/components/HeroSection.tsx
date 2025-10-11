@@ -58,7 +58,7 @@ const HeroSection = () => {
             <img 
               src={logoImage} 
               alt="AI with Aimee Logo" 
-              className="w-full max-w-md animate-pulse-glow"
+              className="w-full max-w-lg drop-shadow-[0_0_50px_rgba(0,255,255,0.3)] animate-pulse-glow mix-blend-screen"
             />
           </div>
           <div>
