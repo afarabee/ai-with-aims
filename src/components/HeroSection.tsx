@@ -54,11 +54,14 @@ const HeroSection = () => {
       
       <div className="max-w-6xl mx-auto px-6 py-20 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="flex justify-center">
+            <img 
+              src={logoImage} 
+              alt="AI with Aimee Logo" 
+              className="w-full max-w-md animate-pulse-glow"
+            />
+          </div>
           <div>
-            <h1 className="text-5xl md:text-7xl mb-6">
-              <span className="font-retro neon-text-cyan">AI with</span>{" "}
-              <span className="font-rainbow neon-text-pink text-6xl md:text-8xl">Aims</span>
-            </h1>
             <div className="text-xl md:text-2xl mb-8">
               <span className="font-sans neon-text-yellow">Product Manager turned </span>
               <span className="font-retro typing-animation neon-text-cyan">{displayText}</span>
@@ -79,16 +82,6 @@ const HeroSection = () => {
               >
                 Read Blog
               </button>
-            </div>
-          </div>
-          <div className="flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 blur-3xl bg-neon-cyan/30 rounded-full"></div>
-              <img 
-                src={logoImage} 
-                alt="AI with Aimee Logo" 
-                className="relative z-10 w-full max-w-md animate-pulse-glow"
-              />
             </div>
           </div>
         </div>
