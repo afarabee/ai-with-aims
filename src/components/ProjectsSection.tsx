@@ -9,7 +9,7 @@ const ProjectsSection = () => {
       title: "Intelligent AI Story Builder",
       description: "Enterprise Generative AI platform that converts product ideas into structured Agile user stories.",
       tags: ["Python", "APIs", "GenAI"],
-      bgColor: "bg-rose-quartz",
+      borderColor: "neon-border-cyan",
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ const ProjectsSection = () => {
       title: "Predictive Analytics Dashboard",
       description: "Interactive dashboard predicting IT infrastructure maintenance needs using machine learning algorithms.",
       tags: ["Scikit-learn", "Streamlit", "Plotly"],
-      bgColor: "bg-sage-gray",
+      borderColor: "neon-border-pink",
     },
     {
       id: 3,
@@ -25,32 +25,32 @@ const ProjectsSection = () => {
       title: "Image Classification App",
       description: "Web application that classifies uploaded images using a pre-trained convolutional neural network.",
       tags: ["TensorFlow", "Flask", "OpenCV"],
-      bgColor: "bg-lavender-fog",
+      borderColor: "neon-border-cyan",
     },
   ];
 
   return (
-    <section id="projects" className="py-20 gradient-bg border-t-4 border-sage-gray/20">
+    <section id="projects" className="py-20 gradient-bg neon-border-cyan border-t-4">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="font-rainbow text-4xl md:text-5xl text-center text-white mb-16">My AI Projects</h2>
+        <h2 className="font-retro text-4xl md:text-5xl text-center neon-text-cyan mb-16">My AI Projects</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => {
             const isFirstProject = project.id === 1;
             const content = (
               <>
-                <div className={`w-12 h-12 ${project.bgColor} rounded-lg flex items-center justify-center mb-4`}>
-                  <span className="text-white text-xl">{project.icon}</span>
+                <div className={`w-12 h-12 ${project.borderColor} bg-muted rounded flex items-center justify-center mb-4`}>
+                  <span className="text-2xl">{project.icon}</span>
                 </div>
-                <h3 className="text-xl font-semibold text-dark-graphite mb-3">{project.title}</h3>
-                <p className="text-sage-gray mb-4">{project.description}</p>
+                <h3 className="text-xl font-retro font-semibold neon-text-pink mb-3">{project.title}</h3>
+                <p className="text-foreground/70 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="bg-lavender-fog text-dark-graphite px-3 py-1 rounded-full text-xs font-code">
+                    <span key={tag} className="bg-muted neon-text-yellow px-3 py-1 rounded text-xs font-retro">
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="text-rose-quartz hover:text-dark-graphite font-medium flex items-center gap-1">
+                <div className="neon-text-cyan hover:neon-text-pink font-retro font-medium flex items-center gap-1 transition-colors">
                   View Project <ArrowRight className="w-4 h-4" />
                 </div>
               </>
@@ -61,7 +61,7 @@ const ProjectsSection = () => {
                 <Link
                   key={project.id}
                   to="/ai-story-builder"
-                  className="bg-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-md border border-sage-gray/10 block"
+                  className={`${project.borderColor} bg-background/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.6)] block`}
                 >
                   {content}
                 </Link>
@@ -71,7 +71,7 @@ const ProjectsSection = () => {
             return (
               <div
                 key={project.id}
-                className="bg-white rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl shadow-md border border-sage-gray/10"
+                className={`${project.borderColor} bg-background/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.6)]`}
               >
                 {content}
               </div>

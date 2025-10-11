@@ -8,100 +8,101 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 17%;
+    /* Neon 80s Color Palette */
+    --background: 262 71% 12%;
+    --foreground: 180 100% 50%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 17%;
+    --card: 262 71% 12%;
+    --card-foreground: 180 100% 50%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 17%;
+    --popover: 262 71% 12%;
+    --popover-foreground: 180 100% 50%;
 
-    --primary: 0 0% 17%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 262 71% 12%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 0 0% 17%;
+    --secondary: 328 100% 56%;
+    --secondary-foreground: 262 71% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 180 9% 61%;
+    --muted: 262 60% 20%;
+    --muted-foreground: 180 100% 70%;
 
-    --accent: 286 24% 82%;
-    --accent-foreground: 0 0% 17%;
+    --accent: 60 100% 50%;
+    --accent-foreground: 262 71% 12%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 180 9% 91%;
-    --input: 180 9% 91%;
-    --ring: 0 0% 17%;
+    --border: 180 100% 50%;
+    --input: 262 60% 20%;
+    --ring: 180 100% 50%;
 
-    --radius: 1rem;
+    --radius: 0.5rem;
 
-    /* Brand Colors */
-    --rose-quartz: 3 73% 89%;
-    --sage-gray: 180 9% 61%;
-    --lavender-fog: 286 24% 82%;
-    --dark-graphite: 0 0% 17%;
+    /* Neon Brand Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-pink: 328 100% 56%;
+    --neon-yellow: 60 100% 50%;
+    --neon-purple: 280 100% 50%;
+    --deep-purple: 262 71% 12%;
+    --dark-navy: 240 50% 8%;
+    
+    /* Legacy colors for compatibility */
+    --rose-quartz: 328 100% 56%;
+    --sage-gray: 180 100% 70%;
+    --lavender-fog: 280 100% 70%;
+    --dark-graphite: 262 71% 12%;
     
     /* Case Study Brand Colors */
-    --rose-quartz-case: 351 82% 82%;
-    --sage-gray-case: 126 11% 69%;
-    --lavender-fog-case: 243 28% 70%;
-    --ivory-white: 60 20% 99%;
-    --dark-graphite-case: 180 2% 17%;
+    --rose-quartz-case: 328 100% 56%;
+    --sage-gray-case: 180 100% 70%;
+    --lavender-fog-case: 280 100% 70%;
+    --ivory-white: 180 100% 50%;
+    --dark-graphite-case: 262 71% 12%;
 
     /* Gradient Colors */
-    --gradient-start: 4 32% 66%;
-    --gradient-mid: 293 18% 60%;
-    --gradient-end: 180 8% 46%;
+    --gradient-start: 262 71% 12%;
+    --gradient-mid: 280 100% 30%;
+    --gradient-end: 262 71% 12%;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 262 71% 12%;
+    --sidebar-foreground: 180 100% 50%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 262 71% 12%;
+    --sidebar-accent: 262 60% 20%;
+    --sidebar-accent-foreground: 180 100% 50%;
+    --sidebar-border: 180 100% 50%;
+    --sidebar-ring: 180 100% 50%;
   }
 
   .dark {
-    --background: 0 0% 17%;
-    --foreground: 0 0% 100%;
-
-    --card: 0 0% 17%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 0 0% 17%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 17%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 286 24% 82%;
-    --accent-foreground: 0 0% 17%;
-
+    --background: 262 71% 12%;
+    --foreground: 180 100% 50%;
+    --card: 262 71% 12%;
+    --card-foreground: 180 100% 50%;
+    --popover: 262 71% 12%;
+    --popover-foreground: 180 100% 50%;
+    --primary: 180 100% 50%;
+    --primary-foreground: 262 71% 12%;
+    --secondary: 328 100% 56%;
+    --secondary-foreground: 262 71% 12%;
+    --muted: 262 60% 20%;
+    --muted-foreground: 180 100% 70%;
+    --accent: 60 100% 50%;
+    --accent-foreground: 262 71% 12%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 180 100% 50%;
+    --input: 262 60% 20%;
+    --ring: 180 100% 50%;
+    --sidebar-background: 262 71% 12%;
+    --sidebar-foreground: 180 100% 50%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 262 71% 12%;
+    --sidebar-accent: 262 60% 20%;
+    --sidebar-accent-foreground: 180 100% 50%;
+    --sidebar-border: 180 100% 50%;
+    --sidebar-ring: 180 100% 50%;
   }
 }
 
@@ -119,6 +120,39 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)) 100%);
   }
 
+  .neon-text-cyan {
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8),
+                 0 0 20px hsl(var(--neon-cyan) / 0.6),
+                 0 0 30px hsl(var(--neon-cyan) / 0.4);
+  }
+
+  .neon-text-pink {
+    color: hsl(var(--neon-pink));
+    text-shadow: 0 0 10px hsl(var(--neon-pink) / 0.8),
+                 0 0 20px hsl(var(--neon-pink) / 0.6),
+                 0 0 30px hsl(var(--neon-pink) / 0.4);
+  }
+
+  .neon-text-yellow {
+    color: hsl(var(--neon-yellow));
+    text-shadow: 0 0 10px hsl(var(--neon-yellow) / 0.8),
+                 0 0 20px hsl(var(--neon-yellow) / 0.6),
+                 0 0 30px hsl(var(--neon-yellow) / 0.4);
+  }
+
+  .neon-border-cyan {
+    border: 2px solid hsl(var(--neon-cyan));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.6),
+                inset 0 0 10px hsl(var(--neon-cyan) / 0.2);
+  }
+
+  .neon-border-pink {
+    border: 2px solid hsl(var(--neon-pink));
+    box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.6),
+                inset 0 0 10px hsl(var(--neon-pink) / 0.2);
+  }
+
   .nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -131,7 +165,8 @@ All colors MUST be HSL.
     height: 2px;
     bottom: -5px;
     left: 0;
-    background: linear-gradient(90deg, hsl(var(--rose-quartz)), hsl(var(--lavender-fog)));
+    background: linear-gradient(90deg, hsl(var(--neon-cyan)), hsl(var(--neon-pink)));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8);
     transition: width 0.3s ease;
   }
 
@@ -140,23 +175,27 @@ All colors MUST be HSL.
   }
 
   @keyframes blink {
-    0%, 50% { border-color: hsl(var(--rose-quartz)); }
+    0%, 50% { border-color: hsl(var(--neon-cyan)); }
     51%, 100% { border-color: transparent; }
   }
 
   .typing-animation {
-    border-right: 2px solid hsl(var(--rose-quartz));
+    border-right: 3px solid hsl(var(--neon-cyan));
     animation: blink 1s infinite;
   }
 
-  @keyframes pulse-node {
-    0%, 100% { r: 8; }
-    50% { r: 12; }
+  @keyframes pulse-glow {
+    0%, 100% { 
+      filter: drop-shadow(0 0 10px hsl(var(--neon-cyan) / 0.8));
+    }
+    50% { 
+      filter: drop-shadow(0 0 20px hsl(var(--neon-cyan)));
+    }
   }
 
-  @keyframes pulse-line {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+  @keyframes scanlines {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
   }
 }
 

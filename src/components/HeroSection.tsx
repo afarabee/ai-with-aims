@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AIBrainLogo from "./AIBrainLogo";
+import logoImage from "@/assets/ai-with-aimee-logo.png";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -44,38 +44,52 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen gradient-bg flex items-center pt-20">
-      <div className="max-w-6xl mx-auto px-6 py-20 w-full">
+    <section id="home" className="min-h-screen gradient-bg flex items-center pt-20 relative overflow-hidden">
+      {/* Grid background effect */}
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: `linear-gradient(hsl(var(--neon-cyan)) 1px, transparent 1px),
+                         linear-gradient(90deg, hsl(var(--neon-cyan)) 1px, transparent 1px)`,
+        backgroundSize: '50px 50px'
+      }}></div>
+      
+      <div className="max-w-6xl mx-auto px-6 py-20 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-5xl md:text-7xl text-white mb-6">
-              <span className="font-code">AI with</span>{" "}
-              <span className="font-rainbow text-6xl md:text-8xl">Aims</span>
+            <h1 className="text-5xl md:text-7xl mb-6">
+              <span className="font-retro neon-text-cyan">AI with</span>{" "}
+              <span className="font-rainbow neon-text-pink text-6xl md:text-8xl">Aims</span>
             </h1>
-            <div className="text-xl md:text-2xl text-white mb-8">
-              <span className="font-sans">Product Manager turned </span>
-              <span className="font-code typing-animation">{displayText}</span>
+            <div className="text-xl md:text-2xl mb-8">
+              <span className="font-sans neon-text-yellow">Product Manager turned </span>
+              <span className="font-retro typing-animation neon-text-cyan">{displayText}</span>
             </div>
-            <p className="text-lg text-white/90 mb-8 leading-relaxed">
+            <p className="text-lg neon-text-cyan/90 mb-8 leading-relaxed">
               My mission is to explore how AI can amplify human intelligence, not replace it, by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="bg-white text-dark-graphite px-8 py-3 rounded-full font-medium hover:bg-rose-quartz hover:text-white transition-all duration-300"
+                className="neon-border-cyan bg-background px-8 py-3 rounded font-retro font-semibold neon-text-cyan hover:bg-primary/20 transition-all duration-300"
               >
-                View My Projects
+                View Projects
               </button>
               <button
                 onClick={() => scrollToSection("blog")}
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-dark-graphite transition-all duration-300"
+                className="neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink hover:bg-secondary/20 transition-all duration-300"
               >
-                Read My Blog
+                Read Blog
               </button>
             </div>
           </div>
           <div className="flex justify-center">
-            <AIBrainLogo />
+            <div className="relative">
+              <div className="absolute inset-0 blur-3xl bg-neon-cyan/30 rounded-full"></div>
+              <img 
+                src={logoImage} 
+                alt="AI with Aimee Logo" 
+                className="relative z-10 w-full max-w-md animate-pulse-glow"
+              />
+            </div>
           </div>
         </div>
       </div>

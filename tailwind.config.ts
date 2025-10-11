@@ -68,11 +68,11 @@ export default {
         "dark-graphite-case": "hsl(var(--dark-graphite-case))",
       },
       fontFamily: {
+        retro: ["Orbitron", "sans-serif"],
+        pixel: ["Press Start 2P", "cursive"],
         rainbow: ["Over the Rainbow", "cursive"],
-        code: ["Fira Code", "monospace"],
         sans: ["Montserrat", "sans-serif"],
         shadows: ["Shadows Into Light", "cursive"],
-        narrow: ["PT Sans Narrow", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
