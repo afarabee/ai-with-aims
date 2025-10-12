@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const phrases = ["GenAI Strategist", "ML Enthusiast", "Tech Innovator", "AI Explorer"];
+  const phrases = ["AI Strategist", "ML Enthusiast", "Tech Innovator", "AI Explorer"];
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
@@ -61,7 +61,7 @@ const HeroSection = () => {
           </div>
           <div>
             <h1 className="text-3xl md:text-5xl mb-4 font-rajdhani font-semibold uppercase tracking-wide neon-text-cyan">
-              Product Manager turned <span className="typing-animation">{displayText}</span>
+              Product Manager turned <span className="typing-animation neon-text-yellow">{displayText}</span>
             </h1>
             
             <p 
@@ -71,7 +71,7 @@ const HeroSection = () => {
                 textShadow: '0 0 10px rgba(242, 127, 155, 0.15), 0 0 20px rgba(242, 127, 155, 0.15), 0 0 30px rgba(242, 127, 155, 0.15)'
               }}
             >
-              AI with Aimee is where machines meet minds.
+              AI with Aimee — where machines meet minds.
             </p>
             
             <p className="text-lg mb-8 font-ibm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
