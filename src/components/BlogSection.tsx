@@ -73,6 +73,7 @@ const BlogSection = () => {
       title: "My AI Journey",
       description: "Reflecting on the challenges, breakthroughs, and resources that helped me get started with ML. From linear regression to neural networks - here's what I learned.",
       readTime: "5 min read",
+      link: "/my-ai-journey",
     },
     {
       id: 2,
@@ -80,6 +81,7 @@ const BlogSection = () => {
       title: "Agents Aren't Always the Answer",
       description: "Why AI agents aren't always the solution you need. Exploring when to use agents and when simpler approaches work better.",
       readTime: "6 min read",
+      link: "/agents-arent-the-answer",
     },
     {
       id: 3,
@@ -87,6 +89,7 @@ const BlogSection = () => {
       title: "Prompting for PMs",
       description: "How my background in product strategy actually gave me advantages in understanding AI systems, and what skills transferred over.",
       readTime: "7 min read",
+      link: "/blog",
     },
     {
       id: 4,
@@ -94,6 +97,7 @@ const BlogSection = () => {
       title: "Case Study: Rolling out AI @ CRL",
       description: "Step-by-step walkthrough of creating a simple neural network from scratch. The mistakes I made and how I debugged them.",
       readTime: "10 min read",
+      link: "/blog",
     },
     {
       id: 5,
@@ -101,6 +105,7 @@ const BlogSection = () => {
       title: "Bridging the Gap",
       description: "Exploring the importance of responsible AI development from day one. Key principles every AI practitioner should understand.",
       readTime: "6 min read",
+      link: "/blog",
     },
   ];
 
@@ -140,7 +145,7 @@ const BlogSection = () => {
           <div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 transition-opacity duration-300"
             style={{
-              background: 'radial-gradient(circle, rgba(244, 70, 160, 0.25) 0%, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(244, 70, 160, 0.2) 0%, transparent 70%)',
               opacity: isVisible ? 1 : 0,
             }}
           />
@@ -149,9 +154,8 @@ const BlogSection = () => {
             {/* Carousel Cards */}
             <div className="relative w-full max-w-2xl mx-auto" style={{ transformStyle: 'preserve-3d' }}>
               {blogPosts.map((post, index) => {
-                const isMyAIJourney = post.id === 1;
                 const isActive = index === activeIndex;
-                const offset = (index - activeIndex + 4) % 4;
+                const offset = (index - activeIndex + 5) % 5;
                 
                 // Calculate 3D position
                 let transform = '';
@@ -181,17 +185,19 @@ const BlogSection = () => {
                 }
 
                 const content = (
-                  <div style={{ padding: '20px', whiteSpace: 'normal', wordWrap: 'break-word' }}>
-                    <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold" style={{ lineHeight: '1.4' }}>{post.date}</div>
-                    <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4" style={{ lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.title}</h3>
-                    <p className="font-ibm text-sm mb-4" style={{ color: '#e6e6e6', lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="neon-text-yellow text-sm font-titillium">{post.readTime}</span>
-                      <span className="neon-text-pink hover:neon-text-cyan font-montserrat font-medium flex items-center gap-1 transition-colors">
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </span>
+                  <Link to={post.link} style={{ textDecoration: 'none' }}>
+                    <div style={{ padding: '20px', whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                      <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold" style={{ lineHeight: '1.4' }}>{post.date}</div>
+                      <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4" style={{ lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.title}</h3>
+                      <p className="font-ibm text-sm mb-4" style={{ color: '#e6e6e6', lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.description}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="neon-text-yellow text-sm font-titillium">{post.readTime}</span>
+                        <span className="neon-text-pink hover:neon-text-cyan font-montserrat font-medium flex items-center gap-1 transition-colors">
+                          Read More <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 );
 
                 return (
@@ -205,40 +211,22 @@ const BlogSection = () => {
                       transformStyle: 'preserve-3d',
                       filter: isActive ? 'brightness(1)' : 'brightness(0.7) blur(1px)',
                       pointerEvents: isActive ? 'auto' : 'none',
-                      transition: 'all 0.3s ease-in-out',
+                      transition: 'all 1s ease-in-out',
                     }}
                   >
-                    {isMyAIJourney ? (
-                      <GlowCard
-                        as={Link}
-                        to="/my-ai-journey"
-                        className="block"
-                        style={{
-                          backgroundColor: isActive ? 'rgba(40, 20, 60, 0.75)' : 'rgba(15, 11, 29, 0.9)',
-                          backdropFilter: isActive ? 'blur(4px)' : 'none',
-                          boxShadow: isActive 
-                            ? '0 0 25px #f27f9b, 0 0 45px #b8f2e3' 
-                            : '0 0 10px rgba(0, 255, 255, 0.2)',
-                          border: isActive ? '1px solid rgba(180, 242, 227, 0.5)' : '1px solid rgba(0, 255, 255, 0.1)',
-                        }}
-                      >
-                        {content}
-                      </GlowCard>
-                    ) : (
-                      <GlowCard 
-                        className="block"
-                        style={{
-                          backgroundColor: isActive ? 'rgba(40, 20, 60, 0.75)' : 'rgba(15, 11, 29, 0.9)',
-                          backdropFilter: isActive ? 'blur(4px)' : 'none',
-                          boxShadow: isActive 
-                            ? '0 0 25px #f27f9b, 0 0 45px #b8f2e3' 
-                            : '0 0 10px rgba(0, 255, 255, 0.2)',
-                          border: isActive ? '1px solid rgba(180, 242, 227, 0.5)' : '1px solid rgba(0, 255, 255, 0.1)',
-                        }}
-                      >
-                        {content}
-                      </GlowCard>
-                    )}
+                    <GlowCard 
+                      className="block"
+                      style={{
+                        backgroundColor: isActive ? 'rgba(25, 10, 40, 0.65)' : 'rgba(25, 10, 40, 0.45)',
+                        backdropFilter: isActive ? 'blur(4px)' : 'none',
+                        boxShadow: isActive 
+                          ? '0 0 25px #f27f9b, 0 0 40px #b8f2e3' 
+                          : '0 0 10px rgba(0, 255, 255, 0.2)',
+                        border: isActive ? '1px solid rgba(180, 242, 227, 0.5)' : '1px solid rgba(0, 255, 255, 0.1)',
+                      }}
+                    >
+                      {content}
+                    </GlowCard>
                   </div>
                 );
               })}
@@ -288,7 +276,7 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center mt-3">
+        <div className="flex justify-center" style={{ marginTop: '8px' }}>
           <Link to="/blog">
             <Button
               className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
