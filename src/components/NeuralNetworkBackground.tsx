@@ -9,6 +9,8 @@ interface Node {
   pulseIntensity: number;
   pulseTarget: number;
   nextDirectionChange: number;
+  flashIntensity: number;
+  nextFlashTime: number;
 }
 
 const NeuralNetworkBackground = () => {
@@ -50,11 +52,13 @@ const NeuralNetworkBackground = () => {
       nodes.push({
         x: baseX + (Math.random() - 0.5) * randomOffset,
         y: baseY + (Math.random() - 0.5) * randomOffset,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
         pulseIntensity: 0,
         pulseTarget: 0,
         nextDirectionChange: Math.random() * 300 + 200,
+        flashIntensity: 0,
+        nextFlashTime: Math.random() * 1000 + 500,
       });
     }
 
@@ -134,17 +138,30 @@ const NeuralNetworkBackground = () => {
         // Random direction changes
         node.nextDirectionChange--;
         if (node.nextDirectionChange <= 0) {
-          node.vx += (Math.random() - 0.5) * 0.05;
-          node.vy += (Math.random() - 0.5) * 0.05;
+          node.vx += (Math.random() - 0.5) * 0.0625;
+          node.vy += (Math.random() - 0.5) * 0.0625;
           
           // Clamp speed
           const speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
-          if (speed > 0.15) {
-            node.vx = (node.vx / speed) * 0.15;
-            node.vy = (node.vy / speed) * 0.15;
+          if (speed > 0.1875) {
+            node.vx = (node.vx / speed) * 0.1875;
+            node.vy = (node.vy / speed) * 0.1875;
           }
           
           node.nextDirectionChange = Math.random() * 300 + 200;
+        }
+        
+        // Random yellow flashes
+        node.nextFlashTime -= 16; // ~60fps frame time
+        if (node.nextFlashTime <= 0 && Math.random() < 0.02) {
+          node.flashIntensity = 1;
+          node.nextFlashTime = Math.random() * 2000 + 1000;
+        }
+        
+        // Fade flash
+        if (node.flashIntensity > 0) {
+          node.flashIntensity -= 0.08;
+          if (node.flashIntensity < 0) node.flashIntensity = 0;
         }
         
         // Update pulse
@@ -218,14 +235,16 @@ const NeuralNetworkBackground = () => {
         const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
         const dimFactor = 1 - (logoProximity * 0.2);
         
-        // Rare yellow, mostly pink
-        const useYellow = node.pulseIntensity > 0.7 && Math.random() < 0.2;
+        // Yellow flash or pink/yellow pulse
+        const hasFlash = node.flashIntensity > 0;
+        const useYellow = hasFlash || (node.pulseIntensity > 0.7 && Math.random() < 0.2);
         const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155';
         
         // Increased brightness by 60%
         const baseOpacity = 0.0336;
         const pulseOpacity = node.pulseIntensity * 0.3024;
-        const finalOpacity = (baseOpacity + pulseOpacity) * dimFactor;
+        const flashOpacity = node.flashIntensity * 0.6;
+        const finalOpacity = (baseOpacity + pulseOpacity + flashOpacity) * dimFactor;
         
         if (finalOpacity > 0.028) {
           const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 6);
