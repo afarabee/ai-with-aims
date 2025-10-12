@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logoImage from "@/assets/ai-with-aimee-logo.png";
+import logoImage from "@/assets/ai-with-aimee-logo-transparent.png";
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
 import { ChevronDown } from "lucide-react";
 
@@ -56,7 +56,7 @@ const HeroSection = () => {
             <img 
               src={logoImage} 
               alt="AI with Aimee Logo" 
-              className="w-full max-w-2xl drop-shadow-[0_15px_35px_rgba(0,255,255,0.4)] animate-pulse-glow mix-blend-screen"
+              className="w-full max-w-xl drop-shadow-[0_0_60px_rgba(0,255,255,0.4)] scale-115"
             />
           </div>
           <div>
@@ -65,12 +65,12 @@ const HeroSection = () => {
               <span className="font-retro typing-animation neon-text-cyan">{displayText}</span>
             </div>
             
-            <p className="text-2xl md:text-3xl font-bold neon-text-pink mb-6">
+            <p className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#f27f9b' }}>
               AI with Aimee is where machines meet minds.
             </p>
             
             <p className="text-lg neon-text-cyan/90 mb-8 leading-relaxed">
-              My mission is to explore how Artificial intelligence can amplify Human intelligence — not replace it — by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
+              My mission is to explore how Artificial Intelligence can amplify Human Intelligence — not replace it — by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
