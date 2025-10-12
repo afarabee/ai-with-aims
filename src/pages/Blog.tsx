@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import AboutBackground from '@/components/AboutBackground';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import ScrollIndicator from '@/components/ScrollIndicator';
 
 const Blog = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
@@ -224,6 +225,9 @@ const Blog = () => {
             </div>
           </div>
         </div>
+
+        {/* Scroll Indicator */}
+        <ScrollIndicator />
       </main>
 
       <Footer />

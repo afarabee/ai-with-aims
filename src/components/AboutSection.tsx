@@ -3,6 +3,7 @@ import { Linkedin, Github, Mail } from 'lucide-react';
 import AboutBackground from './AboutBackground';
 import { Button } from './ui/button';
 import GlowCard from './ui/glow-card';
+import ScrollIndicator from './ScrollIndicator';
 
 const AboutSection = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
@@ -196,6 +197,9 @@ const AboutSection = () => {
           © 2025 Aimee Farabee | AI with Aimee — Intelligence with a Twist.
         </div>
       </div>
+
+      {/* Scroll Indicator */}
+      <ScrollIndicator />
     </section>
   );
 };
