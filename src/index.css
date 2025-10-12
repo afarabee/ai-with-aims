@@ -124,8 +124,8 @@ All colors MUST be HSL.
 
   /* Unified Glow System */
   .neon-text-yellow {
-    color: #ffff33;
-    text-shadow: 0 0 8px #ffff66, 0 0 18px #fff954;
+    color: #e5fb52;
+    text-shadow: 0 0 8px #e5fb85, 0 0 18px #edfca0;
   }
 
   .neon-text-cyan {
