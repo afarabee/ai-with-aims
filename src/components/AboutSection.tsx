@@ -69,7 +69,7 @@ const AboutSection = () => {
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
-                    <span className="text-6xl font-rajdhani font-semibold" style={{ color: '#fff954', textShadow: '0 0 10px rgba(255, 255, 102, 0.8)' }}>
+                    <span className="text-6xl font-rajdhani font-semibold" style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}>
                       AF
                     </span>
                   </div>
@@ -84,7 +84,7 @@ const AboutSection = () => {
 
             {/* Right: Text Block */}
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold" style={{ color: '#fff954', textShadow: '0 0 10px rgba(255, 255, 102, 0.8)' }}>
+              <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold" style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}>
                 Meet Aimee — Product Director, AI Strategist, and Dog Mom.
               </h1>
               
@@ -122,7 +122,7 @@ const AboutSection = () => {
         <div className="mb-20">
           <h2 
             className="text-3xl md:text-4xl font-rajdhani font-semibold text-center mb-12"
-            style={{ color: '#fff954', textShadow: '0 0 10px rgba(255, 255, 102, 0.8)' }}
+            style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}
           >
             Journey Timeline
           </h2>
@@ -152,7 +152,7 @@ const AboutSection = () => {
                 <div className="text-sm font-titillium font-semibold mb-2" style={{ color: 'hsl(var(--neon-cyan))' }}>
                   {item.period}
                 </div>
-                <h3 className="text-xl font-rajdhani font-semibold mb-1" style={{ color: '#ffff66', textShadow: '0 0 10px rgba(255, 255, 102, 0.8)' }}>
+                <h3 className="text-xl font-rajdhani font-semibold mb-1" style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}>
                   {item.title}
                 </h3>
                 <div className="text-sm font-semibold mb-3" style={{ color: '#f27f9b' }}>
