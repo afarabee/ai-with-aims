@@ -5,9 +5,25 @@ import AboutBackground from '@/components/AboutBackground';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ScrollIndicator from '@/components/ScrollIndicator';
+import { supabase } from '@/integrations/supabase/client';
+import { useQuery } from '@tanstack/react-query';
 
 const Blog = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+
+  // Fetch blogs from Supabase
+  const { data: blogPosts, isLoading } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .order('date_published', { ascending: false });
+      
+      if (error) throw error;
+      return data || [];
+    },
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,74 +46,7 @@ const Blog = () => {
     cards.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
-  }, []);
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'Agents Aren\'t Always the Answer',
-      excerpt: 'A cautionary (but kinda funny) tale from my first n8n build. Sometimes the smartest automation is knowing when to stop automating.',
-      date: '2024-02-10',
-      readTime: '8 min read',
-      tags: ['Automation', 'n8n', 'Lessons Learned'],
-      thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop',
-      slug: 'agents-arent-the-answer',
-    },
-    {
-      id: 2,
-      title: 'Building Trust with AI: Why Prompt Engineering Matters',
-      excerpt: 'In enterprise settings, AI outputs can make or break stakeholder confidence. Learn how structured prompts create consistency, reduce hallucinations, and build trust across teams.',
-      date: '2024-01-15',
-      readTime: '6 min read',
-      tags: ['Prompt Engineering', 'Enterprise AI', 'Best Practices'],
-      thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=450&fit=crop',
-    },
-    {
-      id: 2,
-      title: 'From Manual to Automated: My Journey with AI Workflows',
-      excerpt: 'How I transformed repetitive planning tasks into intelligent automation pipelines using LangChain, n8n, and Azure DevOps — saving hours every week.',
-      date: '2024-01-08',
-      readTime: '8 min read',
-      tags: ['Automation', 'LangChain', 'Case Study'],
-      thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop',
-    },
-    {
-      id: 3,
-      title: 'The Art of Writing Effective AI Prompts',
-      excerpt: 'A practical guide to crafting prompts that get results. From structure and specificity to context and constraints — master the fundamentals.',
-      date: '2023-12-20',
-      readTime: '5 min read',
-      tags: ['Prompt Design', 'Tutorial', 'AI Basics'],
-      thumbnail: 'https://images.unsplash.com/photo-1676277791608-ac3b8a952c02?w=800&h=450&fit=crop',
-    },
-    {
-      id: 4,
-      title: 'Measuring AI Quality: Beyond Accuracy Metrics',
-      excerpt: 'Accuracy alone doesn\'t tell the full story. Explore how to evaluate AI outputs for bias, consistency, tone, and real-world usefulness.',
-      date: '2023-12-12',
-      readTime: '7 min read',
-      tags: ['Evaluation', 'Quality Assurance', 'Metrics'],
-      thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop',
-    },
-    {
-      id: 5,
-      title: 'Building a Daily AI News Aggregator in Python',
-      excerpt: 'A step-by-step walkthrough of creating an automated news pipeline that collects, categorizes, and summarizes AI content from multiple sources.',
-      date: '2023-11-28',
-      readTime: '10 min read',
-      tags: ['Python', 'Automation', 'Tutorial'],
-      thumbnail: 'https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=450&fit=crop',
-    },
-    {
-      id: 6,
-      title: 'Why Every Team Needs a Prompt Library',
-      excerpt: 'Reusable, tested prompts aren\'t just convenient — they\'re a competitive advantage. Learn how to build and maintain a shared prompt repository.',
-      date: '2023-11-15',
-      readTime: '6 min read',
-      tags: ['Knowledge Management', 'Team Collaboration', 'Best Practices'],
-      thumbnail: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=450&fit=crop',
-    },
-  ];
+  }, [blogPosts]);
 
   return (
     <div className="min-h-screen relative">
@@ -117,8 +66,18 @@ const Blog = () => {
           </div>
 
           {/* Blog Posts Grid */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {blogPosts.map((post, index) => (
+          {isLoading ? (
+            <div className="text-center py-20">
+              <p className="text-xl neon-text-cyan">Loading posts...</p>
+            </div>
+          ) : blogPosts && blogPosts.length > 0 ? (
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              {blogPosts.map((post, index) => {
+                // Calculate read time based on body length (approx 200 words per minute)
+                const wordCount = post.body?.split(' ').length || 0;
+                const readTime = Math.ceil(wordCount / 200);
+                
+                return (
               <article
                 key={post.id}
                 data-index={index}
@@ -147,9 +106,9 @@ const Blog = () => {
                   }}
                 >
                   <img
-                    src={post.thumbnail}
+                    src={post.banner_image || 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop'}
                     alt={post.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     loading="lazy"
                   />
                 </div>
@@ -170,41 +129,32 @@ const Blog = () => {
                   <div className="flex items-center gap-4 mb-4 text-xs" style={{ color: '#b8b8b8' }}>
                     <span className="flex items-center gap-1">
                       <Calendar size={14} />
-                      {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      {new Date(post.date_published).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                     </span>
                     <span className="flex items-center gap-1">
                       <Clock size={14} />
-                      {post.readTime}
+                      {readTime} min read
                     </span>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {post.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2 py-1 rounded text-xs font-titillium font-semibold neon-text-cyan transition-all duration-300 hover:scale-110 cursor-pointer"
-                        style={{ 
-                          background: 'rgba(0, 0, 0, 0.3)',
-                          border: '1px solid rgba(0, 255, 255, 0.3)'
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
                   </div>
 
                   {/* Read More Link */}
                   <a
-                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
+                    href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 font-montserrat font-bold text-sm transition-all duration-300 neon-text-pink hover:neon-text-cyan"
                   >
                     Read more →
                   </a>
                 </div>
               </article>
-            ))}
+            );
+          })}
           </div>
+        ) : (
+          <div className="text-center py-20">
+            <p className="text-xl neon-text-cyan mb-4">No blog posts yet.</p>
+            <p className="neon-text-pink">Check back soon for new content!</p>
+          </div>
+        )}
 
           {/* Pagination / Load More */}
           <div className="flex justify-center mb-12">
