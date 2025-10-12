@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import GlowCard from "./ui/glow-card";
@@ -5,6 +6,35 @@ import ScrollIndicator from "./ScrollIndicator";
 import SectionDivider from "./SectionDivider";
 
 const BlogSection = () => {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
+
+  useEffect(() => {
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = parseInt(entry.target.getAttribute('data-index') || '0');
+              setVisibleCards((prev) => {
+                const newState = [...prev];
+                newState[index] = true;
+                return newState;
+              });
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      const cards = document.querySelectorAll('.blog-post-card');
+      cards.forEach((card) => observer.observe(card));
+
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
   const blogPosts = [
     {
       id: 1,
@@ -55,7 +85,7 @@ const BlogSection = () => {
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-16">Latest Blog Posts</h2>
         <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => {
+          {blogPosts.map((post, index) => {
             const isMyAIJourney = post.id === 1;
             const content = (
               <>
@@ -71,18 +101,31 @@ const BlogSection = () => {
               </>
             );
 
-            return isMyAIJourney ? (
-              <GlowCard
+            return (
+              <div
                 key={post.id}
-                as={Link}
-                to="/my-ai-journey"
+                data-index={index}
+                className={`blog-post-card transition-all ease-out ${
+                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+                }`}
+                style={{
+                  transitionDuration: '700ms',
+                  transitionDelay: `${index * 150}ms`,
+                }}
               >
-                {content}
-              </GlowCard>
-            ) : (
-              <GlowCard key={post.id}>
-                {content}
-              </GlowCard>
+                {isMyAIJourney ? (
+                  <GlowCard
+                    as={Link}
+                    to="/my-ai-journey"
+                  >
+                    {content}
+                  </GlowCard>
+                ) : (
+                  <GlowCard>
+                    {content}
+                  </GlowCard>
+                )}
+              </div>
             );
           })}
         </div>
