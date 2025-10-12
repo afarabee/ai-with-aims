@@ -135,7 +135,6 @@ All colors MUST be HSL.
 
   .neon-text-pink {
     color: #f27f9b;
-    text-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .neon-border-cyan {
@@ -162,7 +161,6 @@ All colors MUST be HSL.
 
   .nav-link:hover {
     color: #f27f9b;
-    text-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .nav-link::after {
@@ -201,7 +199,6 @@ All colors MUST be HSL.
     color: hsl(var(--background));
     border: 2px solid #f27f9b;
     transition: all 0.3s ease;
-    box-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .hero-button:hover {
