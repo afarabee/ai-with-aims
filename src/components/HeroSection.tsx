@@ -64,13 +64,7 @@ const HeroSection = () => {
               Product Manager turned <span className="typing-animation neon-text-yellow">{displayText}</span>
             </h1>
             
-            <p 
-              className="text-2xl md:text-4xl font-josefin italic mb-6" 
-              style={{ 
-                color: '#f27f9b',
-                textShadow: '0 0 10px rgba(242, 127, 155, 0.15), 0 0 20px rgba(242, 127, 155, 0.15), 0 0 30px rgba(242, 127, 155, 0.15)'
-              }}
-            >
+            <p className="text-2xl md:text-4xl font-josefin italic mb-6 neon-text-pink">
               AI with Aimee — where machines meet minds.
             </p>
             

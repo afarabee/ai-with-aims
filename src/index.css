@@ -122,25 +122,20 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)) 100%);
   }
 
+  /* Unified Glow System */
+  .neon-text-yellow {
+    color: #ffff33;
+    text-shadow: 0 0 8px #ffff66, 0 0 18px #fff954;
+  }
+
   .neon-text-cyan {
-    color: hsl(var(--neon-cyan));
-    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8),
-                 0 0 20px hsl(var(--neon-cyan) / 0.6),
-                 0 0 30px hsl(var(--neon-cyan) / 0.4);
+    color: #00ffff;
+    text-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
   }
 
   .neon-text-pink {
-    color: hsl(var(--neon-pink));
-    text-shadow: 0 0 10px hsl(var(--neon-pink) / 0.8),
-                 0 0 20px hsl(var(--neon-pink) / 0.6),
-                 0 0 30px hsl(var(--neon-pink) / 0.4);
-  }
-
-  .neon-text-yellow {
-    color: hsl(var(--neon-yellow));
-    text-shadow: 0 0 10px hsl(var(--neon-yellow) / 0.8),
-                 0 0 20px hsl(var(--neon-yellow) / 0.6),
-                 0 0 30px hsl(var(--neon-yellow) / 0.4);
+    color: #f27f9b;
+    text-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .neon-border-cyan {
@@ -160,18 +155,14 @@ All colors MUST be HSL.
     font-family: 'Titillium Web', sans-serif;
     font-weight: 600;
     text-transform: uppercase;
-    color: hsl(var(--neon-cyan));
-    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8),
-                 0 0 20px hsl(var(--neon-cyan) / 0.6),
-                 0 0 30px hsl(var(--neon-cyan) / 0.25);
-    transition: color 0.3s ease;
+    color: #00ffff;
+    text-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
+    transition: all 0.3s ease;
   }
 
   .nav-link:hover {
     color: #f27f9b;
-    text-shadow: 0 0 10px rgba(242, 127, 155, 0.8),
-                 0 0 20px rgba(242, 127, 155, 0.6),
-                 0 0 30px rgba(242, 127, 155, 0.4);
+    text-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .nav-link::after {
@@ -206,18 +197,19 @@ All colors MUST be HSL.
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
-    background-color: hsl(var(--neon-pink));
+    background-color: #f27f9b;
     color: hsl(var(--background));
-    border: 2px solid hsl(var(--neon-pink));
+    border: 2px solid #f27f9b;
     transition: all 0.3s ease;
+    box-shadow: 0 0 6px #ff9eb3, 0 0 14px #ffc8d4;
   }
 
   .hero-button:hover {
-    background-color: hsl(var(--neon-cyan));
-    border-color: hsl(var(--neon-cyan));
+    background-color: #00ffff;
+    border-color: #00ffff;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
   }
 
   @keyframes pulse-glow {

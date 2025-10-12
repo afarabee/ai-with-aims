@@ -64,8 +64,8 @@ const AboutSection = () => {
                 <div 
                   className="w-full h-full rounded-full overflow-hidden border-4 relative"
                   style={{
-                    borderColor: 'hsl(var(--neon-cyan))',
-                    boxShadow: '0 0 20px hsla(var(--neon-cyan) / 0.3), inset 0 0 30px hsla(var(--neon-pink) / 0.15)',
+                    borderColor: '#00ffff',
+                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff, inset 0 0 30px rgba(242, 127, 155, 0.15)',
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
@@ -77,21 +77,18 @@ const AboutSection = () => {
                 {/* Reflection effect */}
                 <div 
                   className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-xl opacity-30"
-                  style={{ background: 'hsl(var(--neon-cyan))' }}
+                  style={{ background: '#00ffff' }}
                 />
               </div>
             </div>
 
             {/* Right: Text Block */}
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold" style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}>
-                Meet Aimee — Product Director, AI Strategist, and Dog Mom.
-              </h1>
+          <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold neon-text-yellow">
+            Meet Aimee — Product Director, AI Strategist, and Dog Mom.
+          </h1>
               
-              <h2 
-                className="text-xl md:text-2xl font-josefin italic"
-                style={{ color: '#f27f9b', textShadow: '0 0 15px rgba(242, 127, 155, 0.15)' }}
-              >
+              <h2 className="text-xl md:text-2xl font-josefin italic neon-text-pink">
                 Exploring how Artificial Intelligence can amplify Human Intelligence.
               </h2>
 
@@ -114,16 +111,13 @@ const AboutSection = () => {
           {/* Divider */}
           <div 
             className="h-px w-full"
-            style={{ background: 'hsla(var(--neon-cyan) / 0.2)' }}
+            style={{ background: 'rgba(0, 255, 255, 0.2)' }}
           />
         </div>
 
         {/* Timeline Section */}
         <div className="mb-20">
-          <h2 
-            className="text-3xl md:text-4xl font-rajdhani font-semibold text-center mb-12"
-            style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}
-          >
+          <h2 className="text-3xl md:text-4xl font-rajdhani font-semibold text-center mb-12 neon-text-yellow">
             Journey Timeline
           </h2>
 
@@ -136,26 +130,26 @@ const AboutSection = () => {
                   visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
-                  borderColor: 'hsla(var(--neon-cyan) / 0.3)',
+                  borderColor: 'rgba(0, 255, 255, 0.3)',
                   background: 'rgba(15, 11, 29, 0.5)',
                   backdropFilter: 'blur(10px)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'hsla(var(--neon-pink) / 0.6)';
-                  e.currentTarget.style.boxShadow = '0 0 20px hsla(var(--neon-pink) / 0.25)';
+                  e.currentTarget.style.borderColor = '#f27f9b';
+                  e.currentTarget.style.boxShadow = '0 0 6px #ff9eb3, 0 0 14px #ffc8d4';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'hsla(var(--neon-cyan) / 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                   e.currentTarget.style.boxShadow = 'none';
                 }}
               >
-                <div className="text-sm font-titillium font-semibold mb-2" style={{ color: 'hsl(var(--neon-cyan))' }}>
+                <div className="text-sm font-titillium font-semibold mb-2 neon-text-cyan">
                   {item.period}
                 </div>
-                <h3 className="text-xl font-rajdhani font-semibold mb-1" style={{ color: '#ffff33', textShadow: '0 0 8px #ffff66, 0 0 18px #fff954' }}>
+                <h3 className="text-xl font-rajdhani font-semibold mb-1 neon-text-yellow">
                   {item.title}
                 </h3>
-                <div className="text-sm font-semibold mb-3" style={{ color: '#f27f9b' }}>
+                <div className="text-sm font-semibold mb-3 neon-text-pink">
                   {item.company}
                 </div>
                 <p className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
@@ -179,38 +173,25 @@ const AboutSection = () => {
                   aria-label={social.label}
                   className="w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300"
                   style={{
-                    borderColor: 'hsl(var(--neon-cyan))',
-                    boxShadow: '0 0 15px hsla(var(--neon-cyan) / 0.25)',
+                    borderColor: '#00ffff',
+                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'hsl(var(--neon-pink))';
-                    e.currentTarget.style.boxShadow = '0 0 20px hsla(var(--neon-pink) / 0.4)';
+                    e.currentTarget.style.borderColor = '#f27f9b';
+                    e.currentTarget.style.boxShadow = '0 0 6px #ff9eb3, 0 0 14px #ffc8d4';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'hsl(var(--neon-cyan))';
-                    e.currentTarget.style.boxShadow = '0 0 15px hsla(var(--neon-cyan) / 0.25)';
+                    e.currentTarget.style.borderColor = '#00ffff';
+                    e.currentTarget.style.boxShadow = '0 0 6px #33ffff, 0 0 14px #99ffff';
                   }}
                 >
-                  <social.icon size={24} style={{ color: 'hsl(var(--neon-cyan))' }} />
+                  <social.icon size={24} className="neon-text-cyan" />
                 </a>
               ))}
             </div>
 
             <Button
-              className="font-montserrat font-bold tracking-wider px-8 py-6 text-base border-2 transition-all duration-300"
-              style={{
-                background: 'hsl(var(--neon-pink))',
-                borderColor: 'hsl(var(--neon-pink))',
-                color: '#0f0b1d',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'hsl(var(--neon-cyan))';
-                e.currentTarget.style.borderColor = 'hsl(var(--neon-cyan))';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'hsl(var(--neon-pink))';
-                e.currentTarget.style.borderColor = 'hsl(var(--neon-pink))';
-              }}
+              className="hero-button px-8 py-6 text-base"
             >
               Download Resume (PDF)
             </Button>
@@ -220,7 +201,7 @@ const AboutSection = () => {
         {/* Footer */}
         <div 
           className="text-center font-titillium font-semibold text-sm"
-          style={{ color: 'hsla(var(--neon-cyan) / 0.7)' }}
+          style={{ color: 'rgba(0, 255, 255, 0.7)' }}
         >
           © 2025 Aimee Farabee | AI with Aimee — Intelligence with a Twist.
         </div>
