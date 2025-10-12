@@ -69,7 +69,7 @@ const HeroSection = () => {
             />
           </div>
           <div>
-            <h1 className="text-3xl md:text-5xl mb-4 font-rajdhani font-semibold uppercase tracking-wide neon-text-cyan">
+            <h1 className="text-2xl md:text-4xl mb-4 font-rajdhani font-semibold uppercase tracking-wide neon-text-cyan">
               Product Manager turned <span className="typing-animation neon-text-yellow">{displayText}</span>
             </h1>
             
