@@ -1,17 +1,14 @@
 import { useEffect, useRef } from "react";
+import Delaunator from "delaunator";
 
 interface Node {
   x: number;
   y: number;
   vx: number;
   vy: number;
-  baseY: number;
-  waveOffset: number;
-}
-
-interface Connection {
-  node1: Node;
-  node2: Node;
+  pulseIntensity: number;
+  pulseTarget: number;
+  nextDirectionChange: number;
 }
 
 const NeuralNetworkBackground = () => {
@@ -31,131 +28,214 @@ const NeuralNetworkBackground = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Create nodes - balanced visibility
+    // Create nodes in a more uniform distribution
     const nodeCount = 50;
     const nodes: Node[] = [];
     
+    // Create grid-based layout with randomization for organic feel
+    const cols = Math.ceil(Math.sqrt(nodeCount * (canvas.width / canvas.height)));
+    const rows = Math.ceil(nodeCount / cols);
+    const cellWidth = canvas.width / cols;
+    const cellHeight = canvas.height / rows;
+    
     for (let i = 0; i < nodeCount; i++) {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const baseX = (col + 0.5) * cellWidth;
+      const baseY = (row + 0.5) * cellHeight;
+      
+      // Add randomization within cell
+      const randomOffset = Math.min(cellWidth, cellHeight) * 0.4;
+      
       nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        baseY: Math.random() * canvas.height,
-        waveOffset: Math.random() * Math.PI * 2,
+        x: baseX + (Math.random() - 0.5) * randomOffset,
+        y: baseY + (Math.random() - 0.5) * randomOffset,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
+        pulseIntensity: 0,
+        pulseTarget: 0,
+        nextDirectionChange: Math.random() * 300 + 200,
       });
     }
 
-    // Create connections
-    const connections: Connection[] = [];
-    const maxDistance = 150;
-    
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[i].x - nodes[j].x;
-        const dy = nodes[i].y - nodes[j].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < maxDistance) {
-          connections.push({ node1: nodes[i], node2: nodes[j] });
-        }
-      }
-    }
+    let triangulation: Delaunator<number[]> | null = null;
+    let frameCount = 0;
+    let lastPulseTime = 0;
+    let pulsingNodes = new Set<number>();
 
-    let time = 0;
+    const recalculateTriangulation = () => {
+      const points = nodes.map(node => [node.x, node.y]);
+      triangulation = new Delaunator(points.flat());
+    };
+
+    recalculateTriangulation();
+
+    const triggerPulse = (nodeIndex: number) => {
+      if (pulsingNodes.size >= 2) return; // Limit simultaneous pulses
+      
+      nodes[nodeIndex].pulseTarget = 1;
+      pulsingNodes.add(nodeIndex);
+      
+      // Propagate to adjacent nodes after delay
+      setTimeout(() => {
+        if (!triangulation) return;
+        
+        const adjacentNodes = new Set<number>();
+        for (let i = 0; i < triangulation.triangles.length; i++) {
+          if (triangulation.triangles[i] === nodeIndex) {
+            const nextIndex = (i % 3 === 2) ? i - 2 : i + 1;
+            const prevIndex = (i % 3 === 0) ? i + 2 : i - 1;
+            adjacentNodes.add(triangulation.triangles[nextIndex]);
+            adjacentNodes.add(triangulation.triangles[prevIndex]);
+          }
+        }
+        
+        adjacentNodes.forEach(adjIndex => {
+          if (adjIndex !== nodeIndex && pulsingNodes.size < 3) {
+            nodes[adjIndex].pulseTarget = 0.5;
+            pulsingNodes.add(adjIndex);
+          }
+        });
+      }, 200);
+    };
 
     const animate = () => {
       ctx.fillStyle = "rgba(10, 0, 20, 1)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      // Add transparent overlay for depth
       ctx.fillStyle = "rgba(10, 0, 20, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      time += 0.005;
+      frameCount++;
 
-      // Update and draw nodes
+      // Recalculate triangulation every 15 frames
+      if (frameCount % 15 === 0) {
+        recalculateTriangulation();
+      }
+
+      // Trigger random pulse every 5-8 seconds
+      const now = Date.now();
+      if (now - lastPulseTime > (5000 + Math.random() * 3000) && pulsingNodes.size < 2) {
+        const randomNode = Math.floor(Math.random() * nodes.length);
+        triggerPulse(randomNode);
+        lastPulseTime = now;
+      }
+
+      // Update nodes
       nodes.forEach((node, index) => {
-        // Slow, gentle wave motion
-        const waveAmplitude = 20;
-        const waveFrequency = 0.3;
-        node.y = node.baseY + Math.sin(time * waveFrequency + node.waveOffset) * waveAmplitude;
-        
-        // Gentle horizontal drift
+        // Slow omnidirectional drift
         node.x += node.vx;
+        node.y += node.vy;
+        
+        // Bounce off edges
         if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
+        if (node.y < 0 || node.y > canvas.height) node.vy *= -1;
+        
+        // Random direction changes
+        node.nextDirectionChange--;
+        if (node.nextDirectionChange <= 0) {
+          node.vx += (Math.random() - 0.5) * 0.05;
+          node.vy += (Math.random() - 0.5) * 0.05;
+          
+          // Clamp speed
+          const speed = Math.sqrt(node.vx * node.vx + node.vy * node.vy);
+          if (speed > 0.15) {
+            node.vx = (node.vx / speed) * 0.15;
+            node.vy = (node.vy / speed) * 0.15;
+          }
+          
+          node.nextDirectionChange = Math.random() * 300 + 200;
+        }
+        
+        // Update pulse
+        const pulseSpeed = 0.02;
+        if (node.pulseIntensity < node.pulseTarget) {
+          node.pulseIntensity += pulseSpeed;
+          if (node.pulseIntensity >= node.pulseTarget) {
+            node.pulseIntensity = node.pulseTarget;
+          }
+        } else if (node.pulseIntensity > node.pulseTarget) {
+          node.pulseIntensity -= pulseSpeed * 0.5;
+          if (node.pulseIntensity <= 0.05) {
+            node.pulseIntensity = 0;
+            node.pulseTarget = 0;
+            pulsingNodes.delete(index);
+          }
+        }
+      });
 
-        // Smooth wave phase for gentle pulsing
-        const wavePhase = Math.sin(time * waveFrequency + node.waveOffset);
-        const smoothIntensity = (wavePhase + 1) / 2; // 0 to 1 smooth transition
+      // Draw triangular connections
+      if (triangulation) {
+        const triangles = triangulation.triangles;
         
-        // Occasional yellow sparkles - moderate frequency
-        const sparkleChance = (time * 1000) % 400 < 60 && index < 5;
-        const useYellow = sparkleChance && smoothIntensity > 0.75;
-        
-        // Distance from logo area (left half, center)
+        for (let i = 0; i < triangles.length; i += 3) {
+          const p1 = nodes[triangles[i]];
+          const p2 = nodes[triangles[i + 1]];
+          const p3 = nodes[triangles[i + 2]];
+          
+          if (!p1 || !p2 || !p3) continue;
+          
+          // Calculate center for logo proximity
+          const centerX = (p1.x + p2.x + p3.x) / 3;
+          const centerY = (p1.y + p2.y + p3.y) / 3;
+          const logoX = canvas.width * 0.25;
+          const logoY = canvas.height * 0.5;
+          const distFromLogo = Math.sqrt(Math.pow(centerX - logoX, 2) + Math.pow(centerY - logoY, 2));
+          const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
+          const dimFactor = 1 - (logoProximity * 0.2);
+          
+          // Average pulse intensity for this triangle
+          const avgPulse = (p1.pulseIntensity + p2.pulseIntensity + p3.pulseIntensity) / 3;
+          
+          // Draw three edges of the triangle
+          const drawEdge = (n1: Node, n2: Node) => {
+            // Very low base opacity: 0.03-0.08
+            const usePink = Math.random() < 0.6;
+            const color = usePink ? '255, 79, 174' : '0, 255, 255';
+            const baseOpacity = usePink ? 0.05 : 0.06;
+            const pulseBoost = avgPulse * 0.08;
+            const finalOpacity = (baseOpacity + pulseBoost) * dimFactor;
+            
+            ctx.strokeStyle = `rgba(${color}, ${finalOpacity})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(n1.x, n1.y);
+            ctx.lineTo(n2.x, n2.y);
+            ctx.stroke();
+          };
+          
+          drawEdge(p1, p2);
+          drawEdge(p2, p3);
+          drawEdge(p3, p1);
+        }
+      }
+
+      // Draw nodes (mostly invisible, visible during pulses)
+      nodes.forEach((node) => {
         const logoX = canvas.width * 0.25;
         const logoY = canvas.height * 0.5;
         const distFromLogo = Math.sqrt(Math.pow(node.x - logoX, 2) + Math.pow(node.y - logoY, 2));
         const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
-        
-        // Reduce brightness behind logo by 20%
         const dimFactor = 1 - (logoProximity * 0.2);
         
-        // Softly blended colors - 12% less brightness overall
-        const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155'; // yellow or pink
-        const baseOpacity = useYellow 
-          ? smoothIntensity * 0.5 * 0.88 // 12% darker
-          : 0.2 * 0.88; // 12% darker
-
-        // Draw node with soft glow
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8);
-        gradient.addColorStop(0, `rgba(${nodeColor}, ${baseOpacity * dimFactor})`);
-        gradient.addColorStop(1, `rgba(${nodeColor}, 0)`);
+        // Rare yellow, mostly pink
+        const useYellow = node.pulseIntensity > 0.7 && Math.random() < 0.2;
+        const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155';
         
-        ctx.fillStyle = gradient;
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, 8, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Very subtle center highlight
-        if (useYellow) {
-          ctx.fillStyle = `rgba(255, 255, 255, ${smoothIntensity * 0.3 * dimFactor})`;
+        // Very low base opacity, only visible when pulsing
+        const baseOpacity = 0.02;
+        const pulseOpacity = node.pulseIntensity * 0.18;
+        const finalOpacity = (baseOpacity + pulseOpacity) * dimFactor;
+        
+        if (finalOpacity > 0.02) {
+          const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 6);
+          gradient.addColorStop(0, `rgba(${nodeColor}, ${finalOpacity})`);
+          gradient.addColorStop(1, `rgba(${nodeColor}, 0)`);
+          
+          ctx.fillStyle = gradient;
           ctx.beginPath();
-          ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
+          ctx.arc(node.x, node.y, 6, 0, Math.PI * 2);
           ctx.fill();
-        }
-      });
-
-      // Draw connections with softly blended pink/cyan
-      connections.forEach(({ node1, node2 }) => {
-        const dx = node1.x - node2.x;
-        const dy = node1.y - node2.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        
-        if (distance < maxDistance) {
-          const baseOpacity = (1 - distance / maxDistance);
-          
-          // Distance from logo area
-          const midX = (node1.x + node2.x) / 2;
-          const midY = (node1.y + node2.y) / 2;
-          const logoX = canvas.width * 0.25;
-          const logoY = canvas.height * 0.5;
-          const distFromLogo = Math.sqrt(Math.pow(midX - logoX, 2) + Math.pow(midY - logoY, 2));
-          const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
-          const dimFactor = 1 - (logoProximity * 0.2);
-          
-          // 60% pink, 40% cyan - softly blended, 12% darker
-          const usePink = Math.random() < 0.6;
-          const color = usePink ? '255, 79, 174' : '0, 255, 255'; // pink or cyan
-          const glowOpacity = (usePink ? baseOpacity * 0.15 : baseOpacity * 0.2) * 0.88; // 12% darker
-          
-          ctx.strokeStyle = `rgba(${color}, ${glowOpacity * dimFactor})`;
-          ctx.lineWidth = 0.8;
-          ctx.beginPath();
-          ctx.moveTo(node1.x, node1.y);
-          ctx.lineTo(node2.x, node2.y);
-          ctx.stroke();
         }
       });
 
