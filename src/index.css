@@ -134,7 +134,8 @@ All colors MUST be HSL.
   }
 
   .neon-text-pink {
-    color: #f27f9b;
+    color: #f446a0;
+    text-shadow: 0 0 6px #cf33c3, 0 0 14px #9a00ff;
   }
 
   .neon-border-cyan {
@@ -144,9 +145,9 @@ All colors MUST be HSL.
   }
 
   .neon-border-pink {
-    border: 2px solid hsl(var(--neon-pink));
-    box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.6),
-                inset 0 0 10px hsl(var(--neon-pink) / 0.2);
+    border: 2px solid #f446a0;
+    box-shadow: 0 0 6px #cf33c3, 0 0 14px #9a00ff,
+                inset 0 0 10px rgba(244, 70, 160, 0.2);
   }
 
   .nav-link {
@@ -160,7 +161,8 @@ All colors MUST be HSL.
   }
 
   .nav-link:hover {
-    color: #f27f9b;
+    color: #f446a0;
+    text-shadow: 0 0 6px #cf33c3, 0 0 14px #9a00ff;
   }
 
   .nav-link::after {
@@ -195,10 +197,11 @@ All colors MUST be HSL.
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
-    background-color: #f27f9b;
+    background-color: #f446a0;
     color: hsl(var(--background));
-    border: 2px solid #f27f9b;
+    border: 2px solid #f446a0;
     transition: all 0.3s ease;
+    box-shadow: 0 0 6px #cf33c3, 0 0 14px #9a00ff;
   }
 
   .hero-button:hover {

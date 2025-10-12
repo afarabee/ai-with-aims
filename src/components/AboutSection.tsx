@@ -65,7 +65,7 @@ const AboutSection = () => {
                   className="w-full h-full rounded-full overflow-hidden border-4 relative"
                   style={{
                     borderColor: '#00ffff',
-                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff, inset 0 0 30px rgba(242, 127, 155, 0.15)',
+                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff, inset 0 0 30px rgba(244, 70, 160, 0.15)',
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
@@ -135,8 +135,8 @@ const AboutSection = () => {
                   backdropFilter: 'blur(10px)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#f27f9b';
-                  e.currentTarget.style.boxShadow = '0 0 6px #ff9eb3, 0 0 14px #ffc8d4';
+                  e.currentTarget.style.borderColor = '#f446a0';
+                  e.currentTarget.style.boxShadow = '0 0 6px #cf33c3, 0 0 14px #9a00ff';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.3)';
@@ -177,8 +177,8 @@ const AboutSection = () => {
                     boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#f27f9b';
-                    e.currentTarget.style.boxShadow = '0 0 6px #ff9eb3, 0 0 14px #ffc8d4';
+                    e.currentTarget.style.borderColor = '#f446a0';
+                    e.currentTarget.style.boxShadow = '0 0 6px #cf33c3, 0 0 14px #9a00ff';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = '#00ffff';

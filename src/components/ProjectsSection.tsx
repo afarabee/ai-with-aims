@@ -103,7 +103,7 @@ const ProjectsSection = () => {
               key={i}
               className="absolute w-1 h-1 rounded-full"
               style={{
-                background: i % 2 === 0 ? '#00ffff' : '#f27f9b',
+                background: i % 2 === 0 ? '#00ffff' : '#f446a0',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animation: `float ${10 + Math.random() * 20}s infinite ease-in-out`,
