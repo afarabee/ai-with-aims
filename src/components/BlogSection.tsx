@@ -217,7 +217,7 @@ const BlogSection = () => {
                     <GlowCard 
                       className="block"
                       style={{
-                        backgroundColor: isActive ? 'rgba(25, 10, 40, 0.65)' : 'rgba(25, 10, 40, 0.45)',
+                        backgroundColor: isActive ? 'rgba(25, 10, 40, 0.9)' : 'rgba(25, 10, 40, 0.75)',
                         backdropFilter: isActive ? 'blur(4px)' : 'none',
                         boxShadow: isActive 
                           ? '0 0 25px #f27f9b, 0 0 40px #b8f2e3' 
