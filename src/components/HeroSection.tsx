@@ -60,29 +60,34 @@ const HeroSection = () => {
             />
           </div>
           <div>
-            <div className="text-xl md:text-2xl mb-4">
-              <span className="font-sans neon-text-yellow">Product Manager turned </span>
-              <span className="font-retro typing-animation neon-text-cyan">{displayText}</span>
-            </div>
+            <h1 className="text-3xl md:text-5xl mb-4 font-rajdhani font-semibold uppercase tracking-wide neon-text-cyan">
+              Product Manager turned <span className="typing-animation">{displayText}</span>
+            </h1>
             
-            <p className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#f27f9b' }}>
+            <p 
+              className="text-2xl md:text-4xl font-josefin italic mb-6" 
+              style={{ 
+                color: '#f27f9b',
+                textShadow: '0 0 10px rgba(242, 127, 155, 0.15), 0 0 20px rgba(242, 127, 155, 0.15), 0 0 30px rgba(242, 127, 155, 0.15)'
+              }}
+            >
               AI with Aimee is where machines meet minds.
             </p>
             
-            <p className="text-lg neon-text-cyan/90 mb-8 leading-relaxed">
+            <p className="text-lg mb-8 font-ibm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
               My mission is to explore how Artificial Intelligence can amplify Human Intelligence — not replace it — by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="hero-button neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink transition-all duration-300"
+                className="hero-button px-8 py-3 rounded"
               >
                 View Projects
               </button>
               <button
                 onClick={() => scrollToSection("blog")}
-                className="hero-button neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink transition-all duration-300"
+                className="hero-button px-8 py-3 rounded"
               >
                 Read Blog
               </button>

@@ -68,10 +68,15 @@ export default {
         "dark-graphite-case": "hsl(var(--dark-graphite-case))",
       },
       fontFamily: {
+        rajdhani: ["Rajdhani", "sans-serif"],
+        josefin: ["Josefin Sans", "sans-serif"],
+        ibm: ["IBM Plex Sans", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        titillium: ["Titillium Web", "sans-serif"],
         retro: ["Orbitron", "sans-serif"],
         pixel: ["Press Start 2P", "cursive"],
         rainbow: ["Over the Rainbow", "cursive"],
-        sans: ["Montserrat", "sans-serif"],
+        sans: ["IBM Plex Sans", "sans-serif"],
         shadows: ["Shadows Into Light", "cursive"],
       },
       borderRadius: {

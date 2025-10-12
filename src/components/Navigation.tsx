@@ -23,19 +23,19 @@ const Navigation = () => {
         <div className="flex justify-between items-center">
           <div className="font-rainbow text-2xl neon-text-pink">Aimee Farabee</div>
           <div className="hidden md:flex space-x-8">
-            <button onClick={() => scrollToSection("home")} className="nav-link font-retro neon-text-cyan hover:neon-text-pink transition-colors">
+            <button onClick={() => scrollToSection("home")} className="nav-link">
               Home
             </button>
-            <button onClick={() => scrollToSection("about")} className="nav-link font-retro neon-text-cyan hover:neon-text-pink transition-colors">
+            <button onClick={() => scrollToSection("about")} className="nav-link">
               About
             </button>
-            <button onClick={() => scrollToSection("projects")} className="nav-link font-retro neon-text-cyan hover:neon-text-pink transition-colors">
+            <button onClick={() => scrollToSection("projects")} className="nav-link">
               Projects
             </button>
-            <button onClick={() => scrollToSection("blog")} className="nav-link font-retro neon-text-cyan hover:neon-text-pink transition-colors">
+            <button onClick={() => scrollToSection("blog")} className="nav-link">
               Blog
             </button>
-            <button onClick={() => scrollToSection("contact")} className="nav-link font-retro neon-text-cyan hover:neon-text-pink transition-colors">
+            <button onClick={() => scrollToSection("contact")} className="nav-link">
               Contact
             </button>
           </div>
@@ -48,19 +48,19 @@ const Navigation = () => {
         </div>
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 space-y-2">
-            <button onClick={() => scrollToSection("home")} className="block py-2 font-retro neon-text-cyan hover:neon-text-pink w-full text-left">
+            <button onClick={() => scrollToSection("home")} className="block py-2 nav-link w-full text-left">
               Home
             </button>
-            <button onClick={() => scrollToSection("about")} className="block py-2 font-retro neon-text-cyan hover:neon-text-pink w-full text-left">
+            <button onClick={() => scrollToSection("about")} className="block py-2 nav-link w-full text-left">
               About
             </button>
-            <button onClick={() => scrollToSection("projects")} className="block py-2 font-retro neon-text-cyan hover:neon-text-pink w-full text-left">
+            <button onClick={() => scrollToSection("projects")} className="block py-2 nav-link w-full text-left">
               Projects
             </button>
-            <button onClick={() => scrollToSection("blog")} className="block py-2 font-retro neon-text-cyan hover:neon-text-pink w-full text-left">
+            <button onClick={() => scrollToSection("blog")} className="block py-2 nav-link w-full text-left">
               Blog
             </button>
-            <button onClick={() => scrollToSection("contact")} className="block py-2 font-retro neon-text-cyan hover:neon-text-pink w-full text-left">
+            <button onClick={() => scrollToSection("contact")} className="block py-2 nav-link w-full text-left">
               Contact
             </button>
           </div>

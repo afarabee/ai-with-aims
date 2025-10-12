@@ -112,7 +112,9 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-ibm;
+    color: #e6e6e6;
+    line-height: 1.5em;
   }
 
   /* Custom animations and styles */
@@ -155,7 +157,21 @@ All colors MUST be HSL.
 
   .nav-link {
     position: relative;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.8),
+                 0 0 20px hsl(var(--neon-cyan) / 0.6),
+                 0 0 30px hsl(var(--neon-cyan) / 0.25);
     transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #f27f9b;
+    text-shadow: 0 0 10px rgba(242, 127, 155, 0.8),
+                 0 0 20px rgba(242, 127, 155, 0.6),
+                 0 0 30px rgba(242, 127, 155, 0.4);
   }
 
   .nav-link::after {
@@ -187,10 +203,20 @@ All colors MUST be HSL.
   .hero-button {
     position: relative;
     overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: hsl(var(--neon-pink));
+    color: hsl(var(--background));
+    border: 2px solid hsl(var(--neon-pink));
+    transition: all 0.3s ease;
   }
 
   .hero-button:hover {
-    @apply neon-border-cyan neon-text-cyan scale-110;
+    background-color: hsl(var(--neon-cyan));
+    border-color: hsl(var(--neon-cyan));
+    color: hsl(var(--background));
+    transform: scale(1.05);
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3);
   }
 

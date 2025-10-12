@@ -189,12 +189,12 @@ const NeuralNetworkBackground = () => {
           
           // Draw three edges of the triangle
           const drawEdge = (n1: Node, n2: Node) => {
-            // Very low base opacity: 0.03-0.08
-            const usePink = Math.random() < 0.6;
-            const color = usePink ? '255, 79, 174' : '0, 255, 255';
-            const baseOpacity = usePink ? 0.05 : 0.06;
-            const pulseBoost = avgPulse * 0.08;
-            const finalOpacity = (baseOpacity + pulseBoost) * dimFactor;
+          // Increased brightness by 40%
+          const usePink = Math.random() < 0.6;
+          const color = usePink ? '255, 79, 174' : '0, 255, 255';
+          const baseOpacity = usePink ? 0.07 : 0.084;
+          const pulseBoost = avgPulse * 0.112;
+          const finalOpacity = (baseOpacity + pulseBoost) * dimFactor;
             
             ctx.strokeStyle = `rgba(${color}, ${finalOpacity})`;
             ctx.lineWidth = 0.6;
@@ -222,12 +222,12 @@ const NeuralNetworkBackground = () => {
         const useYellow = node.pulseIntensity > 0.7 && Math.random() < 0.2;
         const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155';
         
-        // Very low base opacity, only visible when pulsing
-        const baseOpacity = 0.02;
-        const pulseOpacity = node.pulseIntensity * 0.18;
+        // Increased brightness by 40%
+        const baseOpacity = 0.028;
+        const pulseOpacity = node.pulseIntensity * 0.252;
         const finalOpacity = (baseOpacity + pulseOpacity) * dimFactor;
         
-        if (finalOpacity > 0.02) {
+        if (finalOpacity > 0.028) {
           const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 6);
           gradient.addColorStop(0, `rgba(${nodeColor}, ${finalOpacity})`);
           gradient.addColorStop(1, `rgba(${nodeColor}, 0)`);
