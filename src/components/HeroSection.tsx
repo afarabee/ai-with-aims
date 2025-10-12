@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import logoImage from "@/assets/ai-with-aimee-logo.png";
+import NeuralNetworkBackground from "./NeuralNetworkBackground";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const phrases = ["AI Explorer", "ML Enthusiast", "Tech Innovator", "GenAI Strategist"];
+  const phrases = ["GenAI Strategist", "ML Enthusiast", "Tech Innovator", "AI Explorer"];
 
   useEffect(() => {
     const currentPhrase = phrases[currentPhraseIndex];
@@ -44,13 +46,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen gradient-bg flex items-center pt-20 relative overflow-hidden">
-      {/* Grid background effect */}
-      <div className="absolute inset-0 opacity-20" style={{
-        backgroundImage: `linear-gradient(hsl(var(--neon-cyan)) 1px, transparent 1px),
-                         linear-gradient(90deg, hsl(var(--neon-cyan)) 1px, transparent 1px)`,
-        backgroundSize: '50px 50px'
-      }}></div>
+    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+      {/* Animated Neural Network Background */}
+      <NeuralNetworkBackground />
       
       <div className="max-w-6xl mx-auto px-6 py-20 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -58,33 +56,55 @@ const HeroSection = () => {
             <img 
               src={logoImage} 
               alt="AI with Aimee Logo" 
-              className="w-full max-w-lg drop-shadow-[0_0_50px_rgba(0,255,255,0.3)] animate-pulse-glow mix-blend-screen"
+              className="w-full max-w-2xl drop-shadow-[0_15px_35px_rgba(0,255,255,0.4)] animate-pulse-glow mix-blend-screen"
             />
           </div>
           <div>
-            <div className="text-xl md:text-2xl mb-8">
+            <div className="text-xl md:text-2xl mb-4">
               <span className="font-sans neon-text-yellow">Product Manager turned </span>
               <span className="font-retro typing-animation neon-text-cyan">{displayText}</span>
             </div>
-            <p className="text-lg neon-text-cyan/90 mb-8 leading-relaxed">
-              My mission is to explore how AI can amplify human intelligence, not replace it, by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
+            
+            <p className="text-2xl md:text-3xl font-bold neon-text-pink mb-6">
+              AI with Aimee is where machines meet minds.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            
+            <p className="text-lg neon-text-cyan/90 mb-8 leading-relaxed">
+              My mission is to explore how Artificial intelligence can amplify Human intelligence — not replace it — by sharing real lessons, practical tools, and honest stories from inside the enterprise trenches.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="neon-border-cyan bg-background px-8 py-3 rounded font-retro font-semibold neon-text-cyan hover:bg-primary/20 transition-all duration-300"
+                className="hero-button neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink transition-all duration-300"
               >
                 View Projects
               </button>
               <button
                 onClick={() => scrollToSection("blog")}
-                className="neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink hover:bg-secondary/20 transition-all duration-300"
+                className="hero-button neon-border-pink bg-background px-8 py-3 rounded font-retro font-semibold neon-text-pink transition-all duration-300"
               >
                 Read Blog
               </button>
             </div>
+            
+            <button
+              onClick={() => scrollToSection("about")}
+              className="text-sm neon-text-cyan/80 hover:neon-text-cyan transition-all duration-300 flex items-center gap-2 group"
+            >
+              Learn more about me 
+              <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </button>
           </div>
         </div>
+      </div>
+      
+      {/* Scroll Down Arrow */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+        <ChevronDown 
+          className="w-8 h-8 neon-text-cyan animate-bounce cursor-pointer" 
+          onClick={() => scrollToSection("about")}
+        />
       </div>
     </section>
   );

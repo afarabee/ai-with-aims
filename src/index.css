@@ -184,6 +184,16 @@ All colors MUST be HSL.
     animation: blink 1s infinite;
   }
 
+  .hero-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-button:hover {
+    @apply neon-border-cyan neon-text-cyan scale-110;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(0, 255, 255, 0.3);
+  }
+
   @keyframes pulse-glow {
     0%, 100% { 
       filter: drop-shadow(0 0 10px hsl(var(--neon-cyan) / 0.8));
