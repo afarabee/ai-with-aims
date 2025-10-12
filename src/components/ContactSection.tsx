@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Linkedin, Github } from "lucide-react";
 import { toast } from "sonner";
+import GlowCard from "./ui/glow-card";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -28,44 +29,44 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 gradient-bg neon-border-pink border-t-4">
+    <section id="contact" className="py-20 bg-background">
       <div className="max-w-4xl mx-auto px-6 text-center">
-        <h2 className="font-retro text-4xl md:text-5xl neon-text-pink mb-8">Let's Connect</h2>
-        <p className="text-xl neon-text-cyan/90 mb-12">
+        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold neon-text-pink mb-8">Let's Connect</h2>
+        <p className="text-xl font-ibm neon-text-cyan mb-12">
           I'd love to connect with fellow AI enthusiasts, mentors, and anyone interested in the intersection of IT and AI.
         </p>
         <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <a
-            href="mailto:genai-aims@gmail.com"
-            className="neon-border-cyan bg-muted/30 backdrop-blur-sm rounded-lg p-6 hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.6)] transition-all duration-300"
-          >
+          <GlowCard as="a" href="mailto:genai-aims@gmail.com">
             <Mail className="w-8 h-8 neon-text-cyan mx-auto mb-4" />
-            <h3 className="neon-text-cyan font-retro font-semibold mb-2">Email</h3>
-            <p className="neon-text-cyan/70 text-sm">genai-aims@gmail.com</p>
-          </a>
-          <a
+            <h3 className="neon-text-cyan font-rajdhani font-semibold mb-2">Email</h3>
+            <p className="font-ibm text-sm" style={{ color: '#e6e6e6' }}>genai-aims@gmail.com</p>
+          </GlowCard>
+          
+          <GlowCard 
+            as="a" 
             href="https://linkedin.com/in/aimeefarabee"
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-border-pink bg-muted/30 backdrop-blur-sm rounded-lg p-6 hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.6)] transition-all duration-300"
           >
             <Linkedin className="w-8 h-8 neon-text-pink mx-auto mb-4" />
-            <h3 className="neon-text-pink font-retro font-semibold mb-2">LinkedIn</h3>
-            <p className="neon-text-pink/70 text-sm text-center">linkedin.com/in/aimeefarabee</p>
-          </a>
-          <a
+            <h3 className="neon-text-pink font-rajdhani font-semibold mb-2">LinkedIn</h3>
+            <p className="font-ibm text-sm text-center" style={{ color: '#e6e6e6' }}>linkedin.com/in/aimeefarabee</p>
+          </GlowCard>
+          
+          <GlowCard
+            as="a"
             href="https://github.com/afarabee"
             target="_blank"
             rel="noopener noreferrer"
-            className="neon-border-cyan bg-muted/30 backdrop-blur-sm rounded-lg p-6 hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.6)] transition-all duration-300"
           >
             <Github className="w-8 h-8 neon-text-cyan mx-auto mb-4" />
-            <h3 className="neon-text-cyan font-retro font-semibold mb-2">GitHub</h3>
-            <p className="neon-text-cyan/70 text-sm">github.com/afarabee</p>
-          </a>
+            <h3 className="neon-text-cyan font-rajdhani font-semibold mb-2">GitHub</h3>
+            <p className="font-ibm text-sm" style={{ color: '#e6e6e6' }}>github.com/afarabee</p>
+          </GlowCard>
         </div>
-        <div className="neon-border-pink bg-muted/20 backdrop-blur-sm rounded-lg p-8">
-          <h3 className="text-2xl font-retro font-semibold neon-text-yellow mb-6">Send me a message</h3>
+        
+        <GlowCard>
+          <h3 className="text-2xl font-rajdhani font-semibold neon-text-yellow mb-6">Send me a message</h3>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid md:grid-cols-2 gap-4">
               <input
@@ -73,14 +74,14 @@ const ContactSection = () => {
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 neon-border-cyan focus:shadow-[0_0_20px_hsl(var(--neon-cyan)/0.6)] focus:outline-none transition-all"
+                className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all"
               />
               <input
                 type="email"
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 neon-border-cyan focus:shadow-[0_0_20px_hsl(var(--neon-cyan)/0.6)] focus:outline-none transition-all"
+                className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all"
               />
             </div>
             <textarea
@@ -88,17 +89,17 @@ const ContactSection = () => {
               rows={4}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 neon-border-cyan focus:shadow-[0_0_20px_hsl(var(--neon-cyan)/0.6)] focus:outline-none resize-none transition-all"
+              className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none resize-none transition-all"
             ></textarea>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="neon-border-pink bg-muted px-8 py-3 rounded font-retro font-semibold neon-text-pink hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.8)] transition-all duration-300 disabled:opacity-50"
+              className="hero-button px-8 py-3 disabled:opacity-50"
             >
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
-        </div>
+        </GlowCard>
       </div>
     </section>
   );
