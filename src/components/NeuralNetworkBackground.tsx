@@ -31,16 +31,16 @@ const NeuralNetworkBackground = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Create nodes - 70% fewer for calmer effect
-    const nodeCount = 24;
+    // Create nodes - balanced visibility
+    const nodeCount = 50;
     const nodes: Node[] = [];
     
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.15,
-        vy: (Math.random() - 0.5) * 0.15,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
         baseY: Math.random() * canvas.height,
         waveOffset: Math.random() * Math.PI * 2,
       });
@@ -72,7 +72,7 @@ const NeuralNetworkBackground = () => {
       ctx.fillStyle = "rgba(10, 0, 20, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      time += 0.003;
+      time += 0.005;
 
       // Update and draw nodes
       nodes.forEach((node, index) => {
@@ -89,9 +89,9 @@ const NeuralNetworkBackground = () => {
         const wavePhase = Math.sin(time * waveFrequency + node.waveOffset);
         const smoothIntensity = (wavePhase + 1) / 2; // 0 to 1 smooth transition
         
-        // Very rare yellow sparkles - only 1-2 per second across all nodes
-        const sparkleChance = (time * 1000) % 500 < 50 && index < 2;
-        const useYellow = sparkleChance && smoothIntensity > 0.8;
+        // Occasional yellow sparkles - moderate frequency
+        const sparkleChance = (time * 1000) % 400 < 60 && index < 5;
+        const useYellow = sparkleChance && smoothIntensity > 0.75;
         
         // Distance from logo area (left half, center)
         const logoX = canvas.width * 0.25;
@@ -102,11 +102,11 @@ const NeuralNetworkBackground = () => {
         // Reduce brightness behind logo by 20%
         const dimFactor = 1 - (logoProximity * 0.2);
         
-        // Softly blended colors - 25% less brightness overall
+        // Softly blended colors - 12% less brightness overall
         const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155'; // yellow or pink
         const baseOpacity = useYellow 
-          ? smoothIntensity * 0.5 * 0.75 // 25% darker
-          : 0.2 * 0.75; // 25% darker
+          ? smoothIntensity * 0.5 * 0.88 // 12% darker
+          : 0.2 * 0.88; // 12% darker
 
         // Draw node with soft glow
         const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8);
@@ -145,10 +145,10 @@ const NeuralNetworkBackground = () => {
           const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
           const dimFactor = 1 - (logoProximity * 0.2);
           
-          // 60% pink, 40% cyan - softly blended, 25% darker
+          // 60% pink, 40% cyan - softly blended, 12% darker
           const usePink = Math.random() < 0.6;
           const color = usePink ? '255, 79, 174' : '0, 255, 255'; // pink or cyan
-          const glowOpacity = (usePink ? baseOpacity * 0.15 : baseOpacity * 0.2) * 0.75; // 25% darker
+          const glowOpacity = (usePink ? baseOpacity * 0.15 : baseOpacity * 0.2) * 0.88; // 12% darker
           
           ctx.strokeStyle = `rgba(${color}, ${glowOpacity * dimFactor})`;
           ctx.lineWidth = 0.8;
