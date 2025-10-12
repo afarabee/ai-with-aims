@@ -189,11 +189,11 @@ const NeuralNetworkBackground = () => {
           
           // Draw three edges of the triangle
           const drawEdge = (n1: Node, n2: Node) => {
-          // Increased brightness by 40%
+          // Increased brightness by 60%
           const usePink = Math.random() < 0.6;
           const color = usePink ? '255, 79, 174' : '0, 255, 255';
-          const baseOpacity = usePink ? 0.07 : 0.084;
-          const pulseBoost = avgPulse * 0.112;
+          const baseOpacity = usePink ? 0.084 : 0.1008;
+          const pulseBoost = avgPulse * 0.1344;
           const finalOpacity = (baseOpacity + pulseBoost) * dimFactor;
             
             ctx.strokeStyle = `rgba(${color}, ${finalOpacity})`;
@@ -222,9 +222,9 @@ const NeuralNetworkBackground = () => {
         const useYellow = node.pulseIntensity > 0.7 && Math.random() < 0.2;
         const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155';
         
-        // Increased brightness by 40%
-        const baseOpacity = 0.028;
-        const pulseOpacity = node.pulseIntensity * 0.252;
+        // Increased brightness by 60%
+        const baseOpacity = 0.0336;
+        const pulseOpacity = node.pulseIntensity * 0.3024;
         const finalOpacity = (baseOpacity + pulseOpacity) * dimFactor;
         
         if (finalOpacity > 0.028) {
