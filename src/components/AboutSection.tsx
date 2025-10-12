@@ -10,26 +10,31 @@ const AboutSection = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index') || '0');
-            setVisibleCards((prev) => {
-              const newState = [...prev];
-              newState[index] = true;
-              return newState;
-            });
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const index = parseInt(entry.target.getAttribute('data-index') || '0');
+              setVisibleCards((prev) => {
+                const newState = [...prev];
+                newState[index] = true;
+                return newState;
+              });
+            }
+          });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+      );
 
-    const cards = document.querySelectorAll('.project-card');
-    cards.forEach((card) => observer.observe(card));
+      const cards = document.querySelectorAll('.timeline-card');
+      cards.forEach((card) => observer.observe(card));
 
-    return () => observer.disconnect();
+      return () => observer.disconnect();
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const timelineData = [
@@ -143,9 +148,13 @@ const AboutSection = () => {
               <div
                 key={index}
                 data-index={index}
-                className={`project-card transition-all duration-700 ${
-                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                className={`timeline-card transition-all ease-out ${
+                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
                 }`}
+                style={{
+                  transitionDuration: '700ms',
+                  transitionDelay: `${index * 150}ms`,
+                }}
               >
                 <GlowCard>
                   <div className="text-sm font-titillium font-semibold mb-2 neon-text-cyan">
