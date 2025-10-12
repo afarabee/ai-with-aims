@@ -129,6 +129,14 @@ const BlogSection = () => {
         
         {/* 3D Carousel Container */}
         <div className="relative" style={{ perspective: '1200px', minHeight: '500px' }}>
+          {/* Pink radial spotlight behind active card */}
+          <div 
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 transition-opacity duration-300"
+            style={{
+              background: 'radial-gradient(circle, rgba(244, 70, 160, 0.25) 0%, transparent 70%)',
+              opacity: isVisible ? 1 : 0,
+            }}
+          />
           <div className="relative w-full h-full flex items-center justify-center">
             
             {/* Carousel Cards */}
@@ -144,20 +152,20 @@ const BlogSection = () => {
                 let zIndex = 0;
                 
                 if (offset === 0) {
-                  // Active card - center front
+                  // Active card - center front with strong spotlight
                   transform = 'translateX(0) translateZ(30px) scale(1.1) rotateY(0deg)';
                   opacity = isVisible ? 1 : 0;
-                  zIndex = 10;
+                  zIndex = 2;
                 } else if (offset === 1) {
-                  // Next card - slightly right
-                  transform = 'translateX(60%) translateZ(-50px) scale(0.85) rotateY(-15deg)';
-                  opacity = isVisible ? 0.8 : 0;
-                  zIndex = 5;
+                  // Next card - slightly right, dimmed
+                  transform = 'translateX(60%) translateZ(-50px) scale(0.9) rotateY(-15deg)';
+                  opacity = isVisible ? 0.6 : 0;
+                  zIndex = 1;
                 } else if (offset === 3) {
-                  // Previous card - slightly left
-                  transform = 'translateX(-60%) translateZ(-50px) scale(0.85) rotateY(15deg)';
-                  opacity = isVisible ? 0.8 : 0;
-                  zIndex = 5;
+                  // Previous card - slightly left, dimmed
+                  transform = 'translateX(-60%) translateZ(-50px) scale(0.9) rotateY(15deg)';
+                  opacity = isVisible ? 0.6 : 0;
+                  zIndex = 1;
                 } else {
                   // Hidden cards
                   transform = 'translateX(0) translateZ(-100px) scale(0.7)';
@@ -182,14 +190,15 @@ const BlogSection = () => {
                 return (
                   <div
                     key={post.id}
-                    className="absolute top-0 left-0 w-full transition-all duration-1000 ease-in-out"
+                    className="absolute top-0 left-0 w-full ease-in-out"
                     style={{
                       transform,
                       opacity,
                       zIndex,
                       transformStyle: 'preserve-3d',
-                      filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+                      filter: isActive ? 'brightness(1)' : 'brightness(0.7) blur(1px)',
                       pointerEvents: isActive ? 'auto' : 'none',
+                      transition: 'all 0.3s ease-in-out',
                     }}
                   >
                     {isMyAIJourney ? (
@@ -198,10 +207,12 @@ const BlogSection = () => {
                         to="/my-ai-journey"
                         className="block"
                         style={{
-                          backgroundColor: isActive ? 'rgba(15, 11, 29, 0.75)' : 'rgba(15, 11, 29, 0.9)',
+                          backgroundColor: isActive ? 'rgba(40, 20, 60, 0.75)' : 'rgba(15, 11, 29, 0.9)',
+                          backdropFilter: isActive ? 'blur(4px)' : 'none',
                           boxShadow: isActive 
-                            ? '0 0 20px #f27f9b, 0 0 30px rgba(184, 242, 227, 0.3) inset' 
-                            : '0 0 15px rgba(0, 255, 255, 0.2)',
+                            ? '0 0 25px #f27f9b, 0 0 45px #b8f2e3' 
+                            : '0 0 10px rgba(0, 255, 255, 0.2)',
+                          border: isActive ? '1px solid rgba(180, 242, 227, 0.5)' : '1px solid rgba(0, 255, 255, 0.1)',
                         }}
                       >
                         {content}
@@ -210,10 +221,12 @@ const BlogSection = () => {
                       <GlowCard 
                         className="block"
                         style={{
-                          backgroundColor: isActive ? 'rgba(15, 11, 29, 0.75)' : 'rgba(15, 11, 29, 0.9)',
+                          backgroundColor: isActive ? 'rgba(40, 20, 60, 0.75)' : 'rgba(15, 11, 29, 0.9)',
+                          backdropFilter: isActive ? 'blur(4px)' : 'none',
                           boxShadow: isActive 
-                            ? '0 0 20px #f27f9b, 0 0 30px rgba(184, 242, 227, 0.3) inset' 
-                            : '0 0 15px rgba(0, 255, 255, 0.2)',
+                            ? '0 0 25px #f27f9b, 0 0 45px #b8f2e3' 
+                            : '0 0 10px rgba(0, 255, 255, 0.2)',
+                          border: isActive ? '1px solid rgba(180, 242, 227, 0.5)' : '1px solid rgba(0, 255, 255, 0.1)',
                         }}
                       >
                         {content}
@@ -268,24 +281,23 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-5">
           <Link to="/blog">
             <Button
-              className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg transition-all duration-300"
+              className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
               style={{
                 background: '#f446a0',
-                color: '#ffffff',
+                color: '#b8f2e3',
                 border: '2px solid rgba(184, 242, 227, 0.3)',
                 boxShadow: '0 0 15px rgba(244, 70, 160, 0.4)',
+                transition: 'all 0.3s ease-in-out',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)';
-                e.currentTarget.style.background = '#f446a0';
-                e.currentTarget.style.boxShadow = '0 0 10px #b8f2e3, 0 0 20px rgba(184, 242, 227, 0.5)';
+                e.currentTarget.style.boxShadow = '0 0 20px #b8f2e3, 0 0 30px #f446a0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.background = '#f446a0';
                 e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.4)';
               }}
             >
