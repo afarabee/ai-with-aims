@@ -117,11 +117,12 @@ const BlogSection = () => {
                   <GlowCard
                     as={Link}
                     to="/my-ai-journey"
+                    className="block"
                   >
                     {content}
                   </GlowCard>
                 ) : (
-                  <GlowCard>
+                  <GlowCard className="block">
                     {content}
                   </GlowCard>
                 )}
