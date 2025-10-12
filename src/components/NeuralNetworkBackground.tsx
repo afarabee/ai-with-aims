@@ -31,16 +31,16 @@ const NeuralNetworkBackground = () => {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    // Create nodes
-    const nodeCount = 80;
+    // Create nodes - 70% fewer for calmer effect
+    const nodeCount = 24;
     const nodes: Node[] = [];
     
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: (Math.random() - 0.5) * 0.15,
         baseY: Math.random() * canvas.height,
         waveOffset: Math.random() * Math.PI * 2,
       });
@@ -69,28 +69,29 @@ const NeuralNetworkBackground = () => {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
       // Add transparent overlay for depth
-      ctx.fillStyle = "rgba(10, 0, 20, 0.1)";
+      ctx.fillStyle = "rgba(10, 0, 20, 0.15)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      time += 0.007;
+      time += 0.003;
 
       // Update and draw nodes
       nodes.forEach((node, index) => {
-        // Wave motion
-        const waveAmplitude = 30;
-        const waveFrequency = 0.4;
+        // Slow, gentle wave motion
+        const waveAmplitude = 20;
+        const waveFrequency = 0.3;
         node.y = node.baseY + Math.sin(time * waveFrequency + node.waveOffset) * waveAmplitude;
         
-        // Horizontal drift
+        // Gentle horizontal drift
         node.x += node.vx;
         if (node.x < 0 || node.x > canvas.width) node.vx *= -1;
 
-        // Calculate wave peak intensity (0 to 1)
+        // Smooth wave phase for gentle pulsing
         const wavePhase = Math.sin(time * waveFrequency + node.waveOffset);
-        const peakIntensity = Math.max(0, wavePhase);
+        const smoothIntensity = (wavePhase + 1) / 2; // 0 to 1 smooth transition
         
-        // Only ~12% of nodes pulse at once
-        const shouldPulse = peakIntensity > 0.85;
+        // Very rare yellow sparkles - only 1-2 per second across all nodes
+        const sparkleChance = (time * 1000) % 500 < 50 && index < 2;
+        const useYellow = sparkleChance && smoothIntensity > 0.8;
         
         // Distance from logo area (left half, center)
         const logoX = canvas.width * 0.25;
@@ -101,31 +102,32 @@ const NeuralNetworkBackground = () => {
         // Reduce brightness behind logo by 20%
         const dimFactor = 1 - (logoProximity * 0.2);
         
-        // Mostly pink nodes with occasional yellow pulses
-        const useYellow = shouldPulse && Math.random() > 0.7;
+        // Softly blended colors - 25% less brightness overall
         const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155'; // yellow or pink
-        const baseOpacity = useYellow ? peakIntensity * 0.9 : 0.4;
+        const baseOpacity = useYellow 
+          ? smoothIntensity * 0.5 * 0.75 // 25% darker
+          : 0.2 * 0.75; // 25% darker
 
-        // Draw node with glow
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 10);
+        // Draw node with soft glow
+        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, 8);
         gradient.addColorStop(0, `rgba(${nodeColor}, ${baseOpacity * dimFactor})`);
         gradient.addColorStop(1, `rgba(${nodeColor}, 0)`);
         
         ctx.fillStyle = gradient;
         ctx.beginPath();
-        ctx.arc(node.x, node.y, 10, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, 8, 0, Math.PI * 2);
         ctx.fill();
 
-        // Draw bright center
-        if (shouldPulse && useYellow) {
-          ctx.fillStyle = `rgba(255, 255, 255, ${peakIntensity * 0.6 * dimFactor})`;
+        // Very subtle center highlight
+        if (useYellow) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${smoothIntensity * 0.3 * dimFactor})`;
           ctx.beginPath();
-          ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
+          ctx.arc(node.x, node.y, 1.5, 0, Math.PI * 2);
           ctx.fill();
         }
       });
 
-      // Draw connections with pink/cyan gradient
+      // Draw connections with softly blended pink/cyan
       connections.forEach(({ node1, node2 }) => {
         const dx = node1.x - node2.x;
         const dy = node1.y - node2.y;
@@ -143,13 +145,13 @@ const NeuralNetworkBackground = () => {
           const logoProximity = Math.max(0, 1 - distFromLogo / (canvas.width * 0.3));
           const dimFactor = 1 - (logoProximity * 0.2);
           
-          // 60% pink, 40% cyan gradient
+          // 60% pink, 40% cyan - softly blended, 25% darker
           const usePink = Math.random() < 0.6;
           const color = usePink ? '255, 79, 174' : '0, 255, 255'; // pink or cyan
-          const glowOpacity = usePink ? baseOpacity * 0.2 : baseOpacity * 0.3;
+          const glowOpacity = (usePink ? baseOpacity * 0.15 : baseOpacity * 0.2) * 0.75; // 25% darker
           
           ctx.strokeStyle = `rgba(${color}, ${glowOpacity * dimFactor})`;
-          ctx.lineWidth = 1;
+          ctx.lineWidth = 0.8;
           ctx.beginPath();
           ctx.moveTo(node1.x, node1.y);
           ctx.lineTo(node2.x, node2.y);
