@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Linkedin, Github, Mail } from 'lucide-react';
 import AboutBackground from './AboutBackground';
 import { Button } from './ui/button';
+import GlowCard from './ui/glow-card';
 
 const AboutSection = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
@@ -23,7 +24,7 @@ const AboutSection = () => {
       { threshold: 0.2 }
     );
 
-    const cards = document.querySelectorAll('.timeline-card');
+    const cards = document.querySelectorAll('.project-card');
     cards.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
@@ -126,35 +127,24 @@ const AboutSection = () => {
               <div
                 key={index}
                 data-index={index}
-                className={`timeline-card group p-6 rounded-lg border transition-all duration-700 ${
+                className={`project-card transition-all duration-700 ${
                   visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
-                style={{
-                  borderColor: 'rgba(0, 255, 255, 0.3)',
-                  background: 'rgba(15, 11, 29, 0.5)',
-                  backdropFilter: 'blur(10px)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#f446a0';
-                  e.currentTarget.style.boxShadow = '0 0 4px #cf33c3, 0 0 10px #9a00ff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.3)';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
               >
-                <div className="text-sm font-titillium font-semibold mb-2 neon-text-cyan">
-                  {item.period}
-                </div>
-                <h3 className="text-xl font-rajdhani font-semibold mb-1 neon-text-yellow">
-                  {item.title}
-                </h3>
-                <div className="text-sm font-semibold mb-3 neon-text-pink">
-                  {item.company}
-                </div>
-                <p className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
-                  {item.description}
-                </p>
+                <GlowCard>
+                  <div className="text-sm font-titillium font-semibold mb-2 neon-text-cyan">
+                    {item.period}
+                  </div>
+                  <h3 className="text-xl font-rajdhani font-semibold mb-1 neon-text-yellow">
+                    {item.title}
+                  </h3>
+                  <div className="text-sm font-semibold mb-3 neon-text-pink">
+                    {item.company}
+                  </div>
+                  <p className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
+                    {item.description}
+                  </p>
+                </GlowCard>
               </div>
             ))}
           </div>
