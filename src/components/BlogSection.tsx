@@ -1,40 +1,71 @@
-import { useState, useEffect } from "react";
-import { ArrowRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import GlowCard from "./ui/glow-card";
 import ScrollIndicator from "./ScrollIndicator";
 import SectionDivider from "./SectionDivider";
+import { Button } from "./ui/button";
 
 const BlogSection = () => {
-  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+  const rotationTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = parseInt(entry.target.getAttribute('data-index') || '0');
-              setVisibleCards((prev) => {
-                const newState = [...prev];
-                newState[index] = true;
-                return newState;
-              });
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasEntered) {
+            setIsVisible(true);
+            setHasEntered(true);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-      const cards = document.querySelectorAll('.blog-post-card');
-      cards.forEach((card) => observer.observe(card));
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
-      return () => observer.disconnect();
-    }, 100);
+    return () => observer.disconnect();
+  }, [hasEntered]);
 
-    return () => clearTimeout(timer);
-  }, []);
+  useEffect(() => {
+    if (!isVisible) return;
+
+    rotationTimerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 6000);
+
+    return () => {
+      if (rotationTimerRef.current) {
+        clearInterval(rotationTimerRef.current);
+      }
+    };
+  }, [isVisible]);
+
+  const handlePrevious = () => {
+    if (rotationTimerRef.current) {
+      clearInterval(rotationTimerRef.current);
+    }
+    setActiveIndex((prev) => (prev - 1 + 4) % 4);
+    rotationTimerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 6000);
+  };
+
+  const handleNext = () => {
+    if (rotationTimerRef.current) {
+      clearInterval(rotationTimerRef.current);
+    }
+    setActiveIndex((prev) => (prev + 1) % 4);
+    rotationTimerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 4);
+    }, 6000);
+  };
   const blogPosts = [
     {
       id: 1,
@@ -67,11 +98,22 @@ const BlogSection = () => {
   ];
 
   return (
-    <section id="blog" className="relative py-20 pb-28 bg-background">
+    <section ref={sectionRef} id="blog" className="relative py-20 pb-28 bg-background overflow-hidden">
       {/* Alternating dark overlay for visual contrast */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+        style={{ 
+          background: 'radial-gradient(circle at center, rgba(112, 94, 99, 0.3), rgba(13, 6, 26, 0.9))',
+        }}
+      />
+
+      {/* Circular platform glow */}
+      <div 
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] pointer-events-none z-0 opacity-40"
+        style={{
+          background: 'radial-gradient(ellipse, rgba(0, 255, 255, 0.3), transparent)',
+          filter: 'blur(60px)',
+        }}
       />
       
       {/* Bottom fade-out gradient */}
@@ -82,53 +124,172 @@ const BlogSection = () => {
         }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-16">Latest Blog Posts</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts.map((post, index) => {
-            const isMyAIJourney = post.id === 1;
-            const content = (
-              <>
-                <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold">{post.date}</div>
-                <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4">{post.title}</h3>
-                <p className="font-ibm text-sm mb-4 leading-relaxed" style={{ color: '#e6e6e6' }}>{post.description}</p>
-                <div className="flex items-center justify-between">
-                  <span className="neon-text-yellow text-sm font-titillium">{post.readTime}</span>
-                  <span className="neon-text-pink hover:neon-text-cyan font-montserrat font-medium flex items-center gap-1 transition-colors">
-                    Read More <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </>
-            );
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-20">Latest Blog Posts</h2>
+        
+        {/* 3D Carousel Container */}
+        <div className="relative" style={{ perspective: '1200px', minHeight: '500px' }}>
+          <div className="relative w-full h-full flex items-center justify-center">
+            
+            {/* Carousel Cards */}
+            <div className="relative w-full max-w-2xl mx-auto" style={{ transformStyle: 'preserve-3d' }}>
+              {blogPosts.map((post, index) => {
+                const isMyAIJourney = post.id === 1;
+                const isActive = index === activeIndex;
+                const offset = (index - activeIndex + 4) % 4;
+                
+                // Calculate 3D position
+                let transform = '';
+                let opacity = 0;
+                let zIndex = 0;
+                
+                if (offset === 0) {
+                  // Active card - center front
+                  transform = 'translateX(0) translateZ(30px) scale(1.1) rotateY(0deg)';
+                  opacity = isVisible ? 1 : 0;
+                  zIndex = 10;
+                } else if (offset === 1) {
+                  // Next card - slightly right
+                  transform = 'translateX(60%) translateZ(-50px) scale(0.85) rotateY(-15deg)';
+                  opacity = isVisible ? 0.8 : 0;
+                  zIndex = 5;
+                } else if (offset === 3) {
+                  // Previous card - slightly left
+                  transform = 'translateX(-60%) translateZ(-50px) scale(0.85) rotateY(15deg)';
+                  opacity = isVisible ? 0.8 : 0;
+                  zIndex = 5;
+                } else {
+                  // Hidden cards
+                  transform = 'translateX(0) translateZ(-100px) scale(0.7)';
+                  opacity = 0;
+                  zIndex = 0;
+                }
 
-            return (
-              <div
-                key={post.id}
-                data-index={index}
-                className={`blog-post-card transition-all ease-out ${
-                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-                style={{
-                  transitionDuration: '700ms',
-                  transitionDelay: `${index * 150}ms`,
-                }}
-              >
-                {isMyAIJourney ? (
-                  <GlowCard
-                    as={Link}
-                    to="/my-ai-journey"
-                    className="block"
+                const content = (
+                  <>
+                    <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold">{post.date}</div>
+                    <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4">{post.title}</h3>
+                    <p className="font-ibm text-sm mb-4 leading-relaxed" style={{ color: '#e6e6e6' }}>{post.description}</p>
+                    <div className="flex items-center justify-between">
+                      <span className="neon-text-yellow text-sm font-titillium">{post.readTime}</span>
+                      <span className="neon-text-pink hover:neon-text-cyan font-montserrat font-medium flex items-center gap-1 transition-colors">
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </>
+                );
+
+                return (
+                  <div
+                    key={post.id}
+                    className="absolute top-0 left-0 w-full transition-all duration-1000 ease-in-out"
+                    style={{
+                      transform,
+                      opacity,
+                      zIndex,
+                      transformStyle: 'preserve-3d',
+                      filter: isActive ? 'brightness(1)' : 'brightness(0.7)',
+                      pointerEvents: isActive ? 'auto' : 'none',
+                    }}
                   >
-                    {content}
-                  </GlowCard>
-                ) : (
-                  <GlowCard className="block">
-                    {content}
-                  </GlowCard>
-                )}
-              </div>
-            );
-          })}
+                    {isMyAIJourney ? (
+                      <GlowCard
+                        as={Link}
+                        to="/my-ai-journey"
+                        className="block"
+                        style={{
+                          boxShadow: isActive 
+                            ? '0 0 40px rgba(242, 127, 155, 0.6), 0 0 60px rgba(0, 255, 255, 0.4)' 
+                            : '0 0 15px rgba(0, 255, 255, 0.2)',
+                        }}
+                      >
+                        {content}
+                      </GlowCard>
+                    ) : (
+                      <GlowCard 
+                        className="block"
+                        style={{
+                          boxShadow: isActive 
+                            ? '0 0 40px rgba(242, 127, 155, 0.6), 0 0 60px rgba(0, 255, 255, 0.4)' 
+                            : '0 0 15px rgba(0, 255, 255, 0.2)',
+                        }}
+                      >
+                        {content}
+                      </GlowCard>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={handlePrevious}
+              className="absolute left-0 md:left-8 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full transition-all duration-300 hover:scale-110"
+              style={{
+                background: 'rgba(15, 11, 29, 0.8)',
+                border: '2px solid rgba(0, 255, 255, 0.5)',
+                boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(242, 127, 155, 0.8)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(242, 127, 155, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.5)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
+              }}
+            >
+              <ChevronLeft className="w-6 h-6 neon-text-cyan" />
+            </button>
+
+            <button
+              onClick={handleNext}
+              className="absolute right-0 md:right-8 top-1/2 -translate-y-1/2 z-20 p-4 rounded-full transition-all duration-300 hover:scale-110"
+              style={{
+                background: 'rgba(15, 11, 29, 0.8)',
+                border: '2px solid rgba(0, 255, 255, 0.5)',
+                boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(242, 127, 155, 0.8)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(242, 127, 155, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.5)';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
+              }}
+            >
+              <ChevronRight className="w-6 h-6 neon-text-cyan" />
+            </button>
+          </div>
+        </div>
+
+        {/* View All Blogs Button */}
+        <div className="flex justify-center mt-16">
+          <Link to="/blog">
+            <Button
+              className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              style={{
+                background: 'rgba(242, 127, 155, 0.9)',
+                color: '#b8f2e3',
+                border: '2px solid rgba(184, 242, 227, 0.3)',
+                boxShadow: '0 0 20px rgba(242, 127, 155, 0.4)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(184, 242, 227, 0.9)';
+                e.currentTarget.style.color = '#f27f9b';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(242, 127, 155, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(242, 127, 155, 0.9)';
+                e.currentTarget.style.color = '#b8f2e3';
+                e.currentTarget.style.boxShadow = '0 0 20px rgba(242, 127, 155, 0.4)';
+              }}
+            >
+              View All Blogs
+            </Button>
+          </Link>
         </div>
       </div>
 
