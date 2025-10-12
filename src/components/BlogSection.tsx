@@ -37,8 +37,8 @@ const BlogSection = () => {
     if (!isVisible) return;
 
     rotationTimerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % 4);
-    }, 6000);
+      setActiveIndex((prev) => (prev + 1) % 5);
+    }, 5000);
 
     return () => {
       if (rotationTimerRef.current) {
@@ -51,20 +51,20 @@ const BlogSection = () => {
     if (rotationTimerRef.current) {
       clearInterval(rotationTimerRef.current);
     }
-    setActiveIndex((prev) => (prev - 1 + 4) % 4);
+    setActiveIndex((prev) => (prev - 1 + 5) % 5);
     rotationTimerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % 4);
-    }, 6000);
+      setActiveIndex((prev) => (prev + 1) % 5);
+    }, 5000);
   };
 
   const handleNext = () => {
     if (rotationTimerRef.current) {
       clearInterval(rotationTimerRef.current);
     }
-    setActiveIndex((prev) => (prev + 1) % 4);
+    setActiveIndex((prev) => (prev + 1) % 5);
     rotationTimerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % 4);
-    }, 6000);
+      setActiveIndex((prev) => (prev + 1) % 5);
+    }, 5000);
   };
   const blogPosts = [
     {
@@ -77,19 +77,26 @@ const BlogSection = () => {
     {
       id: 2,
       date: "March 8, 2024",
+      title: "Agents Aren't Always the Answer",
+      description: "Why AI agents aren't always the solution you need. Exploring when to use agents and when simpler approaches work better.",
+      readTime: "6 min read",
+    },
+    {
+      id: 3,
+      date: "March 1, 2024",
       title: "Prompting for PMs",
       description: "How my background in product strategy actually gave me advantages in understanding AI systems, and what skills transferred over.",
       readTime: "7 min read",
     },
     {
-      id: 3,
+      id: 4,
       date: "February 28, 2024",
       title: "Case Study: Rolling out AI @ CRL",
       description: "Step-by-step walkthrough of creating a simple neural network from scratch. The mistakes I made and how I debugged them.",
       readTime: "10 min read",
     },
     {
-      id: 4,
+      id: 5,
       date: "February 20, 2024",
       title: "Bridging the Gap",
       description: "Exploring the importance of responsible AI development from day one. Key principles every AI practitioner should understand.",
@@ -281,7 +288,7 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center mt-5">
+        <div className="flex justify-center mt-3">
           <Link to="/blog">
             <Button
               className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
@@ -289,16 +296,16 @@ const BlogSection = () => {
                 background: '#f446a0',
                 color: '#b8f2e3',
                 border: '2px solid rgba(184, 242, 227, 0.3)',
-                boxShadow: '0 0 15px rgba(244, 70, 160, 0.4)',
+                boxShadow: '0 0 15px #b8f2e3',
                 transition: 'all 0.3s ease-in-out',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 0 20px #b8f2e3, 0 0 30px #f446a0';
+                e.currentTarget.style.boxShadow = '0 0 25px #b8f2e3, 0 0 35px #f446a0';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'scale(1)';
-                e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.4)';
+                e.currentTarget.style.boxShadow = '0 0 15px #b8f2e3';
               }}
             >
               View All Blogs
