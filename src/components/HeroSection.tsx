@@ -74,7 +74,7 @@ const HeroSection = () => {
               <div className="typing-animation neon-text-yellow">{displayText}</div>
             </h1>
             
-            <p className="text-2xl md:text-4xl font-josefin italic mb-6 neon-text-pink">
+            <p className="text-xl md:text-3xl font-josefin italic mb-6 neon-text-pink">
               AI with Aimee — where machines meet minds.
             </p>
             
