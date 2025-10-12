@@ -98,7 +98,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="blog" className="relative py-20 pb-28 bg-background overflow-hidden">
+    <section ref={sectionRef} id="blog" className="relative py-16 pb-24 bg-background overflow-hidden">
       {/* Alternating dark overlay for visual contrast */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -125,7 +125,7 @@ const BlogSection = () => {
       />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-20">Latest Blog Posts</h2>
+        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-12">Latest Blog Posts</h2>
         
         {/* 3D Carousel Container */}
         <div className="relative" style={{ perspective: '1200px', minHeight: '500px' }}>
@@ -166,17 +166,17 @@ const BlogSection = () => {
                 }
 
                 const content = (
-                  <>
-                    <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold">{post.date}</div>
-                    <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4">{post.title}</h3>
-                    <p className="font-ibm text-sm mb-4 leading-relaxed" style={{ color: '#e6e6e6' }}>{post.description}</p>
+                  <div style={{ padding: '20px', whiteSpace: 'normal', wordWrap: 'break-word' }}>
+                    <div className="neon-text-yellow text-sm mb-2 font-titillium font-semibold" style={{ lineHeight: '1.4' }}>{post.date}</div>
+                    <h3 className="text-2xl font-rajdhani font-semibold neon-text-cyan mb-4" style={{ lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.title}</h3>
+                    <p className="font-ibm text-sm mb-4" style={{ color: '#e6e6e6', lineHeight: '1.4', whiteSpace: 'normal', wordWrap: 'break-word' }}>{post.description}</p>
                     <div className="flex items-center justify-between">
                       <span className="neon-text-yellow text-sm font-titillium">{post.readTime}</span>
                       <span className="neon-text-pink hover:neon-text-cyan font-montserrat font-medium flex items-center gap-1 transition-colors">
                         Read More <ArrowRight className="w-4 h-4" />
                       </span>
                     </div>
-                  </>
+                  </div>
                 );
 
                 return (
@@ -198,8 +198,9 @@ const BlogSection = () => {
                         to="/my-ai-journey"
                         className="block"
                         style={{
+                          backgroundColor: isActive ? 'rgba(15, 11, 29, 0.75)' : 'rgba(15, 11, 29, 0.9)',
                           boxShadow: isActive 
-                            ? '0 0 40px rgba(242, 127, 155, 0.6), 0 0 60px rgba(0, 255, 255, 0.4)' 
+                            ? '0 0 20px #f27f9b, 0 0 30px rgba(184, 242, 227, 0.3) inset' 
                             : '0 0 15px rgba(0, 255, 255, 0.2)',
                         }}
                       >
@@ -209,8 +210,9 @@ const BlogSection = () => {
                       <GlowCard 
                         className="block"
                         style={{
+                          backgroundColor: isActive ? 'rgba(15, 11, 29, 0.75)' : 'rgba(15, 11, 29, 0.9)',
                           boxShadow: isActive 
-                            ? '0 0 40px rgba(242, 127, 155, 0.6), 0 0 60px rgba(0, 255, 255, 0.4)' 
+                            ? '0 0 20px #f27f9b, 0 0 30px rgba(184, 242, 227, 0.3) inset' 
                             : '0 0 15px rgba(0, 255, 255, 0.2)',
                         }}
                       >
@@ -266,25 +268,25 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center mt-16">
+        <div className="flex justify-center mt-10">
           <Link to="/blog">
             <Button
-              className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg transition-all duration-300 hover:scale-105"
+              className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg transition-all duration-300"
               style={{
-                background: 'rgba(242, 127, 155, 0.9)',
-                color: '#b8f2e3',
+                background: '#f446a0',
+                color: '#ffffff',
                 border: '2px solid rgba(184, 242, 227, 0.3)',
-                boxShadow: '0 0 20px rgba(242, 127, 155, 0.4)',
+                boxShadow: '0 0 15px rgba(244, 70, 160, 0.4)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(184, 242, 227, 0.9)';
-                e.currentTarget.style.color = '#f27f9b';
-                e.currentTarget.style.boxShadow = '0 0 30px rgba(242, 127, 155, 0.6)';
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.background = '#f446a0';
+                e.currentTarget.style.boxShadow = '0 0 10px #b8f2e3, 0 0 20px rgba(184, 242, 227, 0.5)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(242, 127, 155, 0.9)';
-                e.currentTarget.style.color = '#b8f2e3';
-                e.currentTarget.style.boxShadow = '0 0 20px rgba(242, 127, 155, 0.4)';
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.background = '#f446a0';
+                e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.4)';
               }}
             >
               View All Blogs
