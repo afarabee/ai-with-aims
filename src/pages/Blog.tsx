@@ -35,6 +35,16 @@ const Blog = () => {
   const blogPosts = [
     {
       id: 1,
+      title: 'Agents Aren\'t Always the Answer',
+      excerpt: 'A cautionary (but kinda funny) tale from my first n8n build. Sometimes the smartest automation is knowing when to stop automating.',
+      date: '2024-02-10',
+      readTime: '8 min read',
+      tags: ['Automation', 'n8n', 'Lessons Learned'],
+      thumbnail: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop',
+      slug: 'agents-arent-the-answer',
+    },
+    {
+      id: 2,
       title: 'Building Trust with AI: Why Prompt Engineering Matters',
       excerpt: 'In enterprise settings, AI outputs can make or break stakeholder confidence. Learn how structured prompts create consistency, reduce hallucinations, and build trust across teams.',
       date: '2024-01-15',
@@ -186,7 +196,7 @@ const Blog = () => {
 
                   {/* Read More Link */}
                   <a
-                    href={`/blog/${post.id}`}
+                    href={post.slug ? `/blog/${post.slug}` : `/blog/${post.id}`}
                     className="inline-flex items-center gap-2 font-montserrat font-bold text-sm transition-all duration-300 neon-text-pink hover:neon-text-cyan"
                   >
                     Read more →

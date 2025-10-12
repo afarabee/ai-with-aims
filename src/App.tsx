@@ -10,6 +10,7 @@ import AIStoryBuilderCase from "./pages/AIStoryBuilderCase";
 import MyAIJourney from "./pages/MyAIJourney";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
+import AgentsArentTheAnswer from "./pages/AgentsArentTheAnswer";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/my-ai-journey" element={<MyAIJourney />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/agents-arent-the-answer" element={<AgentsArentTheAnswer />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
