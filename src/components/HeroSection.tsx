@@ -65,7 +65,7 @@ const HeroSection = () => {
             <img 
               src={logoImage} 
               alt="AI with Aimee Logo" 
-              className="w-full max-w-xl drop-shadow-[0_0_60px_rgba(0,255,255,0.4)] scale-115"
+              className="w-full max-w-3xl drop-shadow-[0_0_60px_rgba(0,255,255,0.4)] scale-125 animate-fade-in"
             />
           </div>
           <div>
