@@ -169,7 +169,7 @@ const AboutSection = () => {
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = '#f446a0';
-                    e.currentTarget.style.boxShadow = '0 0 4px #cf33c3, 0 0 10px #9a00ff';
+                    e.currentTarget.style.boxShadow = '0 0 3px #cf33c3, 0 0 8px #9a00ff';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = '#00ffff';
