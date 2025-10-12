@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, Linkedin, Github } from "lucide-react";
 import { toast } from "sonner";
 import GlowCard from "./ui/glow-card";
+import SectionDivider from "./SectionDivider";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -29,8 +30,16 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-6 text-center">
+    <section id="contact" className="relative py-20 pb-28 bg-background">
+      {/* Bottom fade-out gradient */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+        }}
+      />
+
+      <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold neon-text-pink mb-8">Let's Connect</h2>
         <p className="text-xl font-ibm neon-text-cyan mb-12">
           I'd love to connect with fellow AI enthusiasts, mentors, and anyone interested in the intersection of IT and AI.
@@ -101,6 +110,9 @@ const ContactSection = () => {
           </form>
         </GlowCard>
       </div>
+
+      {/* Section Divider */}
+      <SectionDivider variant="curve" color="#0d061a" flip />
     </section>
   );
 };

@@ -27,17 +27,17 @@ const AboutBackground = () => {
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Create very subtle floating particles
+    // Create very subtle, slower floating particles
     const particles: Particle[] = [];
-    const particleCount = 40; // Fewer particles for subtlety
+    const particleCount = 30; // Reduced for subtlety
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.1, // Very slow movement
-        vy: (Math.random() - 0.5) * 0.1,
-        opacity: Math.random() * 0.15 + 0.05, // Very subtle opacity
+        vx: (Math.random() - 0.5) * 0.05, // Much slower movement
+        vy: (Math.random() - 0.5) * 0.05,
+        opacity: Math.random() * 0.12 + 0.03, // Very subtle opacity
         size: Math.random() * 1.5 + 0.5,
       });
     }

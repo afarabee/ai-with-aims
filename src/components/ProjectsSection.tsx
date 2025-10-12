@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
 import GlowCard from './ui/glow-card';
 import { Button } from './ui/button';
+import ScrollIndicator from './ScrollIndicator';
+import SectionDivider from './SectionDivider';
 
 const ProjectsSection = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
@@ -87,7 +89,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="relative min-h-screen py-20">
+    <section id="projects" className="relative min-h-screen py-20 pb-28">
       {/* Background - same as About page */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
@@ -96,9 +98,9 @@ const ProjectsSection = () => {
             background: 'linear-gradient(180deg, #0f0b1d 0%, #1f0d36 100%)'
           }}
         />
-        {/* Subtle floating particles */}
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(20)].map((_, i) => (
+        {/* Lighter, slower floating particles */}
+        <div className="absolute inset-0 opacity-20">
+          {[...Array(15)].map((_, i) => (
             <div
               key={i}
               className="absolute w-1 h-1 rounded-full"
@@ -106,13 +108,21 @@ const ProjectsSection = () => {
                 background: i % 2 === 0 ? '#00ffff' : '#f446a0',
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
-                animation: `float ${10 + Math.random() * 20}s infinite ease-in-out`,
+                animation: `float ${15 + Math.random() * 25}s infinite ease-in-out`,
                 animationDelay: `${Math.random() * 5}s`,
               }}
             />
           ))}
         </div>
       </div>
+
+      {/* Bottom fade-out gradient */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Page Header */}
@@ -215,6 +225,9 @@ const ProjectsSection = () => {
           }
         }
       `}</style>
+
+      {/* Section Divider */}
+      <SectionDivider variant="angle" color="#0d061a" />
     </section>
   );
 };

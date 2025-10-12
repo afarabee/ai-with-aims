@@ -4,6 +4,7 @@ import AboutBackground from './AboutBackground';
 import { Button } from './ui/button';
 import GlowCard from './ui/glow-card';
 import ScrollIndicator from './ScrollIndicator';
+import SectionDivider from './SectionDivider';
 
 const AboutSection = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
@@ -53,8 +54,22 @@ const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="relative min-h-screen py-20">
+    <section id="about" className="relative min-h-screen py-20 pb-28">
       <AboutBackground />
+      
+      {/* Alternating dark overlay for visual contrast */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+      />
+      
+      {/* Bottom fade-out gradient */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+        }}
+      />
       
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Hero-Intro Section */}
@@ -192,6 +207,9 @@ const AboutSection = () => {
 
       {/* Scroll Indicator */}
       <ScrollIndicator />
+
+      {/* Section Divider */}
+      <SectionDivider variant="curve" color="#0f0b1d" />
     </section>
   );
 };

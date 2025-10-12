@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import logoImage from "@/assets/ai-with-aimee-logo-transparent.png";
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
 import ScrollIndicator from "./ScrollIndicator";
+import SectionDivider from "./SectionDivider";
 
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
@@ -46,9 +47,17 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center pt-20 pb-16 relative overflow-hidden">
       {/* Animated Neural Network Background */}
       <NeuralNetworkBackground />
+      
+      {/* Bottom fade-out gradient */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+        }}
+      />
       
       <div className="max-w-6xl mx-auto px-6 py-20 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -102,6 +111,9 @@ const HeroSection = () => {
       <div onClick={() => scrollToSection("about")} className="cursor-pointer">
         <ScrollIndicator />
       </div>
+
+      {/* Section Divider */}
+      <SectionDivider variant="wave" color="#0f0b1d" />
     </section>
   );
 };
