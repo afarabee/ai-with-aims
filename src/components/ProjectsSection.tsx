@@ -1,84 +1,220 @@
-import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Github, ExternalLink } from 'lucide-react';
+import GlowCard from './ui/glow-card';
+import { Button } from './ui/button';
 
 const ProjectsSection = () => {
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = parseInt(entry.target.getAttribute('data-index') || '0');
+            setVisibleCards((prev) => {
+              const newState = [...prev];
+              newState[index] = true;
+              return newState;
+            });
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const cards = document.querySelectorAll('.project-card');
+    cards.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
+
   const projects = [
     {
-      id: 1,
-      icon: "🤖",
-      title: "Intelligent AI Story Builder",
-      description: "Enterprise Generative AI platform that converts product ideas into structured Agile user stories.",
-      tags: ["Python", "APIs", "GenAI"],
-      borderColor: "neon-border-cyan",
+      title: 'StoryCrafter',
+      subtitle: 'AI user-story generator for Azure DevOps',
+      description: [
+        'Challenge: Manual story writing consumed 60% of sprint planning time',
+        'Solution: Automated user story generation with LangChain + Azure integration',
+        'Impact: Reduced story writing time by 80%, increased planning efficiency'
+      ],
+      tags: ['LangChain', 'Python', 'Azure DevOps', 'n8n'],
+      links: {
+        github: '#',
+        demo: '#'
+      }
     },
     {
-      id: 2,
-      icon: "📊",
-      title: "Predictive Analytics Dashboard",
-      description: "Interactive dashboard predicting IT infrastructure maintenance needs using machine learning algorithms.",
-      tags: ["Scikit-learn", "Streamlit", "Plotly"],
-      borderColor: "neon-border-pink",
+      title: 'Eval Framework',
+      subtitle: 'Prompt quality & governance toolkit',
+      description: [
+        'Challenge: No standardized way to evaluate prompt quality across teams',
+        'Solution: Built evaluation framework with metrics for accuracy, bias, and consistency',
+        'Impact: Enabled enterprise-wide prompt governance and quality standards'
+      ],
+      tags: ['Python', 'FastAPI', 'LangSmith', 'Testing'],
+      links: {
+        github: '#'
+      }
     },
     {
-      id: 3,
-      icon: "🖼️",
-      title: "Image Classification App",
-      description: "Web application that classifies uploaded images using a pre-trained convolutional neural network.",
-      tags: ["TensorFlow", "Flask", "OpenCV"],
-      borderColor: "neon-border-cyan",
+      title: 'AI Daily Brief',
+      subtitle: 'Automated news aggregator with smart summaries',
+      description: [
+        'Challenge: Information overload from multiple AI news sources',
+        'Solution: Automated aggregation, categorization, and summarization pipeline',
+        'Impact: Saved 2+ hours daily in research and curation'
+      ],
+      tags: ['Python', 'OpenAI', 'RSS', 'Automation'],
+      links: {
+        github: '#',
+        demo: '#'
+      }
     },
+    {
+      title: 'AI Portfolio',
+      subtitle: 'This site itself — a neon-lit showcase',
+      description: [
+        'Challenge: Create a portfolio that reflects AI expertise and design sensibility',
+        'Solution: Built with React, TypeScript, and custom neon aesthetic',
+        'Impact: Professional platform showcasing AI work and thought leadership'
+      ],
+      tags: ['React', 'TypeScript', 'Tailwind', 'Vite'],
+      links: {
+        github: '#'
+      }
+    }
   ];
 
   return (
-    <section id="projects" className="py-20 gradient-bg neon-border-cyan border-t-4">
-      <div className="max-w-6xl mx-auto px-6">
-        <h2 className="font-retro text-4xl md:text-5xl text-center neon-text-cyan mb-16">My AI Projects</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => {
-            const isFirstProject = project.id === 1;
-            const content = (
-              <>
-                <div className={`w-12 h-12 ${project.borderColor} bg-muted rounded flex items-center justify-center mb-4`}>
-                  <span className="text-2xl">{project.icon}</span>
+    <section id="projects" className="relative min-h-screen py-20">
+      {/* Background - same as About page */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(180deg, #0f0b1d 0%, #1f0d36 100%)'
+          }}
+        />
+        {/* Subtle floating particles */}
+        <div className="absolute inset-0 opacity-30">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 rounded-full"
+              style={{
+                background: i % 2 === 0 ? '#00ffff' : '#f27f9b',
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animation: `float ${10 + Math.random() * 20}s infinite ease-in-out`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold mb-4 neon-text-yellow">
+            Projects & Applied AI Work
+          </h1>
+          <p className="text-xl md:text-2xl font-josefin italic neon-text-pink">
+            Each shines a light on how machines and minds can co-create.
+          </p>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          {projects.map((project, index) => (
+            <div
+              key={index}
+              data-index={index}
+              className={`project-card transition-all duration-700 ${
+                visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
+              <GlowCard>
+                {/* Project Title */}
+                <h3 className="text-2xl font-rajdhani font-semibold mb-2 neon-text-yellow">
+                  {project.title}
+                </h3>
+
+                {/* Subtitle */}
+                <p className="text-lg font-josefin italic mb-4 neon-text-pink">
+                  {project.subtitle}
+                </p>
+
+                {/* Description bullets */}
+                <div className="space-y-2 mb-6">
+                  {project.description.map((line, idx) => (
+                    <p key={idx} className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
+                      • {line}
+                    </p>
+                  ))}
                 </div>
-                <h3 className="text-xl font-retro font-semibold neon-text-pink mb-3">{project.title}</h3>
-                <p className="text-foreground/70 mb-4">{project.description}</p>
+
+                {/* Tags */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="bg-muted neon-text-yellow px-3 py-1 rounded text-xs font-retro">
+                  {project.tags.map((tag, idx) => (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 rounded text-xs font-titillium font-semibold neon-text-cyan transition-all duration-300 hover:scale-110"
+                      style={{ 
+                        background: 'rgba(0, 0, 0, 0.3)',
+                        border: '1px solid rgba(0, 255, 255, 0.3)'
+                      }}
+                    >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <div className="neon-text-cyan hover:neon-text-pink font-retro font-medium flex items-center gap-1 transition-colors">
-                  View Project <ArrowRight className="w-4 h-4" />
+
+                {/* Links */}
+                <div className="flex gap-4">
+                  {project.links.github && (
+                    <a
+                      href={project.links.github}
+                      aria-label="View on GitHub"
+                      className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
+                  {project.links.demo && (
+                    <a
+                      href={project.links.demo}
+                      aria-label="View Demo"
+                      className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                    >
+                      <ExternalLink size={20} />
+                    </a>
+                  )}
                 </div>
-              </>
-            );
+              </GlowCard>
+            </div>
+          ))}
+        </div>
 
-            if (isFirstProject) {
-              return (
-                <Link
-                  key={project.id}
-                  to="/ai-story-builder"
-                  className={`${project.borderColor} bg-background/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--neon-cyan)/0.6)] block`}
-                >
-                  {content}
-                </Link>
-              );
-            }
-
-            return (
-              <div
-                key={project.id}
-                className={`${project.borderColor} bg-background/80 backdrop-blur-sm rounded-lg p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_hsl(var(--neon-pink)/0.6)]`}
-              >
-                {content}
-              </div>
-            );
-          })}
+        {/* Footer CTA */}
+        <div className="flex justify-center">
+          <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
+            Browse My Prompt Library →
+          </Button>
         </div>
       </div>
+
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0) translateX(0);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+      `}</style>
     </section>
   );
 };
