@@ -188,14 +188,6 @@ const AboutSection = () => {
             </Button>
           </div>
         </div>
-
-        {/* Footer */}
-        <div 
-          className="text-center font-titillium font-semibold text-sm"
-          style={{ color: 'rgba(0, 255, 255, 0.7)' }}
-        >
-          © 2025 Aimee Farabee | AI with Aimee — Intelligence with a Twist.
-        </div>
       </div>
 
       {/* Scroll Indicator */}
