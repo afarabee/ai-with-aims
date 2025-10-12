@@ -153,14 +153,14 @@ const NeuralNetworkBackground = () => {
         
         // Random yellow flashes
         node.nextFlashTime -= 16; // ~60fps frame time
-        if (node.nextFlashTime <= 0 && Math.random() < 0.02) {
+        if (node.nextFlashTime <= 0 && Math.random() < 0.008) {
           node.flashIntensity = 1;
-          node.nextFlashTime = Math.random() * 2000 + 1000;
+          node.nextFlashTime = Math.random() * 5000 + 2500;
         }
         
         // Fade flash
         if (node.flashIntensity > 0) {
-          node.flashIntensity -= 0.08;
+          node.flashIntensity -= 0.032;
           if (node.flashIntensity < 0) node.flashIntensity = 0;
         }
         
