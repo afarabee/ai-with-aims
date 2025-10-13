@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import AIStoryBuilderCase from "./pages/AIStoryBuilderCase";
 import MyAIJourney from "./pages/MyAIJourney";
 import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
@@ -24,7 +23,6 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/ai-story-builder" element={<AIStoryBuilderCase />} />
           <Route path="/my-ai-journey" element={<MyAIJourney />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
