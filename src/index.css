@@ -223,6 +223,32 @@ All colors MUST be HSL.
     }
   }
 
+  @keyframes neonGlowFade {
+    0% {
+      opacity: 0.15;
+      box-shadow: 0 0 80px rgba(57, 225, 227, 0.15);
+    }
+    40% {
+      opacity: 0.6;
+      box-shadow: 0 0 120px rgba(57, 225, 227, 0.6);
+    }
+    100% {
+      opacity: 0;
+      box-shadow: 0 0 80px rgba(57, 225, 227, 0);
+    }
+  }
+
+  @keyframes pageEnter {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   @keyframes pulse-glow {
     0%, 100% { 
       filter: drop-shadow(0 0 10px hsl(var(--neon-cyan) / 0.8));
