@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import logoImage from "@/assets/ai-with-aimee-logo-transparent.png";
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
-import ScrollIndicator from "./ScrollIndicator";
 import SectionDivider from "./SectionDivider";
 
 const HeroSection = () => {
@@ -108,11 +107,6 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll Down Indicator */}
-      <div onClick={() => scrollToSection("about")} className="cursor-pointer">
-        <ScrollIndicator />
-      </div>
-
       {/* Section Divider */}
       <SectionDivider variant="wave" color="#0f0b1d" />
     </section>
