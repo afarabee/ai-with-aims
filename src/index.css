@@ -254,34 +254,58 @@ All colors MUST be HSL.
   }
 }
 
-/* Blog carousel spacing overrides */
-.blog-carousel-wrapper {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+/* Blog carousel spacing and stacking context */
+.blog-carousel-section,
+.blog-carousel-footer,
+.blog-carousel-wrapper,
+.carousel-container,
+.section {
+  overflow: visible !important;
 }
 
-.carousel-container {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+/* Carousel section spacing */
+.blog-carousel-section {
+  margin-bottom: 6px !important;
 }
 
+/* Button footer with proper stacking context */
+.blog-carousel-footer {
+  position: relative !important;
+  isolation: isolate;
+  z-index: 999 !important;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 8px !important;
+}
+
+/* View All Button Styling */
 .view-all-button {
-  margin-top: 6px !important;
-  padding-top: 8px;
-  display: block;
-  position: relative;
-  z-index: 3;
+  position: relative !important;
+  z-index: 1000 !important;
+  background: #f446a0 !important;
+  color: #b8f2e3 !important;
+  margin: 0 !important;
+  padding: 12px 22px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #b8f2e3, 0 0 20px rgba(244,70,160,0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
 
-/* Decorative glow connecting button to carousel */
-.view-all-button::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(244,70,160,0.2) 0%, rgba(184,242,227,0.5) 100%);
-  box-shadow: 0 0 10px rgba(184,242,227,0.5);
+.view-all-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #b8f2e3, 0 0 30px rgba(244,70,160,0.9);
+}
+
+/* Mobile spacing adjustments */
+@media (max-width: 768px) {
+  .blog-carousel-footer {
+    margin-top: 10px !important;
+  }
 }
