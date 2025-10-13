@@ -18,26 +18,6 @@ const Blog = () => {
   const loadMoreRef = useRef<HTMLDivElement>(null);
   const [cardSpotlights, setCardSpotlights] = useState<Map<string, CardSpotlight>>(new Map());
 
-  // Brand color palette for rotating glow colors
-  const brandColors = [
-    { name: 'cyan', hex: '#39e1e3', rgb: '57, 225, 227' },
-    { name: 'pink', hex: '#f446a0', rgb: '244, 70, 160' },
-    { name: 'lavender', hex: '#9b51e0', rgb: '155, 81, 224' }
-  ];
-
-  // Get fallback glow color for a card based on index
-  // TODO: When thumbnails are added, extract dominant color from banner_image
-  // and replace fallback with extracted color. Example implementation:
-  // const extractDominantColor = async (imageUrl: string) => {
-  //   // Use canvas or color-thief library to extract dominant color
-  //   // Return { hex: '#rrggbb', rgb: 'r, g, b' }
-  // };
-  const getCardGlowColor = (index: number, thumbnailUrl?: string) => {
-    // If thumbnail exists in future, extract and return dominant color
-    // For now, return fallback color from brand palette
-    return brandColors[index % brandColors.length];
-  };
-
   // Fetch blogs from Supabase
   const { data: blogPosts, isLoading } = useQuery({
     queryKey: ['blogs'],
@@ -160,15 +140,11 @@ const Blog = () => {
                   const spotlight = cardSpotlights.get(cardId);
                   const isHovered = spotlight?.isHovered || false;
                   
-                  // Get the fallback glow color for this card
-                  const glowColor = getCardGlowColor(index);
-                  
                   return (
                     <article
                       key={post.id}
                       data-index={index}
-                      tabIndex={0}
-                      className={`blog-card group relative transition-all duration-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                      className={`blog-card group relative transition-all duration-700 ${
                         visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                       } ${isHovered ? 'scale-[1.03]' : 'scale-100'}`}
                       style={{
@@ -176,11 +152,11 @@ const Blog = () => {
                         background: 'rgba(25, 10, 40, 0.85)',
                         backdropFilter: 'blur(4px)',
                         border: isHovered 
-                          ? `1px solid rgba(${glowColor.rgb}, 0.6)` 
-                          : `1px solid rgba(${glowColor.rgb}, 0.3)`,
+                          ? '1px solid rgba(57, 225, 227, 0.5)' 
+                          : '1px solid rgba(180, 242, 227, 0.3)',
                         boxShadow: isHovered
-                          ? `0 0 20px rgba(${glowColor.rgb}, 0.5), 0 0 40px rgba(${glowColor.rgb}, 0.3), 0 0 60px rgba(57, 225, 227, 0.2)`
-                          : `0 0 15px rgba(${glowColor.rgb}, 0.2), 0 0 25px rgba(${glowColor.rgb}, 0.1)`,
+                          ? '0 0 20px rgba(57, 225, 227, 0.6), 0 0 40px rgba(57, 225, 227, 0.3)'
+                          : '0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(244, 70, 160, 0.15)',
                         overflow: 'hidden',
                         transition: 'all 0.4s ease-out'
                       }}
@@ -188,23 +164,23 @@ const Blog = () => {
                       onMouseEnter={() => handleCardMouseEnter(cardId)}
                       onMouseLeave={() => handleCardMouseLeave(cardId)}
                     >
-                      {/* Cursor-following spotlight overlay - blends cyan with card's glow color */}
+                      {/* Spotlight overlay */}
                       {isHovered && spotlight && (
                         <div
                           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
                           style={{
-                            background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, rgba(57, 225, 227, 0.12), rgba(${glowColor.rgb}, 0.08), transparent 50%)`,
+                            background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, rgba(57, 225, 227, 0.15), transparent 40%)`,
                             mixBlendMode: 'soft-light',
                             opacity: 1
                           }}
                         />
                       )}
                       
-                      {/* Mobile static glow - uses card's glow color */}
+                      {/* Mobile static glow */}
                       <div
                         className="absolute inset-0 pointer-events-none md:hidden"
                         style={{
-                          background: `radial-gradient(circle at center, rgba(${glowColor.rgb}, 0.12), transparent 70%)`,
+                          background: 'radial-gradient(circle at center, rgba(57, 225, 227, 0.1), transparent 70%)',
                           mixBlendMode: 'soft-light'
                         }}
                       />
