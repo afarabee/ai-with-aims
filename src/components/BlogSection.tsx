@@ -134,7 +134,7 @@ const BlogSection = () => {
         />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 carousel-container">
-          <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-12">
+          <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-16">
             Latest Blog Posts
           </h2>
 

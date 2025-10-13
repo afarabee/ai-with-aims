@@ -103,9 +103,9 @@ const HeroSection = () => {
             
             <Link
               to="/about"
-              className="text-sm neon-text-cyan/80 hover:neon-text-cyan transition-all duration-300 flex items-center gap-2 group"
+              className="text-sm neon-text-cyan/80 hover:neon-text-cyan transition-all duration-300 inline-flex items-center gap-2 group"
             >
-              Learn more about me 
+              Learn More About Me 
               <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
             </Link>
           </div>

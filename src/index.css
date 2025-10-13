@@ -209,7 +209,7 @@ All colors MUST be HSL.
     border-color: #e84195;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
+    box-shadow: 0 0 20px rgba(244, 70, 160, 0.7), 0 0 35px rgba(57, 225, 227, 0.5);
   }
 
   @keyframes neonPulseHover {

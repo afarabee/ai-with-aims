@@ -104,8 +104,8 @@ const Projects = () => {
       <main className="relative z-10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Page Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-4 neon-text-pink">
+          <div className="text-center mb-20">
+            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-6 neon-text-pink">
               Projects & Applied AI Work
             </h1>
             <p className="text-xl md:text-2xl font-josefin italic neon-text-cyan">
@@ -195,7 +195,7 @@ const Projects = () => {
           </div>
 
           {/* Footer CTA */}
-          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4 mt-20">
             <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
               Explore My Prompt Library →
             </Button>

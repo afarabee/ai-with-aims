@@ -117,7 +117,7 @@ const Blog = () => {
         <div className="max-w-7xl mx-auto px-6">
           {/* Hero Section */}
           <div className="text-center mb-20">
-            <h1 className="text-5xl md:text-6xl font-rajdhani font-bold mb-4 neon-text-pink">
+            <h1 className="text-5xl md:text-6xl font-rajdhani font-bold mb-6 neon-text-pink">
               Insights & Stories
             </h1>
             <p className="text-xl md:text-2xl font-josefin neon-text-cyan">

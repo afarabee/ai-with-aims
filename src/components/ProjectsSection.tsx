@@ -133,8 +133,8 @@ const ProjectsSection = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Page Header */}
-        <div className="text-center mb-16">
-          <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold mb-4 neon-text-yellow">
+        <div className="text-center mb-20">
+          <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold mb-6 neon-text-yellow">
             Projects & Applied AI Work
           </h1>
           <p className="text-xl md:text-2xl font-josefin italic neon-text-pink">
