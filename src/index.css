@@ -197,19 +197,19 @@ All colors MUST be HSL.
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
-    background-color: #f446a0;
+    background-color: #00ffff;
     color: hsl(var(--background));
-    border: 2px solid #f446a0;
+    border: 2px solid #00ffff;
     transition: all 0.3s ease;
-    box-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff;
+    box-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
   }
 
   .hero-button:hover {
-    background-color: #00ffff;
-    border-color: #00ffff;
+    background-color: #f446a0;
+    border-color: #f446a0;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
+    box-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff;
   }
 
   @keyframes pulse-glow {
