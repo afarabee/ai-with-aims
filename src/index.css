@@ -289,33 +289,24 @@ All colors MUST be HSL.
 
 /* View All Button Styling */
 .view-all-button {
-  position: relative !important;
-  z-index: 9999 !important;
-  margin-top: 12px !important;
-  background: #f446a0 !important;
+  background-color: #f446a0 !important;
   color: #b8f2e3 !important;
-  display: inline-block !important;
-  opacity: 1 !important;
-  transform: none !important;
-  padding: 12px 22px;
   border-radius: 12px;
-  box-shadow: 0 0 12px #b8f2e3, 0 0 20px rgba(244,70,160,0.6);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  text-decoration: none;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
+  padding: 12px 24px;
+  box-shadow: 0 0 10px #b8f2e3, 0 0 20px rgba(244,70,160,0.7);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-
 .view-all-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 20px #b8f2e3, 0 0 30px rgba(244,70,160,0.9);
 }
 
-/* Mobile spacing adjustments */
-@media (max-width: 768px) {
-  .blog-carousel-footer {
-    margin-top: 10px !important;
-  }
+/* New layout to avoid clipping */
+.wave-background { z-index: 0 !important; pointer-events: none; }
+.blog-footer {
+  display: flex; justify-content: center;
+  margin-top: 12px !important;
+  position: relative !important;
+  z-index: 1000 !important;
+  isolation: isolate;
 }
