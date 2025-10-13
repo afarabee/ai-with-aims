@@ -84,15 +84,17 @@ const AboutSection = () => {
             <div className="flex flex-col items-center gap-8">
             <div className="flex gap-6">
               {[
-                { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                { icon: Github, href: '#', label: 'GitHub' },
-                { icon: Mail, href: '#', label: 'Email' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/aimeefarabee/', label: 'LinkedIn', external: true },
+                { icon: Github, href: 'https://github.com/afarabee', label: 'GitHub', external: true },
+                { icon: Mail, href: 'mailto:genai-aims@gmail.com', label: 'Email', external: false },
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300"
+                  target={social.external ? '_blank' : undefined}
+                  rel={social.external ? 'noopener noreferrer' : undefined}
+                  className="w-14 h-14 rounded-full flex items-center justify-center border-2 transition-all duration-300 focus:ring-2 focus:ring-cyan-400/50 focus:outline-none cursor-pointer"
                   style={{
                     borderColor: '#00ffff',
                     boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff',

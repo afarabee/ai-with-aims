@@ -46,22 +46,18 @@ const Navigation = () => {
             >
               Home
             </NavLink>
-            <NavLink 
-              to="/about"
-              className={navLinkClass}
-              style={({ isActive }) => navLinkStyle(isActive)}
+            <a 
+              href="/#about"
+              className="nav-link transition-all duration-300"
               onMouseEnter={(e) => {
                 e.currentTarget.style.textShadow = '0 0 10px rgba(184, 242, 227, 0.8)';
               }}
               onMouseLeave={(e) => {
-                const isActive = e.currentTarget.classList.contains('active');
-                e.currentTarget.style.textShadow = isActive 
-                  ? '0 0 8px rgba(244, 70, 160, 0.8)' 
-                  : '';
+                e.currentTarget.style.textShadow = '';
               }}
             >
               About
-            </NavLink>
+            </a>
             <NavLink 
               to="/projects"
               className={navLinkClass}
@@ -94,22 +90,18 @@ const Navigation = () => {
             >
               Blog
             </NavLink>
-            <NavLink 
-              to="/contact"
-              className={navLinkClass}
-              style={({ isActive }) => navLinkStyle(isActive)}
+            <a 
+              href="/#contact"
+              className="nav-link transition-all duration-300"
               onMouseEnter={(e) => {
                 e.currentTarget.style.textShadow = '0 0 10px rgba(184, 242, 227, 0.8)';
               }}
               onMouseLeave={(e) => {
-                const isActive = e.currentTarget.classList.contains('active');
-                e.currentTarget.style.textShadow = isActive 
-                  ? '0 0 8px rgba(244, 70, 160, 0.8)' 
-                  : '';
+                e.currentTarget.style.textShadow = '';
               }}
             >
               Contact
-            </NavLink>
+            </a>
           </div>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -129,14 +121,13 @@ const Navigation = () => {
             >
               Home
             </NavLink>
-            <NavLink 
-              to="/about"
+            <a 
+              href="/#about"
               onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) => `block py-2 nav-link w-full text-left ${isActive ? 'border-l-2' : ''}`}
-              style={({ isActive }) => navLinkStyle(isActive)}
+              className="block py-2 nav-link w-full text-left"
             >
               About
-            </NavLink>
+            </a>
             <NavLink 
               to="/projects"
               onClick={() => setMobileMenuOpen(false)}
@@ -153,14 +144,13 @@ const Navigation = () => {
             >
               Blog
             </NavLink>
-            <NavLink 
-              to="/contact"
+            <a 
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={({ isActive }) => `block py-2 nav-link w-full text-left ${isActive ? 'border-l-2' : ''}`}
-              style={({ isActive }) => navLinkStyle(isActive)}
+              className="block py-2 nav-link w-full text-left"
             >
               Contact
-            </NavLink>
+            </a>
           </div>
         )}
       </div>

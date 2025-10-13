@@ -72,7 +72,7 @@ const BlogSection = () => {
       title: "My AI Journey",
       description: "Reflecting on the challenges, breakthroughs, and resources that helped me get started with ML. From linear regression to neural networks - here's what I learned.",
       readTime: "5 min read",
-      link: "/my-ai-journey",
+      slug: "my-ai-journey",
     },
     {
       id: 2,
@@ -80,7 +80,7 @@ const BlogSection = () => {
       title: "Agents Aren't Always the Answer",
       description: "Why AI agents aren't always the solution you need. Exploring when to use agents and when simpler approaches work better.",
       readTime: "6 min read",
-      link: "/agents-arent-the-answer",
+      slug: "agents-arent-the-answer",
     },
     {
       id: 3,
@@ -88,7 +88,7 @@ const BlogSection = () => {
       title: "Prompting for PMs",
       description: "How my background in product strategy actually gave me advantages in understanding AI systems, and what skills transferred over.",
       readTime: "7 min read",
-      link: "/blog",
+      slug: "prompting-for-pms",
     },
     {
       id: 4,
@@ -96,7 +96,7 @@ const BlogSection = () => {
       title: "Case Study: Rolling out AI @ CRL",
       description: "Step-by-step walkthrough of creating a simple neural network from scratch. The mistakes I made and how I debugged them.",
       readTime: "10 min read",
-      link: "/blog",
+      slug: "ai-rollout-crl",
     },
     {
       id: 5,
@@ -104,7 +104,7 @@ const BlogSection = () => {
       title: "Bridging the Gap",
       description: "Exploring the importance of responsible AI development from day one. Key principles every AI practitioner should understand.",
       readTime: "6 min read",
-      link: "/blog",
+      slug: "bridging-the-gap",
     },
   ];
 
@@ -196,7 +196,16 @@ const BlogSection = () => {
                     }
 
                     const content = (
-                      <Link to={post.link} style={{ textDecoration: 'none' }}>
+                      <Link 
+                        to={`/blog/${post.slug}`} 
+                        style={{ textDecoration: 'none' }}
+                        tabIndex={isActive ? 0 : -1}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && isActive) {
+                            e.currentTarget.click();
+                          }
+                        }}
+                      >
                         <div style={{ padding: '20px', whiteSpace: 'normal', wordWrap: 'break-word' }}>
                           <div
                             className="neon-text-yellow text-sm mb-2 font-titillium font-semibold"
