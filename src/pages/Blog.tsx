@@ -152,11 +152,11 @@ const Blog = () => {
                         background: 'rgba(25, 10, 40, 0.85)',
                         backdropFilter: 'blur(4px)',
                         border: isHovered 
-                          ? '1px solid rgba(57, 225, 227, 0.5)' 
+                          ? '1px solid rgba(57, 225, 227, 0.6)' 
                           : '1px solid rgba(180, 242, 227, 0.3)',
                         boxShadow: isHovered
-                          ? '0 0 20px rgba(57, 225, 227, 0.6), 0 0 40px rgba(57, 225, 227, 0.3)'
-                          : '0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(244, 70, 160, 0.15)',
+                          ? '0 0 25px rgba(57, 225, 227, 0.7), 0 0 50px rgba(57, 225, 227, 0.4)'
+                          : '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
                         overflow: 'hidden',
                         transition: 'all 0.4s ease-out'
                       }}
@@ -169,7 +169,7 @@ const Blog = () => {
                         <div
                           className="absolute inset-0 pointer-events-none transition-opacity duration-300"
                           style={{
-                            background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, rgba(57, 225, 227, 0.15), transparent 40%)`,
+                            background: `radial-gradient(500px circle at ${spotlight.x}px ${spotlight.y}px, rgba(57, 225, 227, 0.35), transparent 40%)`,
                             mixBlendMode: 'soft-light',
                             opacity: 1
                           }}
@@ -180,7 +180,7 @@ const Blog = () => {
                       <div
                         className="absolute inset-0 pointer-events-none md:hidden"
                         style={{
-                          background: 'radial-gradient(circle at center, rgba(57, 225, 227, 0.1), transparent 70%)',
+                          background: 'radial-gradient(circle at center, rgba(57, 225, 227, 0.2), transparent 70%)',
                           mixBlendMode: 'soft-light'
                         }}
                       />
