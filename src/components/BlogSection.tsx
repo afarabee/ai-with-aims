@@ -110,7 +110,7 @@ const BlogSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="blog" className="relative py-16 pb-24 bg-background overflow-hidden">
+    <section ref={sectionRef} id="blog" className="relative py-16 bg-background overflow-hidden" style={{ paddingBottom: '8px' }}>
       {/* Alternating dark overlay for visual contrast */}
       <div 
         className="absolute inset-0 pointer-events-none z-0"
@@ -136,11 +136,11 @@ const BlogSection = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 relative z-10 blog-carousel-wrapper">
         <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-12">Latest Blog Posts</h2>
         
         {/* 3D Carousel Container */}
-        <div className="relative pb-2" style={{ perspective: '1200px', minHeight: '500px' }}>
+        <div className="relative carousel-container" style={{ perspective: '1200px', minHeight: '500px', paddingBottom: '0', marginBottom: '0' }}>
           {/* Pink radial spotlight behind active card */}
           <div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 transition-opacity duration-300"
@@ -276,7 +276,7 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center" style={{ marginTop: '8px' }}>
+        <div className="flex justify-center view-all-button" style={{ marginTop: '6px', paddingTop: '8px' }}>
           <Link to="/blog">
             <Button
               className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
