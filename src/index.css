@@ -256,7 +256,6 @@ All colors MUST be HSL.
 
 /* Blog carousel spacing and stacking context */
 .blog-carousel-section,
-.blog-carousel-footer,
 .blog-carousel-wrapper,
 .carousel-container,
 .section {
@@ -276,37 +275,5 @@ All colors MUST be HSL.
   margin-bottom: 6px !important;
 }
 
-/* Button footer with proper stacking context */
-.blog-carousel-footer {
-  position: relative !important;
-  isolation: isolate;
-  z-index: 999 !important;
-  display: flex;
-  justify-content: center;
-  gap: 0;
-  margin-top: 8px !important;
-}
-
-/* View All Button Styling */
-.view-all-button {
-  background-color: #f446a0 !important;
-  color: #b8f2e3 !important;
-  border-radius: 12px;
-  padding: 12px 24px;
-  box-shadow: 0 0 10px #b8f2e3, 0 0 20px rgba(244,70,160,0.7);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-}
-.view-all-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #b8f2e3, 0 0 30px rgba(244,70,160,0.9);
-}
-
-/* New layout to avoid clipping */
+/* Wave background wrapper */
 .wave-background { z-index: 0 !important; pointer-events: none; }
-.blog-footer {
-  display: flex; justify-content: center;
-  margin-top: 12px !important;
-  position: relative !important;
-  z-index: 1000 !important;
-  isolation: isolate;
-}

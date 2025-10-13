@@ -310,13 +310,6 @@ const BlogSection = () => {
           <SectionDivider variant="wave" color="#0d061a" />
         </div>
       </section>
-
-      {/* Button moved outside the wave section to avoid clipping */}
-      <div className="blog-footer">
-        <Link to="/blog" className="view-all-button">
-          View All Blogs
-        </Link>
-      </div>
     </>
   );
 };
