@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import logoImage from "@/assets/ai-with-aimee-logo-transparent.png";
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
 import SectionDivider from "./SectionDivider";
@@ -100,13 +101,13 @@ const HeroSection = () => {
               </button>
             </div>
             
-            <button
-              onClick={() => scrollToSection("about")}
+            <Link
+              to="/about"
               className="text-sm neon-text-cyan/80 hover:neon-text-cyan transition-all duration-300 flex items-center gap-2 group"
             >
               Learn more about me 
               <span className="transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
