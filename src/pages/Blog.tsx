@@ -6,10 +6,17 @@ import Footer from '@/components/Footer';
 import { supabase } from '@/integrations/supabase/client';
 import { useQuery } from '@tanstack/react-query';
 
+interface CardSpotlight {
+  x: number;
+  y: number;
+  isHovered: boolean;
+}
+
 const Blog = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
   const [displayCount, setDisplayCount] = useState(6);
   const loadMoreRef = useRef<HTMLDivElement>(null);
+  const [cardSpotlights, setCardSpotlights] = useState<Map<string, CardSpotlight>>(new Map());
 
   // Fetch blogs from Supabase
   const { data: blogPosts, isLoading } = useQuery({
@@ -56,6 +63,26 @@ const Blog = () => {
 
     return () => observer.disconnect();
   }, [blogPosts, displayCount]);
+
+  // Spotlight effect handlers
+  const handleCardMouseMove = useCallback((e: React.MouseEvent<HTMLElement>, cardId: string) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    setCardSpotlights(prev => new Map(prev).set(cardId, { x, y, isHovered: true }));
+  }, []);
+
+  const handleCardMouseEnter = useCallback((cardId: string) => {
+    setCardSpotlights(prev => new Map(prev).set(cardId, { x: 0, y: 0, isHovered: true }));
+  }, []);
+
+  const handleCardMouseLeave = useCallback((cardId: string) => {
+    setCardSpotlights(prev => {
+      const newMap = new Map(prev);
+      newMap.delete(cardId);
+      return newMap;
+    });
+  }, []);
 
   // Infinite scroll observer
   useEffect(() => {
@@ -109,23 +136,54 @@ const Blog = () => {
                 {displayedPosts.map((post, index) => {
                   const wordCount = post.body?.split(' ').length || 0;
                   const readTime = Math.ceil(wordCount / 200);
+                  const cardId = `blog-card-${post.id}`;
+                  const spotlight = cardSpotlights.get(cardId);
+                  const isHovered = spotlight?.isHovered || false;
                   
                   return (
                     <article
                       key={post.id}
                       data-index={index}
-                      className={`blog-card group transition-all duration-700 ${
+                      className={`blog-card group relative transition-all duration-700 ${
                         visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                      }`}
+                      } ${isHovered ? 'scale-[1.03]' : 'scale-100'}`}
                       style={{
                         borderRadius: '16px',
                         background: 'rgba(25, 10, 40, 0.85)',
                         backdropFilter: 'blur(4px)',
-                        border: '1px solid rgba(180, 242, 227, 0.3)',
-                        boxShadow: '0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(244, 70, 160, 0.15)',
-                        overflow: 'hidden'
+                        border: isHovered 
+                          ? '1px solid rgba(244, 70, 160, 0.6)' 
+                          : '1px solid rgba(180, 242, 227, 0.3)',
+                        boxShadow: isHovered
+                          ? '0 0 25px rgba(244, 70, 160, 0.4), 0 0 40px rgba(244, 70, 160, 0.2), 0 0 10px rgba(255, 247, 177, 0.3)'
+                          : '0 0 15px rgba(0, 255, 255, 0.2), 0 0 25px rgba(244, 70, 160, 0.15)',
+                        overflow: 'hidden',
+                        transition: 'all 0.3s ease'
                       }}
+                      onMouseMove={(e) => handleCardMouseMove(e, cardId)}
+                      onMouseEnter={() => handleCardMouseEnter(cardId)}
+                      onMouseLeave={() => handleCardMouseLeave(cardId)}
                     >
+                      {/* Spotlight overlay */}
+                      {isHovered && spotlight && (
+                        <div
+                          className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                          style={{
+                            background: `radial-gradient(600px circle at ${spotlight.x}px ${spotlight.y}px, rgba(255, 247, 177, 0.18), transparent 40%)`,
+                            mixBlendMode: 'soft-light',
+                            opacity: 1
+                          }}
+                        />
+                      )}
+                      
+                      {/* Mobile static glow */}
+                      <div
+                        className="absolute inset-0 pointer-events-none md:hidden"
+                        style={{
+                          background: 'radial-gradient(circle at center, rgba(255, 247, 177, 0.1), transparent 70%)',
+                          mixBlendMode: 'soft-light'
+                        }}
+                      />
                       {/* Thumbnail - 16:9 Aspect Ratio */}
                       <a href={`/blog/${post.slug}`} className="block">
                         <div className="w-full aspect-video overflow-hidden relative">
