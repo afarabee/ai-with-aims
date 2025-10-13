@@ -276,7 +276,7 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center" style={{ marginTop: '4px' }}>
+        <div className="flex justify-center" style={{ marginTop: '-40px' }}>
           <Link to="/blog">
             <Button
               className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
