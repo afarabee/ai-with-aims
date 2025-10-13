@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import GlowCard from './ui/glow-card';
-import { Button } from './ui/button';
-import ScrollIndicator from './ScrollIndicator';
 import SectionDivider from './SectionDivider';
 
 const ProjectsSection = () => {
@@ -206,20 +203,6 @@ const ProjectsSection = () => {
               </GlowCard>
             </div>
           ))}
-        </div>
-
-        {/* Footer CTA */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4">
-          <Link to="/projects">
-            <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
-              View All Projects →
-            </Button>
-          </Link>
-          <Link to="/blog">
-            <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
-              View All Blog Posts →
-            </Button>
-          </Link>
         </div>
       </div>
 
