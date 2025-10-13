@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import MyAIJourney from "./pages/MyAIJourney";
 import Projects from "./pages/Projects";
@@ -24,6 +25,7 @@ const App = () => (
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
           <Route path="/my-ai-journey" element={<MyAIJourney />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<Blog />} />
