@@ -39,12 +39,20 @@ const BlogPost = () => {
   if (isLoading) {
     return (
       <div className="min-h-screen relative" style={{
-        background: 'linear-gradient(to bottom, #705e63 0%, #000000 100%)'
+        background: 'linear-gradient(to bottom, #1a0f1f 0%, #000000 100%)'
       }}>
         <Navigation />
         <main className="relative z-10 pt-32 pb-20">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <p className="text-xl neon-text-cyan">Loading post...</p>
+          <div className="max-w-[900px] mx-auto px-6 text-center">
+            <p 
+              className="text-xl"
+              style={{
+                color: '#b8f2e3',
+                textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
+              }}
+            >
+              Loading post...
+            </p>
           </div>
         </main>
         <Footer />
@@ -55,16 +63,44 @@ const BlogPost = () => {
   if (error || !post) {
     return (
       <div className="min-h-screen relative" style={{
-        background: 'linear-gradient(to bottom, #705e63 0%, #000000 100%)'
+        background: 'linear-gradient(to bottom, #1a0f1f 0%, #000000 100%)'
       }}>
         <Navigation />
         <main className="relative z-10 pt-32 pb-20">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h1 className="text-4xl font-rajdhani font-bold mb-4 neon-text-pink">Post Not Found</h1>
-            <p className="text-xl neon-text-cyan mb-8">The blog post you're looking for doesn't exist.</p>
+          <div className="max-w-[900px] mx-auto px-6 text-center">
+            <h1 
+              className="text-4xl font-rajdhani font-bold mb-4"
+              style={{
+                color: '#f446a0',
+                textShadow: '0 0 20px rgba(244, 70, 160, 0.8)'
+              }}
+            >
+              Post Not Found
+            </h1>
+            <p 
+              className="text-xl mb-8"
+              style={{
+                color: '#b8f2e3',
+                textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
+              }}
+            >
+              The blog post you're looking for doesn't exist.
+            </p>
             <Link 
               to="/blog" 
-              className="inline-flex items-center gap-2 neon-text-cyan hover:neon-text-pink transition-all duration-300 font-montserrat font-semibold"
+              className="inline-flex items-center gap-2 font-montserrat font-semibold transition-all duration-300"
+              style={{
+                color: '#b8f2e3',
+                textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#f446a0';
+                e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.8)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#b8f2e3';
+                e.currentTarget.style.textShadow = '0 0 15px rgba(184, 242, 227, 0.7)';
+              }}
             >
               <ArrowLeft size={20} />
               Back to Blog
@@ -78,33 +114,43 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen relative" style={{
-      background: 'linear-gradient(to bottom, #705e63 0%, #000000 100%)'
+      background: 'linear-gradient(to bottom, #1a0f1f 0%, #000000 100%)'
     }}>
       <Navigation />
       
       <main className="relative z-10">
         {/* Back Button */}
-        <div className="max-w-4xl mx-auto px-10 pt-32 pb-6">
+        <div className="max-w-[900px] mx-auto px-10 pt-24">
           <Link 
             to="/blog" 
-            className="inline-flex items-center gap-2 text-base font-montserrat font-semibold neon-text-cyan hover:neon-text-pink transition-all duration-300"
+            className="inline-flex items-center gap-2 text-sm font-montserrat font-medium transition-all duration-300"
             style={{
-              textShadow: '0 0 10px rgba(0, 255, 255, 0.6)'
+              color: '#b8f2e3',
+              textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#f446a0';
+              e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.8)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#b8f2e3';
+              e.currentTarget.style.textShadow = '0 0 15px rgba(184, 242, 227, 0.7)';
             }}
           >
-            <ArrowLeft size={20} />
-            ← Back to Blogs
+            <ArrowLeft size={16} />
+            Back to Blogs
           </Link>
         </div>
 
         {/* Hero Banner */}
-        {post.banner_image && (
-          <section className="relative max-w-4xl mx-auto px-10 mb-10">
+        <section className="relative max-w-[900px] mx-auto px-10 mt-10 mb-10">
+          {post.banner_image ? (
             <div 
-              className="w-full aspect-video rounded-2xl overflow-hidden"
+              className="w-full aspect-video overflow-hidden"
               style={{
-                border: '2px solid rgba(0, 255, 255, 0.4)',
-                boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.15)',
+                borderRadius: '12px',
+                border: '2px solid rgba(184, 242, 227, 0.6)',
+                boxShadow: '0 0 25px rgba(184, 242, 227, 0.5)',
               }}
             >
               <img
@@ -113,30 +159,65 @@ const BlogPost = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-          </section>
-        )}
+          ) : (
+            <div 
+              className="w-full aspect-video flex items-center justify-center"
+              style={{
+                borderRadius: '12px',
+                border: '2px solid rgba(184, 242, 227, 0.6)',
+                boxShadow: '0 0 25px rgba(184, 242, 227, 0.5), inset 0 0 30px rgba(184, 242, 227, 0.2)',
+                background: 'rgba(26, 15, 31, 0.6)',
+              }}
+            >
+              <p 
+                className="text-lg font-montserrat"
+                style={{
+                  color: '#b8f2e3',
+                  textShadow: '0 0 20px rgba(184, 242, 227, 0.7)'
+                }}
+              >
+                Banner image missing
+              </p>
+            </div>
+          )}
+        </section>
 
         {/* Article Content */}
-        <article className="relative py-10">
-          <div className="max-w-4xl mx-auto px-10">
+        <article className="relative">
+          <div className="max-w-[900px] mx-auto px-10" style={{ paddingTop: '40px' }}>
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-rajdhani font-bold text-center mb-6 neon-text-pink">
+            <h1 
+              className="font-shadows text-center mb-6"
+              style={{
+                fontSize: '2.2rem',
+                color: '#f446a0',
+                textShadow: '0 0 20px rgba(244, 70, 160, 0.8), 0 0 30px rgba(244, 70, 160, 0.4)',
+                lineHeight: '1.2'
+              }}
+            >
               {post.title}
             </h1>
 
             {/* Glowing Divider */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6">
               <div 
-                className="w-32 h-1 rounded-full"
+                className="w-48 h-1 rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(0, 255, 255, 0) 0%, rgba(0, 255, 255, 0.8) 50%, rgba(0, 255, 255, 0) 100%)',
-                  boxShadow: '0 0 15px rgba(0, 255, 255, 0.6)',
+                  background: 'linear-gradient(90deg, rgba(244, 70, 160, 0) 0%, rgba(244, 70, 160, 0.8) 25%, rgba(184, 242, 227, 0.8) 75%, rgba(184, 242, 227, 0) 100%)',
+                  boxShadow: '0 0 20px rgba(244, 70, 160, 0.6), 0 0 30px rgba(184, 242, 227, 0.4)',
                 }}
               />
             </div>
 
             {/* Meta Info */}
-            <div className="flex items-center justify-center gap-2 mb-8 text-sm neon-text-cyan">
+            <div 
+              className="flex items-center justify-center gap-2 text-sm"
+              style={{ 
+                color: '#b8f2e3',
+                marginBottom: '24px',
+                textShadow: '0 0 10px rgba(184, 242, 227, 0.5)'
+              }}
+            >
               <Calendar size={16} />
               <span>
                 {new Date(post.date_published).toLocaleDateString('en-US', { 
@@ -148,8 +229,14 @@ const BlogPost = () => {
             </div>
 
             {/* Excerpt */}
-            <div className="mb-10">
-              <p className="text-lg md:text-xl font-josefin italic text-center neon-text-cyan leading-relaxed">
+            <div style={{ marginBottom: '24px' }}>
+              <p 
+                className="text-lg font-josefin italic text-center leading-relaxed"
+                style={{
+                  color: '#b8f2e3',
+                  textShadow: '0 0 15px rgba(184, 242, 227, 0.5)'
+                }}
+              >
                 {post.excerpt}
               </p>
             </div>
@@ -158,13 +245,13 @@ const BlogPost = () => {
             <div 
               className="font-ibm text-base md:text-lg"
               style={{ 
-                color: 'hsl(180, 100%, 70%)',
+                color: '#d8f5ef',
                 lineHeight: '1.6'
               }}
             >
               {post.body.split('\n').map((paragraph: string, index: number) => (
                 paragraph.trim() ? (
-                  <p key={index} className="mb-6" style={{ lineHeight: '1.6' }}>
+                  <p key={index} style={{ marginBottom: '24px', lineHeight: '1.6' }}>
                     {paragraph}
                   </p>
                 ) : null
@@ -175,21 +262,40 @@ const BlogPost = () => {
 
         {/* Footer CTA */}
         <section className="py-16">
-          <div className="max-w-4xl mx-auto px-10">
+          <div className="max-w-[900px] mx-auto px-10">
             <div 
-              className="text-center p-10 rounded-2xl backdrop-blur-md"
+              className="text-center p-10 backdrop-blur-md"
               style={{
-                background: 'rgba(15, 11, 29, 0.6)',
-                border: '2px solid rgba(0, 255, 255, 0.3)',
-                boxShadow: '0 0 20px rgba(0, 255, 255, 0.2)',
+                borderRadius: '12px',
+                background: 'rgba(26, 15, 31, 0.6)',
+                border: '2px solid rgba(184, 242, 227, 0.4)',
+                boxShadow: '0 0 25px rgba(184, 242, 227, 0.3)',
               }}
             >
-              <p className="text-xl md:text-2xl font-rajdhani font-semibold neon-text-cyan mb-6">
+              <p 
+                className="text-xl md:text-2xl font-rajdhani font-semibold mb-6"
+                style={{
+                  color: '#b8f2e3',
+                  textShadow: '0 0 20px rgba(184, 242, 227, 0.6)'
+                }}
+              >
                 AI with Aimee — Intelligence with a Twist
               </p>
               <Link 
                 to="/blog"
-                className="inline-flex items-center gap-2 text-base font-montserrat font-bold neon-text-pink hover:neon-text-cyan transition-all duration-300"
+                className="inline-flex items-center gap-2 text-base font-montserrat font-bold transition-all duration-300"
+                style={{
+                  color: '#f446a0',
+                  textShadow: '0 0 20px rgba(244, 70, 160, 0.7)'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#b8f2e3';
+                  e.currentTarget.style.textShadow = '0 0 20px rgba(184, 242, 227, 0.8)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#f446a0';
+                  e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.7)';
+                }}
               >
                 <ArrowLeft size={18} />
                 Back to All Posts
