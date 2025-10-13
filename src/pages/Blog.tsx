@@ -75,16 +75,22 @@ const Blog = () => {
   const displayedPosts = blogPosts?.slice(0, displayCount) || [];
 
   return (
-    <div className="min-h-screen relative" style={{
-      background: 'linear-gradient(to bottom, #705e63 0%, #000000 100%)'
-    }}>
+    <div className="min-h-screen relative bg-background">
+      <AboutBackground />
+      
+      {/* Alternating dark overlay for visual contrast */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+      />
+      
       <Navigation />
       
       <main className="relative z-10 pt-32 pb-20">
         <div className="max-w-4xl mx-auto px-6">
           {/* Page Header */}
-          <div className="text-center mb-20">
-            <h1 className="text-4xl md:text-5xl font-rajdhani font-bold mb-4 neon-text-pink animate-flicker">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-4 neon-text-pink">
               Insights & Stories
             </h1>
             <p className="text-xl md:text-2xl font-josefin italic neon-text-cyan">
@@ -98,7 +104,7 @@ const Blog = () => {
               <p className="text-xl neon-text-cyan">Loading posts...</p>
             </div>
           ) : displayedPosts && displayedPosts.length > 0 ? (
-            <div className="space-y-12 mb-16">
+            <div className="space-y-10 mb-16">
               {displayedPosts.map((post, index) => {
                 const wordCount = post.body?.split(' ').length || 0;
                 const readTime = Math.ceil(wordCount / 200);
@@ -107,13 +113,16 @@ const Blog = () => {
               <article
                 key={post.id}
                 data-index={index}
-                className={`blog-card hover-lift rounded-3xl backdrop-blur-md overflow-hidden transition-all duration-700 ${
+                className={`blog-card hover-lift transition-all duration-700 ${
                   visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{
-                  background: 'rgba(15, 11, 29, 0.7)',
-                  border: '2px solid rgba(0, 255, 255, 0.4)',
-                  boxShadow: '0 0 15px rgba(0, 255, 255, 0.3), 0 0 25px rgba(244, 70, 160, 0.2)',
+                  borderRadius: '16px',
+                  background: 'rgba(25, 10, 40, 0.85)',
+                  backdropFilter: 'blur(4px)',
+                  border: '1px solid rgba(180, 242, 227, 0.4)',
+                  boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
+                  overflow: 'hidden'
                 }}
               >
                 {/* Full-Width Banner */}

@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import AboutBackground from '@/components/AboutBackground';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import ScrollIndicator from '@/components/ScrollIndicator';
 
 const Projects = () => {
   const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
@@ -91,18 +90,25 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative bg-background">
       <AboutBackground />
+      
+      {/* Alternating dark overlay for visual contrast */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+      />
+      
       <Navigation />
       
       <main className="relative z-10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Page Header */}
           <div className="text-center mb-16">
-            <h1 className="text-3xl md:text-4xl font-rajdhani font-semibold mb-4 neon-text-yellow">
+            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-4 neon-text-pink">
               Projects & Applied AI Work
             </h1>
-            <p className="text-xl md:text-2xl font-josefin italic neon-text-pink">
+            <p className="text-xl md:text-2xl font-josefin italic neon-text-cyan">
               Each project is a window into machines and minds collaborating.
             </p>
           </div>
@@ -113,11 +119,20 @@ const Projects = () => {
               <div
                 key={index}
                 data-index={index}
-                className={`project-card transition-all duration-700 ${
+                className={`project-card hover-lift transition-all duration-700 ${
                   visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
               >
-                <GlowCard>
+                <GlowCard 
+                  style={{
+                    borderRadius: '16px',
+                    backgroundColor: 'rgba(25, 10, 40, 0.85)',
+                    backdropFilter: 'blur(4px)',
+                    border: '1px solid rgba(180, 242, 227, 0.4)',
+                    boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
+                    padding: '24px'
+                  }}
+                >
                   {/* Project Title */}
                   <h3 className="text-2xl font-rajdhani font-semibold mb-2 neon-text-yellow">
                     {project.title}
@@ -180,15 +195,12 @@ const Projects = () => {
           </div>
 
           {/* Footer CTA */}
-          <div className="flex justify-center">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4">
             <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
               Explore My Prompt Library →
             </Button>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <ScrollIndicator />
       </main>
 
       <Footer />
