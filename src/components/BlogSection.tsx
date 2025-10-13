@@ -140,7 +140,7 @@ const BlogSection = () => {
         <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-12">Latest Blog Posts</h2>
         
         {/* 3D Carousel Container */}
-        <div className="relative" style={{ perspective: '1200px', minHeight: '500px' }}>
+        <div className="relative pb-2" style={{ perspective: '1200px', minHeight: '500px' }}>
           {/* Pink radial spotlight behind active card */}
           <div 
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 transition-opacity duration-300"
@@ -276,7 +276,7 @@ const BlogSection = () => {
         </div>
 
         {/* View All Blogs Button */}
-        <div className="flex justify-center" style={{ marginTop: '-40px' }}>
+        <div className="flex justify-center" style={{ marginTop: '8px' }}>
           <Link to="/blog">
             <Button
               className="px-8 py-6 text-base font-rajdhani font-semibold rounded-lg ease-in-out"
