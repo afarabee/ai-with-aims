@@ -1,62 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Linkedin, Github, Mail } from 'lucide-react';
 import AboutBackground from './AboutBackground';
 import { Button } from './ui/button';
-import GlowCard from './ui/glow-card';
 import ScrollIndicator from './ScrollIndicator';
 import SectionDivider from './SectionDivider';
 
 const AboutSection = () => {
-  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false]);
-
-  useEffect(() => {
-    // Small delay to ensure DOM is ready
-    const timer = setTimeout(() => {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const index = parseInt(entry.target.getAttribute('data-index') || '0');
-              setVisibleCards((prev) => {
-                const newState = [...prev];
-                newState[index] = true;
-                return newState;
-              });
-            }
-          });
-        },
-        { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
-      );
-
-      const cards = document.querySelectorAll('.timeline-card');
-      cards.forEach((card) => observer.observe(card));
-
-      return () => observer.disconnect();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const timelineData = [
-    {
-      period: '2010–2018',
-      title: 'Senior PM Roles',
-      company: 'Express Scripts, Cigna, AmEx',
-      description: 'Building products at the intersection of technology and human needs.',
-    },
-    {
-      period: '2019–2024',
-      title: 'Director',
-      company: 'Charles River Labs',
-      description: 'Apollo Platform & AI Adoption — bridging data, people, and process.',
-    },
-    {
-      period: '2025',
-      title: 'Founder',
-      company: 'AI with Aimee',
-      description: 'Advancing AI Governance & Enablement for enterprises.',
-    },
-  ];
 
   return (
     <section id="about" className="relative min-h-screen py-20 pb-28">
@@ -137,44 +85,8 @@ const AboutSection = () => {
           />
         </div>
 
-        {/* Timeline Section */}
+        {/* Social Icons & CTA */}
         <div className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-rajdhani font-semibold text-center mb-12 neon-text-yellow">
-            Journey Timeline
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            {timelineData.map((item, index) => (
-              <div
-                key={index}
-                data-index={index}
-                className={`timeline-card transition-all ease-out ${
-                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-                }`}
-                style={{
-                  transitionDuration: '700ms',
-                  transitionDelay: `${index * 150}ms`,
-                }}
-              >
-                <GlowCard>
-                  <div className="text-sm font-titillium font-semibold mb-2 neon-text-cyan">
-                    {item.period}
-                  </div>
-                  <h3 className="text-xl font-rajdhani font-semibold mb-1 neon-text-yellow">
-                    {item.title}
-                  </h3>
-                  <div className="text-sm font-semibold mb-3 neon-text-pink">
-                    {item.company}
-                  </div>
-                  <p className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
-                    {item.description}
-                  </p>
-                </GlowCard>
-              </div>
-            ))}
-          </div>
-
-          {/* Social Icons & CTA */}
           <div className="flex flex-col items-center gap-8">
             <div className="flex gap-6">
               {[
