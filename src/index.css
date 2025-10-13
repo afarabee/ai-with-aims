@@ -211,6 +211,25 @@ All colors MUST be HSL.
     transform: scale(1.05);
     box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
   }
+
+  @keyframes neonPulseHover {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.5), 0 0 16px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.7), 0 0 24px rgba(0, 255, 255, 0.5);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 8px rgba(0, 255, 255, 0.5), 0 0 16px rgba(0, 255, 255, 0.3);
+    }
+  }
+
+  .neon-pulse-hover:hover {
+    animation: neonPulseHover 0.4s ease-in-out;
+  }
   
   @keyframes fadeIn {
     from {

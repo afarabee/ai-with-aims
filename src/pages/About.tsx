@@ -2,6 +2,7 @@ import { Linkedin, Github, Mail } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   return (
@@ -99,7 +100,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Social Icons & Resume Button */}
+          {/* Social Icons & Buttons */}
           <div className="flex flex-col items-center gap-8 mt-20">
             {/* Social Icons */}
             <div className="flex gap-6">
@@ -133,17 +134,55 @@ const About = () => {
               ))}
             </div>
 
-            {/* Resume Button */}
-            <Button
-              className="hero-button text-sm"
-              style={{ 
-                width: '220px',
-                fontSize: '0.9rem',
-                padding: '1rem 1.5rem'
+            {/* Neon divider */}
+            <div 
+              className="w-full max-w-md h-px mt-4"
+              style={{
+                background: 'linear-gradient(90deg, transparent 0%, #00ffff 50%, #f446a0 100%)',
+                opacity: 0.4,
+                boxShadow: '0 0 6px rgba(0, 255, 255, 0.3)',
               }}
-            >
-              Download Resume (PDF)
-            </Button>
+            />
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-5 mt-4">
+              <Button
+                className="hero-button text-sm neon-pulse-hover"
+                style={{ 
+                  width: '220px',
+                  fontSize: '0.9rem',
+                  padding: '1rem 1.5rem'
+                }}
+              >
+                Download Resume (PDF)
+              </Button>
+              
+              <Link to="/projects">
+                <Button
+                  className="hero-button text-sm neon-pulse-hover"
+                  style={{ 
+                    width: '220px',
+                    fontSize: '0.9rem',
+                    padding: '1rem 1.5rem'
+                  }}
+                >
+                  View My Projects
+                </Button>
+              </Link>
+              
+              <Link to="/blog">
+                <Button
+                  className="hero-button text-sm neon-pulse-hover"
+                  style={{ 
+                    width: '220px',
+                    fontSize: '0.9rem',
+                    padding: '1rem 1.5rem'
+                  }}
+                >
+                  Read My Blog
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
