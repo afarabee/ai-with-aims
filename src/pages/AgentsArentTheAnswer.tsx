@@ -84,7 +84,7 @@ const AgentsArentTheAnswer = () => {
               A cautionary (but kinda funny) tale from my first n8n build
             </p>
             <div className="text-sm font-titillium neon-text-yellow animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              by Aimee Farabee — AI with Aimee — Intelligence with a Twist
+              by Aimee Farabee
             </div>
           </div>
         </section>
