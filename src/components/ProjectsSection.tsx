@@ -210,9 +210,11 @@ const ProjectsSection = () => {
 
         {/* Footer CTA */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4">
-          <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
-            Browse My Prompt Library →
-          </Button>
+          <Link to="/projects">
+            <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
+              View All Projects →
+            </Button>
+          </Link>
           <Link to="/blog">
             <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
               View All Blog Posts →
