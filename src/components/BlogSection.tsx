@@ -84,7 +84,7 @@ const BlogSection = () => {
     },
     {
       id: 3,
-      date: "March 1, 2024",
+      date: "March 8, 2024",
       title: "Prompting for PMs",
       description: "How my background in product strategy actually gave me advantages in understanding AI systems, and what skills transferred over.",
       readTime: "7 min read",
@@ -96,15 +96,7 @@ const BlogSection = () => {
       title: "Case Study: Rolling out AI @ CRL",
       description: "Step-by-step walkthrough of creating a simple neural network from scratch. The mistakes I made and how I debugged them.",
       readTime: "10 min read",
-      slug: "ai-rollout-crl",
-    },
-    {
-      id: 5,
-      date: "February 20, 2024",
-      title: "Bridging the Gap",
-      description: "Exploring the importance of responsible AI development from day one. Key principles every AI practitioner should understand.",
-      readTime: "6 min read",
-      slug: "bridging-the-gap",
+      slug: "rolling-out-ai-at-crl",
     },
   ];
 

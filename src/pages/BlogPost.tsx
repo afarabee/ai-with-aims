@@ -31,10 +31,6 @@ const BlogPost = () => {
     enabled: !!slug,
   });
 
-  // Redirect to AgentsArentTheAnswer if it's that specific post
-  if (slug === 'agents-arent-the-answer') {
-    return <Navigate to="/blog/agents-arent-the-answer" replace />;
-  }
 
   if (isLoading) {
     return (
