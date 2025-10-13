@@ -1,7 +1,6 @@
 import { Linkedin, Github, Mail } from 'lucide-react';
 import AboutBackground from './AboutBackground';
 import { Button } from './ui/button';
-import ScrollIndicator from './ScrollIndicator';
 import SectionDivider from './SectionDivider';
 
 const AboutSection = () => {
@@ -124,9 +123,6 @@ const AboutSection = () => {
         </div>
       </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <ScrollIndicator />
 
       {/* Glowing Divider between About and Projects */}
       <div 
