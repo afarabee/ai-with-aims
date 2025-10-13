@@ -6,20 +6,22 @@ import SectionDivider from './SectionDivider';
 const AboutSection = () => {
 
   return (
-    <section id="about" className="relative min-h-screen py-20 pb-28">
+    <section id="about" className="relative min-h-screen py-24 pb-32">
       <AboutBackground />
       
-      {/* Alternating dark overlay for visual contrast */}
+      {/* Pink-to-Violet gradient overlay at top */}
       <div 
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{ background: 'rgba(0, 0, 0, 0.1)' }}
+        className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(244, 70, 160, 0.15), transparent)',
+        }}
       />
       
-      {/* Bottom fade-out gradient */}
+      {/* Bottom fade-out gradient with cyan-violet blend */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+          background: 'linear-gradient(to bottom, transparent, rgba(112, 94, 99, 0.3))',
         }}
       />
       

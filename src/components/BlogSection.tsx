@@ -113,15 +113,13 @@ const BlogSection = () => {
       <section
         ref={sectionRef}
         id="blog"
-        className="blog-carousel-wrapper relative py-16 bg-background overflow-hidden"
-        style={{ paddingBottom: '8px' }}
+        className="blog-carousel-wrapper relative py-24 pb-32 bg-background overflow-hidden"
       >
-        {/* Alternating dark overlay for visual contrast */}
+        {/* Cyan-to-Violet gradient overlay at top */}
         <div
-          className="absolute inset-0 pointer-events-none z-0"
+          className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
           style={{
-            background:
-              'radial-gradient(circle at center, rgba(112, 94, 99, 0.3), rgba(13, 6, 26, 0.9))',
+            background: 'linear-gradient(to bottom, rgba(112, 94, 99, 0.3), transparent)',
           }}
         />
 
@@ -130,16 +128,16 @@ const BlogSection = () => {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] pointer-events-none z-0 opacity-40"
           style={{
             background:
-              'radial-gradient(ellipse, rgba(0, 255, 255, 0.3), transparent)',
+              'radial-gradient(ellipse, rgba(0, 255, 255, 0.35), transparent)',
             filter: 'blur(60px)',
           }}
         />
 
         {/* Bottom fade-out gradient */}
         <div
-          className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+          className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10"
           style={{
-            background: 'linear-gradient(to bottom, transparent, #0d061a)',
+            background: 'linear-gradient(to bottom, transparent, rgba(112, 94, 99, 0.2))',
           }}
         />
 

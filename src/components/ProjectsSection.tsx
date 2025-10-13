@@ -87,7 +87,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="relative min-h-screen py-20 pb-28">
+    <section id="projects" className="relative min-h-screen py-24 pb-32">
       {/* Background - same as About page */}
       <div className="absolute inset-0 overflow-hidden">
         <div 
@@ -96,6 +96,15 @@ const ProjectsSection = () => {
             background: 'linear-gradient(180deg, #0f0b1d 0%, #1f0d36 100%)'
           }}
         />
+        
+        {/* Cyan-to-Violet gradient overlay at top */}
+        <div
+          className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(112, 94, 99, 0.2), transparent)',
+          }}
+        />
+        
         {/* Lighter, slower floating particles */}
         <div className="absolute inset-0 opacity-20">
           {[...Array(15)].map((_, i) => (
@@ -116,7 +125,7 @@ const ProjectsSection = () => {
 
       {/* Bottom fade-out gradient */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+        className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10"
         style={{
           background: 'linear-gradient(to bottom, transparent, #0d061a)',
         }}
@@ -139,9 +148,10 @@ const ProjectsSection = () => {
             <div
               key={index}
               data-index={index}
-              className={`project-card transition-all duration-700 ${
+              className={`project-card transition-all ease-in-out ${
                 visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}
+              style={{ transitionDuration: '0.5s' }}
             >
               <GlowCard>
                 {/* Project Title */}

@@ -122,7 +122,7 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-mid)) 50%, hsl(var(--gradient-end)) 100%);
   }
 
-  /* Unified Glow System */
+  /* Unified Glow System - Adjusted intensities */
   .neon-text-yellow {
     color: #e5fb52;
     text-shadow: 0 0 8px #e5fb85, 0 0 18px #edfca0;
@@ -130,24 +130,24 @@ All colors MUST be HSL.
 
   .neon-text-cyan {
     color: #00ffff;
-    text-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
+    text-shadow: 0 0 8px #33ffff, 0 0 16px #99ffff;
   }
 
   .neon-text-pink {
-    color: #f446a0;
-    text-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff;
+    color: #e84195;
+    text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
   }
 
   .neon-border-cyan {
     border: 2px solid hsl(var(--neon-cyan));
-    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.6),
+    box-shadow: 0 0 12px hsl(var(--neon-cyan) / 0.7),
                 inset 0 0 10px hsl(var(--neon-cyan) / 0.2);
   }
 
   .neon-border-pink {
-    border: 2px solid #f446a0;
-    box-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff,
-                inset 0 0 10px rgba(244, 70, 160, 0.2);
+    border: 2px solid #e84195;
+    box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0,
+                inset 0 0 10px rgba(232, 65, 149, 0.2);
   }
 
   .nav-link {
@@ -161,8 +161,8 @@ All colors MUST be HSL.
   }
 
   .nav-link:hover {
-    color: #f446a0;
-    text-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff;
+    color: #e84195;
+    text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
   }
 
   .nav-link::after {
@@ -200,16 +200,27 @@ All colors MUST be HSL.
     background-color: #00ffff;
     color: hsl(var(--background));
     border: 2px solid #00ffff;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 6px #33ffff, 0 0 14px #99ffff;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0 0 8px #33ffff, 0 0 16px #99ffff;
   }
 
   .hero-button:hover {
-    background-color: #f446a0;
-    border-color: #f446a0;
+    background-color: #e84195;
+    border-color: #e84195;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff;
+    box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes pulse-glow {
@@ -227,16 +238,16 @@ All colors MUST be HSL.
   }
 
   @keyframes flicker {
-    0%, 100% { opacity: 1; text-shadow: 0 0 3px #cf33c3, 0 0 8px #9a00ff; }
-    50% { opacity: 0.8; text-shadow: 0 0 6px #cf33c3, 0 0 12px #9a00ff; }
+    0%, 100% { opacity: 1; text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0; }
+    50% { opacity: 0.8; text-shadow: 0 0 6px #c02ea0, 0 0 10px #8e00e0; }
   }
 
   @keyframes glow-pulse {
     0%, 100% { 
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3), 0 0 25px rgba(244, 70, 160, 0.2);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.35), 0 0 25px rgba(232, 65, 149, 0.2);
     }
     50% { 
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.5), 0 0 40px rgba(244, 70, 160, 0.4);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.55), 0 0 40px rgba(232, 65, 149, 0.35);
     }
   }
 
@@ -245,7 +256,7 @@ All colors MUST be HSL.
   }
 
   .hover-lift {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease-in-out;
   }
 
   .hover-lift:hover {

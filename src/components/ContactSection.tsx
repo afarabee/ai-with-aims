@@ -27,9 +27,9 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }, 1500);
   };
-  return <section id="contact" className="relative py-20 pb-28 bg-background">
+  return <section id="contact" className="relative py-24 pb-32 bg-background">
       {/* Bottom fade-out gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10" style={{
+      <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10" style={{
       background: 'linear-gradient(to bottom, transparent, #0d061a)'
     }} />
 

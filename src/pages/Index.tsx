@@ -16,7 +16,7 @@ const Index = () => {
       <ProjectsSection />
       
       {/* Dual CTA Buttons */}
-      <div className="relative py-12 bg-background">
+      <div className="relative py-16 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-center items-center gap-4">
             <a href="/projects">
