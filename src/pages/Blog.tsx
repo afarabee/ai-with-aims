@@ -3,7 +3,6 @@ import { Calendar, Clock } from 'lucide-react';
 import AboutBackground from '@/components/AboutBackground';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import ScrollIndicator from '@/components/ScrollIndicator';
 import { supabase } from '@/integrations/supabase/client';
 import { useQuery } from '@tanstack/react-query';
 
@@ -178,9 +177,6 @@ const Blog = () => {
           </div>
         )}
         </div>
-
-        {/* Scroll Indicator */}
-        <ScrollIndicator />
       </main>
 
       <Footer />
