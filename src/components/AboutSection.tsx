@@ -78,16 +78,9 @@ const AboutSection = () => {
             </div>
           </div>
 
-          {/* Divider */}
-          <div 
-            className="h-px w-full"
-            style={{ background: 'rgba(0, 255, 255, 0.2)' }}
-          />
-        </div>
-
-        {/* Social Icons & CTA */}
-        <div className="mb-20">
-          <div className="flex flex-col items-center gap-8">
+          {/* Social Icons & CTA */}
+          <div className="mb-20 mt-8">
+            <div className="flex flex-col items-center gap-8">
             <div className="flex gap-6">
               {[
                 { icon: Linkedin, href: '#', label: 'LinkedIn' },
@@ -118,16 +111,33 @@ const AboutSection = () => {
             </div>
 
             <Button
-              className="hero-button px-8 py-6 text-base"
+              className="hero-button text-sm"
+              style={{ 
+                width: '240px',
+                fontSize: '0.9rem',
+                padding: '1.25rem 1.5rem'
+              }}
             >
               Download Resume (PDF)
             </Button>
           </div>
         </div>
       </div>
+      </div>
 
       {/* Scroll Indicator */}
       <ScrollIndicator />
+
+      {/* Glowing Divider between About and Projects */}
+      <div 
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] w-4/5 max-w-4xl"
+        style={{
+          background: 'linear-gradient(90deg, #f446a0, #b8f2e3)',
+          boxShadow: '0 0 10px rgba(244, 70, 160, 0.6), 0 0 20px rgba(184, 242, 227, 0.4)',
+          filter: 'blur(0.5px)',
+          zIndex: 20
+        }}
+      />
 
       {/* Section Divider */}
       <SectionDivider variant="curve" color="#0f0b1d" />
