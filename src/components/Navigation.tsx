@@ -1,9 +1,32 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    
+    if (location.pathname === '/') {
+      // Already on home page, just scroll to contact
+      const contactSection = document.getElementById('contact');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // Navigate to home first, then scroll to contact
+      navigate('/');
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) => {
     return `nav-link transition-all duration-300 ${
@@ -96,6 +119,7 @@ const Navigation = () => {
             </NavLink>
             <a 
               href="/#contact"
+              onClick={handleContactClick}
               className="nav-link transition-all duration-300"
               onMouseEnter={(e) => {
                 e.currentTarget.style.textShadow = '0 0 10px rgba(184, 242, 227, 0.8)';
@@ -151,7 +175,10 @@ const Navigation = () => {
             </NavLink>
             <a 
               href="/#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                handleContactClick(e);
+                setMobileMenuOpen(false);
+              }}
               className="block py-2 nav-link w-full text-left"
             >
               Contact

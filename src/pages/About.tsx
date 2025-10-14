@@ -147,11 +147,19 @@ const About = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 mt-4">
               <Button
-                className="hero-button text-sm neon-pulse-hover"
+                className="hero-button text-sm transition-all duration-300"
                 style={{ 
                   width: '220px',
                   fontSize: '0.9rem',
                   padding: '1rem 1.5rem'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
+                  e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.animation = '';
+                  e.currentTarget.style.boxShadow = '';
                 }}
               >
                 Download Resume (PDF)
@@ -159,11 +167,19 @@ const About = () => {
               
               <Link to="/projects">
                 <Button
-                  className="hero-button text-sm neon-pulse-hover"
+                  className="hero-button text-sm transition-all duration-300"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
+                    e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.animation = '';
+                    e.currentTarget.style.boxShadow = '';
                   }}
                 >
                   View My Projects
@@ -172,11 +188,19 @@ const About = () => {
               
               <Link to="/blog">
                 <Button
-                  className="hero-button text-sm neon-pulse-hover"
+                  className="hero-button text-sm transition-all duration-300"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
+                    e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.animation = '';
+                    e.currentTarget.style.boxShadow = '';
                   }}
                 >
                   Read My Blog
