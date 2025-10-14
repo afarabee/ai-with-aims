@@ -243,6 +243,29 @@ const Projects = () => {
               Explore My Prompt Library →
             </Button>
           </div>
+
+          {/* Back to Home Link */}
+          <div className="text-center mt-16 mb-8">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-sm font-montserrat transition-all duration-300"
+              style={{
+                color: '#ffffff',
+                textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+                e.currentTarget.style.textDecoration = 'underline';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
+                e.currentTarget.style.textDecoration = 'none';
+              }}
+            >
+              <ArrowLeft size={16} />
+              Back to Home
+            </Link>
+          </div>
         </div>
       </main>
 
