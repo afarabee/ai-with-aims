@@ -115,29 +115,6 @@ const BlogPost = () => {
       <Navigation />
       
       <main className="relative z-10">
-        {/* Back Button */}
-        <div className="max-w-[900px] mx-auto px-10 pt-24">
-          <Link 
-            to="/" 
-            className="inline-flex items-center gap-2 text-sm font-montserrat transition-all duration-300"
-            style={{
-              color: '#f27f9b',
-              textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
-              e.currentTarget.style.textDecoration = 'underline';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
-              e.currentTarget.style.textDecoration = 'none';
-            }}
-          >
-            <ArrowLeft size={16} />
-            Back to Home
-          </Link>
-        </div>
-
         {/* Hero Banner */}
         <section className="relative max-w-[900px] mx-auto px-10 mt-10 mb-10">
           {post.banner_image ? (
@@ -295,6 +272,29 @@ const BlogPost = () => {
               >
                 <ArrowLeft size={18} />
                 Back to All Posts
+              </Link>
+            </div>
+
+            {/* Back to Home Link */}
+            <div className="text-center mt-8">
+              <Link 
+                to="/" 
+                className="inline-flex items-center gap-2 text-sm font-montserrat transition-all duration-300"
+                style={{
+                  color: '#ffffff',
+                  textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+                  e.currentTarget.style.textDecoration = 'underline';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
+                  e.currentTarget.style.textDecoration = 'none';
+                }}
+              >
+                <ArrowLeft size={16} />
+                Back to Home
               </Link>
             </div>
           </div>

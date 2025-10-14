@@ -215,16 +215,18 @@ const About = () => {
               to="/" 
               className="text-sm mt-8 transition-all duration-300 group"
               style={{
-                color: '#00ffff',
-                textShadow: '0 0 6px rgba(0, 255, 255, 0.6)',
+                color: '#ffffff',
+                textShadow: '0 0 6px rgba(242, 127, 155, 0.5)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#f446a0';
-                e.currentTarget.style.textShadow = '0 0 8px rgba(244, 70, 160, 0.8)';
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+                e.currentTarget.style.textDecoration = 'underline';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#00ffff';
-                e.currentTarget.style.textShadow = '0 0 6px rgba(0, 255, 255, 0.6)';
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.textShadow = '0 0 6px rgba(242, 127, 155, 0.5)';
+                e.currentTarget.style.textDecoration = 'none';
               }}
             >
               <span className="inline-flex items-center gap-2">
