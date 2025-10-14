@@ -69,16 +69,16 @@ const ContactSection = () => {
               <input type="text" placeholder="Your Name" value={formData.name} onChange={e => setFormData({
               ...formData,
               name: e.target.value
-            })} className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all" />
+            })} className="w-full px-4 py-3 rounded bg-muted/50 text-white placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all" />
               <input type="email" placeholder="Your Email" value={formData.email} onChange={e => setFormData({
               ...formData,
               email: e.target.value
-            })} className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all" />
+            })} className="w-full px-4 py-3 rounded bg-muted/50 text-white placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none transition-all" />
             </div>
             <textarea placeholder="Your Message" rows={4} value={formData.message} onChange={e => setFormData({
             ...formData,
             message: e.target.value
-          })} className="w-full px-4 py-3 rounded bg-muted/50 neon-text-cyan placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none resize-none transition-all"></textarea>
+          })} className="w-full px-4 py-3 rounded bg-muted/50 text-white placeholder-cyan-500/50 border border-cyan-500/30 focus:shadow-[0_0_20px_rgba(0,255,255,0.6)] focus:outline-none resize-none transition-all"></textarea>
             <button type="submit" disabled={isSubmitting} className="hero-button px-8 py-3 disabled:opacity-50">
               {isSubmitting ? "Sending..." : "Send Message"}
             </button>
