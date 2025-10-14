@@ -115,7 +115,7 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {projects.map((project, index) => (
+            {projects.length > 0 ? projects.map((project, index) => (
               <div
                 key={index}
                 data-index={index}
@@ -191,7 +191,26 @@ const Projects = () => {
                   </div>
                 </GlowCard>
               </div>
-            ))}
+            )) : (
+              <div className="col-span-full text-center py-20">
+                <p 
+                  className="text-2xl font-josefin"
+                  style={{
+                    color: '#b8f2e3',
+                    textShadow: '0 0 10px rgba(184, 242, 227, 0.6)',
+                  }}
+                >
+                  Projects coming soon — check back soon to see what I'm building next!
+                </p>
+                <div 
+                  className="w-32 h-1 mx-auto mt-4"
+                  style={{
+                    background: 'linear-gradient(90deg, transparent, #f446a0, transparent)',
+                    boxShadow: '0 0 8px rgba(244, 70, 160, 0.5)',
+                  }}
+                />
+              </div>
+            )}
           </div>
 
           {/* Footer CTA */}

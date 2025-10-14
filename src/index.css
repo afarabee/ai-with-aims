@@ -205,11 +205,11 @@ All colors MUST be HSL.
   }
 
   .hero-button:hover {
-    background-color: #e84195;
-    border-color: #e84195;
+    background-color: #f446a0;
+    border-color: #f446a0;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
+    box-shadow: 0 0 12px rgba(244, 70, 160, 0.8), 0 0 20px rgba(244, 70, 160, 0.5);
   }
 
   @keyframes neonPulseHover {

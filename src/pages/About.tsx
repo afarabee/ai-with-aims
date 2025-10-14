@@ -31,9 +31,9 @@ const About = () => {
         
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h1 
-              className="text-5xl md:text-6xl font-rajdhani font-bold mb-4"
+              className="text-5xl md:text-6xl font-rajdhani font-bold mb-6"
               style={{
                 color: '#f446a0',
                 textShadow: '0 0 20px rgba(244, 70, 160, 0.8), 0 0 40px rgba(244, 70, 160, 0.4)',
@@ -100,58 +100,68 @@ const About = () => {
             </div>
           </div>
 
-          {/* Social Icons & Buttons */}
-          <div className="flex flex-col items-center gap-8 mt-20">
-            {/* Social Icons */}
-            <div className="flex gap-6">
-              {[
-                { icon: Linkedin, href: 'https://www.linkedin.com/in/aimeefarabee/', label: 'LinkedIn', external: true },
-                { icon: Github, href: 'https://github.com/afarabee', label: 'GitHub', external: true },
-                { icon: Mail, href: 'mailto:genai-aims@gmail.com', label: 'Email', external: false },
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  aria-label={social.label}
-                  target={social.external ? '_blank' : undefined}
-                  rel={social.external ? 'noopener noreferrer' : undefined}
-                  className="w-16 h-16 rounded-full flex items-center justify-center border-2 transition-all duration-300 focus:ring-2 focus:ring-cyan-400/50 focus:outline-none cursor-pointer"
-                  style={{
-                    borderColor: '#00ffff',
-                    boxShadow: '0 0 8px #33ffff, 0 0 16px #99ffff',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#f446a0';
-                    e.currentTarget.style.boxShadow = '0 0 8px #f446a0, 0 0 16px #cf33c3';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#00ffff';
-                    e.currentTarget.style.boxShadow = '0 0 8px #33ffff, 0 0 16px #99ffff';
-                  }}
-                >
-                  <social.icon size={28} className="neon-text-cyan" />
-                </a>
-              ))}
-            </div>
+          {/* Social Icons */}
+          <div className="flex justify-center gap-6 mt-20 mb-12">
+            {[
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/aimeefarabee/', label: 'LinkedIn', external: true },
+              { icon: Github, href: 'https://github.com/afarabee', label: 'GitHub', external: true },
+              { icon: Mail, href: 'mailto:genai-aims@gmail.com', label: 'Email', external: false },
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                aria-label={social.label}
+                target={social.external ? '_blank' : undefined}
+                rel={social.external ? 'noopener noreferrer' : undefined}
+                className="w-16 h-16 rounded-full flex items-center justify-center border-2 transition-all duration-400 focus:ring-2 focus:ring-cyan-400/50 focus:outline-none cursor-pointer"
+                style={{
+                  borderColor: '#00ffff',
+                  boxShadow: '0 0 8px #33ffff, 0 0 16px #99ffff',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = '#f446a0';
+                  e.currentTarget.style.boxShadow = '0 0 12px #f446a0, 0 0 20px #cf33c3';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = '#00ffff';
+                  e.currentTarget.style.boxShadow = '0 0 8px #33ffff, 0 0 16px #99ffff';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
+              >
+                <social.icon size={28} className="neon-text-cyan" />
+              </a>
+            ))}
+          </div>
 
+          {/* Action Buttons Section */}
+          <div className="flex flex-col items-center gap-6 mt-8">
             {/* Neon divider */}
             <div 
-              className="w-full max-w-md h-px mt-4"
+              className="w-full max-w-md h-px"
               style={{
-                background: 'linear-gradient(90deg, transparent 0%, #00ffff 50%, #f446a0 100%)',
-                opacity: 0.4,
-                boxShadow: '0 0 6px rgba(0, 255, 255, 0.3)',
+                background: 'linear-gradient(90deg, transparent 0%, #00ffff 30%, #f446a0 70%, transparent 100%)',
+                opacity: 0.5,
+                boxShadow: '0 0 8px rgba(0, 255, 255, 0.4)',
               }}
             />
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 mt-4">
               <Button
-                className="hero-button text-sm neon-pulse-hover"
+                className="hero-button text-sm transition-all duration-400"
                 style={{ 
                   width: '220px',
                   fontSize: '0.9rem',
                   padding: '1rem 1.5rem'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 8px #33ffff, 0 0 16px #99ffff';
+                  e.currentTarget.style.transform = 'scale(1)';
                 }}
               >
                 Download Resume (PDF)
@@ -159,11 +169,19 @@ const About = () => {
               
               <Link to="/projects">
                 <Button
-                  className="hero-button text-sm neon-pulse-hover"
+                  className="hero-button text-sm transition-all duration-400"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 8px #33ffff, 0 0 16px #99ffff';
+                    e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
                   View My Projects
@@ -172,17 +190,48 @@ const About = () => {
               
               <Link to="/blog">
                 <Button
-                  className="hero-button text-sm neon-pulse-hover"
+                  className="hero-button text-sm transition-all duration-400"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 8px #33ffff, 0 0 16px #99ffff';
+                    e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
                   Read My Blog
                 </Button>
               </Link>
             </div>
+
+            {/* Back to Home Link */}
+            <Link 
+              to="/" 
+              className="text-sm mt-8 transition-all duration-300 group"
+              style={{
+                color: '#00ffff',
+                textShadow: '0 0 6px rgba(0, 255, 255, 0.6)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#f446a0';
+                e.currentTarget.style.textShadow = '0 0 8px rgba(244, 70, 160, 0.8)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#00ffff';
+                e.currentTarget.style.textShadow = '0 0 6px rgba(0, 255, 255, 0.6)';
+              }}
+            >
+              <span className="inline-flex items-center gap-2">
+                <span className="transform group-hover:-translate-x-1 transition-transform duration-300">←</span>
+                Back to Home
+              </span>
+            </Link>
           </div>
         </div>
       </section>

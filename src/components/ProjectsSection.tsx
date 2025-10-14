@@ -87,7 +87,7 @@ const ProjectsSection = () => {
   ];
 
   return (
-    <section id="projects" className="relative min-h-screen py-24 pb-32">
+    <section id="projects" className="relative min-h-screen" style={{ paddingTop: '100px', paddingBottom: '100px' }}>
       {/* Background - same as About page */}
       <div className="absolute inset-0 overflow-hidden">
         <div 

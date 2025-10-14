@@ -89,13 +89,25 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="hero-button px-8 py-3 rounded"
+                className="hero-button px-8 py-3 rounded transition-all duration-400"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
               >
                 View Projects
               </button>
               <button
                 onClick={() => scrollToSection("blog")}
-                className="hero-button px-8 py-3 rounded"
+                className="hero-button px-8 py-3 rounded transition-all duration-400"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
               >
                 Read Blog
               </button>

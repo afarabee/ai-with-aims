@@ -97,6 +97,17 @@ const Navigation = () => {
             <a 
               href="/#contact"
               className="nav-link transition-all duration-300"
+              onClick={(e) => {
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    const navHeight = 80;
+                    const elementPosition = element.offsetTop - navHeight;
+                    window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+                  }
+                }
+              }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.textShadow = '0 0 10px rgba(184, 242, 227, 0.8)';
               }}
@@ -151,7 +162,18 @@ const Navigation = () => {
             </NavLink>
             <a 
               href="/#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                if (window.location.pathname === '/') {
+                  e.preventDefault();
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    const navHeight = 80;
+                    const elementPosition = element.offsetTop - navHeight;
+                    window.scrollTo({ top: elementPosition, behavior: 'smooth' });
+                  }
+                }
+              }}
               className="block py-2 nav-link w-full text-left"
             >
               Contact
