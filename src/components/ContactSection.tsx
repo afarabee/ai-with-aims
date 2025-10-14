@@ -27,14 +27,14 @@ const ContactSection = () => {
       setIsSubmitting(false);
     }, 1500);
   };
-  return <section id="contact" className="relative pt-20 pb-32 bg-background">
+  return <section id="contact" className="relative py-24 pb-32 bg-background">
       {/* Bottom fade-out gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10" style={{
       background: 'linear-gradient(to bottom, transparent, #0d061a)'
     }} />
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold neon-text-pink mb-12">Let's Connect</h2>
+        <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold neon-text-pink mb-8">Let's Connect</h2>
         
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           <GlowCard as="a" href="mailto:genai-aims@gmail.com">

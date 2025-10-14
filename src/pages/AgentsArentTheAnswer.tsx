@@ -19,11 +19,11 @@ const AgentsArentTheAnswer = () => {
         {/* Back Button */}
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-4">
           <Link 
-            to="/" 
+            to="/blog" 
             className="inline-flex items-center gap-2 neon-text-cyan hover:neon-text-pink transition-all duration-300 font-montserrat font-semibold"
           >
             <ArrowLeft size={20} />
-            Back to Home
+            Back to Blog
           </Link>
         </div>
 

@@ -33,7 +33,7 @@ const About = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h1 
-              className="text-5xl md:text-6xl font-rajdhani font-bold mb-8"
+              className="text-5xl md:text-6xl font-rajdhani font-bold mb-4"
               style={{
                 color: '#f446a0',
                 textShadow: '0 0 20px rgba(244, 70, 160, 0.8), 0 0 40px rgba(244, 70, 160, 0.4)',
@@ -147,19 +147,11 @@ const About = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-5 mt-4">
               <Button
-                className="hero-button text-sm transition-all duration-300"
+                className="hero-button text-sm neon-pulse-hover"
                 style={{ 
                   width: '220px',
                   fontSize: '0.9rem',
                   padding: '1rem 1.5rem'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
-                  e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.animation = '';
-                  e.currentTarget.style.boxShadow = '';
                 }}
               >
                 Download Resume (PDF)
@@ -167,19 +159,11 @@ const About = () => {
               
               <Link to="/projects">
                 <Button
-                  className="hero-button text-sm transition-all duration-300"
+                  className="hero-button text-sm neon-pulse-hover"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
-                    e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.animation = '';
-                    e.currentTarget.style.boxShadow = '';
                   }}
                 >
                   View My Projects
@@ -188,50 +172,15 @@ const About = () => {
               
               <Link to="/blog">
                 <Button
-                  className="hero-button text-sm transition-all duration-300"
+                  className="hero-button text-sm neon-pulse-hover"
                   style={{ 
                     width: '220px',
                     fontSize: '0.9rem',
                     padding: '1rem 1.5rem'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.animation = 'neonPulseHover 0.4s ease-in-out';
-                    e.currentTarget.style.boxShadow = '0 0 15px rgba(244, 70, 160, 0.7), 0 0 30px rgba(244, 70, 160, 0.5)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.animation = '';
-                    e.currentTarget.style.boxShadow = '';
-                  }}
                 >
                   Read My Blog
                 </Button>
-              </Link>
-            </div>
-
-            {/* Back to Home Link */}
-            <div className="mt-20">
-              <Link 
-                to="/"
-                className="inline-flex items-center gap-2 text-base font-josefin neon-text-cyan/80 hover:neon-text-cyan transition-all duration-300 group relative"
-                style={{
-                  textDecoration: 'none',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.textShadow = '0 0 8px rgba(57, 225, 227, 0.8)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.textShadow = '';
-                }}
-              >
-                <span className="transform group-hover:-translate-x-1 transition-transform duration-300">←</span>
-                Back to Home
-                <span 
-                  className="absolute bottom-0 left-0 w-full h-[1px] origin-right scale-x-0 transition-transform duration-300 group-hover:scale-x-100 group-hover:origin-left"
-                  style={{
-                    background: 'linear-gradient(90deg, #39e1e3 0%, #f446a0 100%)',
-                    boxShadow: '0 0 4px rgba(57, 225, 227, 0.6)'
-                  }}
-                />
               </Link>
             </div>
           </div>

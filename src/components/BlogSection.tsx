@@ -35,15 +35,11 @@ const BlogSection = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    // Start rotation after 0.5s delay
-    const startDelay = setTimeout(() => {
-      rotationTimerRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % 5);
-      }, 5500);
-    }, 500);
+    rotationTimerRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % 5);
+    }, 5000);
 
     return () => {
-      clearTimeout(startDelay);
       if (rotationTimerRef.current) {
         clearInterval(rotationTimerRef.current);
       }
@@ -138,7 +134,7 @@ const BlogSection = () => {
         />
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 carousel-container">
-          <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-16">
+          <h2 className="font-rajdhani text-4xl md:text-5xl font-semibold text-center neon-text-pink mb-12">
             Latest Blog Posts
           </h2>
 

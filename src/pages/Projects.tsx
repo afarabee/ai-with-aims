@@ -104,8 +104,8 @@ const Projects = () => {
       <main className="relative z-10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">
           {/* Page Header */}
-          <div className="text-center mb-20">
-            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-6 neon-text-pink">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-4 neon-text-pink">
               Projects & Applied AI Work
             </h1>
             <p className="text-xl md:text-2xl font-josefin italic neon-text-cyan">
@@ -115,29 +115,87 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {/* Placeholder message */}
-            <div className="col-span-full text-center py-20">
-              <p 
-                className="text-2xl md:text-3xl font-josefin italic mb-6"
-                style={{
-                  color: '#b8f2e3',
-                  textShadow: '0 0 8px rgba(184, 242, 227, 0.6)',
-                }}
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                data-index={index}
+                className={`project-card hover-lift transition-all duration-700 ${
+                  visibleCards[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
               >
-                Projects coming soon — check back soon to see what I'm building next!
-              </p>
-              <div 
-                className="w-64 h-px mx-auto"
-                style={{
-                  background: 'linear-gradient(90deg, transparent 0%, #f446a0 50%, transparent 100%)',
-                  boxShadow: '0 0 6px rgba(244, 70, 160, 0.4)',
-                }}
-              />
-            </div>
+                <GlowCard 
+                  style={{
+                    borderRadius: '16px',
+                    backgroundColor: 'rgba(25, 10, 40, 0.85)',
+                    backdropFilter: 'blur(4px)',
+                    border: '1px solid rgba(180, 242, 227, 0.4)',
+                    boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
+                    padding: '24px'
+                  }}
+                >
+                  {/* Project Title */}
+                  <h3 className="text-2xl font-rajdhani font-semibold mb-2 neon-text-yellow">
+                    {project.title}
+                  </h3>
+
+                  {/* Subtitle */}
+                  <p className="text-lg font-josefin italic mb-4 neon-text-pink">
+                    {project.subtitle}
+                  </p>
+
+                  {/* Description bullets */}
+                  <div className="space-y-2 mb-6">
+                    {project.description.map((line, idx) => (
+                      <p key={idx} className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.4em' }}>
+                        • {line}
+                      </p>
+                    ))}
+                  </div>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1 rounded text-xs font-titillium font-semibold neon-text-cyan transition-all duration-300 hover:scale-110"
+                        style={{ 
+                          background: 'rgba(0, 0, 0, 0.3)',
+                          border: '1px solid rgba(0, 255, 255, 0.3)'
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-4">
+                    {project.links.github && (
+                      <a
+                        href={project.links.github}
+                        aria-label="View on GitHub"
+                        className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                      >
+                        <Github size={20} />
+                      </a>
+                    )}
+                    {project.links.demo && (
+                      <a
+                        href={project.links.demo}
+                        aria-label="View Demo"
+                        className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                      >
+                        <ExternalLink size={20} />
+                      </a>
+                    )}
+                  </div>
+                </GlowCard>
+              </div>
+            ))}
           </div>
 
           {/* Footer CTA */}
-          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4 mt-20">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-4">
             <Button className="hero-button px-8 py-6 text-base flex items-center gap-2">
               Explore My Prompt Library →
             </Button>
