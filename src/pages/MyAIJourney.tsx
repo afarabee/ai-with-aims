@@ -8,11 +8,11 @@ const MyAIJourney = () => {
       <nav className="bg-white border-b border-sage-gray/20 py-4 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-6">
           <Link 
-            to="/blog" 
+            to="/" 
             className="inline-flex items-center gap-2 text-dark-graphite hover:text-rose-quartz transition-colors font-narrow"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Blog
+            Back to Home
           </Link>
         </div>
       </nav>

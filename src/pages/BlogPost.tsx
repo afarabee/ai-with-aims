@@ -118,23 +118,23 @@ const BlogPost = () => {
         {/* Back Button */}
         <div className="max-w-[900px] mx-auto px-10 pt-24">
           <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-2 text-sm font-montserrat font-medium transition-all duration-300"
+            to="/" 
+            className="inline-flex items-center gap-2 text-sm font-montserrat transition-all duration-300"
             style={{
-              color: '#b8f2e3',
-              textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
+              color: '#f27f9b',
+              textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.color = '#f446a0';
-              e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.8)';
+              e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+              e.currentTarget.style.textDecoration = 'underline';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.color = '#b8f2e3';
-              e.currentTarget.style.textShadow = '0 0 15px rgba(184, 242, 227, 0.7)';
+              e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
+              e.currentTarget.style.textDecoration = 'none';
             }}
           >
             <ArrowLeft size={16} />
-            Back to Blogs
+            Back to Home
           </Link>
         </div>
 

@@ -19,11 +19,23 @@ const AgentsArentTheAnswer = () => {
         {/* Back Button */}
         <div className="max-w-6xl mx-auto px-6 pt-28 pb-4">
           <Link 
-            to="/blog" 
-            className="inline-flex items-center gap-2 neon-text-cyan hover:neon-text-pink transition-all duration-300 font-montserrat font-semibold"
+            to="/" 
+            className="inline-flex items-center gap-2 transition-all duration-300 font-montserrat text-sm"
+            style={{
+              color: '#f27f9b',
+              textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+              e.currentTarget.style.textDecoration = 'underline';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
+              e.currentTarget.style.textDecoration = 'none';
+            }}
           >
-            <ArrowLeft size={20} />
-            Back to Blog
+            <ArrowLeft size={18} />
+            Back to Home
           </Link>
         </div>
 

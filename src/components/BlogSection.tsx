@@ -35,11 +35,15 @@ const BlogSection = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    rotationTimerRef.current = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % 5);
-    }, 5000);
+    // Start rotation after 0.5s delay
+    const initialDelay = setTimeout(() => {
+      rotationTimerRef.current = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % 5);
+      }, 5000);
+    }, 500);
 
     return () => {
+      clearTimeout(initialDelay);
       if (rotationTimerRef.current) {
         clearInterval(rotationTimerRef.current);
       }

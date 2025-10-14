@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Github, ExternalLink } from 'lucide-react';
+import { Github, ExternalLink, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import GlowCard from '@/components/ui/glow-card';
 import { Button } from '@/components/ui/button';
 import AboutBackground from '@/components/AboutBackground';
@@ -103,6 +104,29 @@ const Projects = () => {
       
       <main className="relative z-10 pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6">
+          {/* Back to Home Link */}
+          <div className="mb-8">
+            <Link 
+              to="/" 
+              className="inline-flex items-center gap-2 text-sm font-montserrat transition-all duration-300"
+              style={{
+                color: '#f27f9b',
+                textShadow: '0 0 8px rgba(242, 127, 155, 0.5)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.textShadow = '0 0 12px rgba(242, 127, 155, 0.8), 0 0 20px rgba(242, 127, 155, 0.4)';
+                e.currentTarget.style.textDecoration = 'underline';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.textShadow = '0 0 8px rgba(242, 127, 155, 0.5)';
+                e.currentTarget.style.textDecoration = 'none';
+              }}
+            >
+              <span className="transform transition-transform duration-300 group-hover:-translate-x-1">←</span>
+              Back to Home
+            </Link>
+          </div>
+
           {/* Page Header */}
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-rajdhani font-semibold mb-4 neon-text-pink">
