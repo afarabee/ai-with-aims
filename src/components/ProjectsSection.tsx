@@ -76,7 +76,7 @@ const ProjectsSection = () => {
         <div 
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(180deg, #0f0b1d 0%, #1f0d36 100%)'
+            background: `linear-gradient(180deg, hsl(var(--clr-bg-dark)) 0%, hsl(var(--clr-bg-deep)) 100%)`
           }}
         />
         
@@ -95,7 +95,7 @@ const ProjectsSection = () => {
               key={i}
               className="absolute w-1 h-1 rounded-full"
               style={{
-                background: i % 2 === 0 ? '#00ffff' : '#f446a0',
+                background: i % 2 === 0 ? `hsl(var(--clr-cyan))` : `hsl(var(--clr-pink))`,
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
                 animation: `float ${15 + Math.random() * 25}s infinite ease-in-out`,
@@ -110,7 +110,7 @@ const ProjectsSection = () => {
       <div 
         className="absolute bottom-0 left-0 right-0 h-40 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, transparent, #0d061a)',
+          background: `linear-gradient(to bottom, transparent, hsl(var(--clr-bg-deep)))`,
         }}
       />
 
@@ -157,7 +157,7 @@ const ProjectsSection = () => {
                 {/* Description bullets */}
                 <div className="space-y-2 mb-6">
                   {project.description.map((line, idx) => (
-                    <p key={idx} className="font-ibm text-sm" style={{ color: '#e6e6e6', lineHeight: '1.5em' }}>
+                    <p key={idx} className="font-ibm text-sm" style={{ color: 'hsl(var(--clr-text-light))', lineHeight: '1.5em' }}>
                       • {line}
                     </p>
                   ))}
@@ -168,10 +168,11 @@ const ProjectsSection = () => {
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="px-3 py-1 rounded text-xs font-titillium font-semibold neon-text-cyan transition-all duration-300 hover:scale-110"
+                      className="px-3 py-1 rounded text-xs font-titillium font-semibold neon-text-cyan hover:neon-text-pink"
                       style={{ 
                         background: 'rgba(0, 0, 0, 0.3)',
-                        border: '1px solid rgba(0, 255, 255, 0.3)'
+                        border: `1px solid hsl(var(--clr-cyan) / 0.3)`,
+                        transition: 'var(--transition-smooth)'
                       }}
                     >
                       {tag}
@@ -185,7 +186,8 @@ const ProjectsSection = () => {
                     <a
                       href={project.links.github}
                       aria-label="View on GitHub"
-                      className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                      className="neon-text-cyan hover:neon-text-pink"
+                      style={{ transition: 'var(--transition-smooth)' }}
                     >
                       <Github size={20} />
                     </a>
@@ -194,7 +196,8 @@ const ProjectsSection = () => {
                     <a
                       href={project.links.demo}
                       aria-label="View Demo"
-                      className="transition-all duration-300 hover:scale-110 neon-text-cyan"
+                      className="neon-text-cyan hover:neon-text-pink"
+                      style={{ transition: 'var(--transition-smooth)' }}
                     >
                       <ExternalLink size={20} />
                     </a>

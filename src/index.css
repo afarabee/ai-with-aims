@@ -73,6 +73,25 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 180 100% 50%;
     --sidebar-border: 180 100% 50%;
     --sidebar-ring: 180 100% 50%;
+
+    /* Project-specific brand colors */
+    --clr-bg-dark: 262 45% 12%;
+    --clr-bg-deep: 261 74% 6%;
+    --clr-pink: 328 94% 62%;
+    --clr-yellow: 56 97% 61%;
+    --clr-cyan: 180 100% 56%;
+    --clr-text-light: 0 0% 97%;
+    --clr-text-dim: 168 69% 81%;
+
+    /* Font families */
+    --font-title: "Rajdhani", sans-serif;
+    --font-subtitle: "Josefin Sans", sans-serif;
+    --font-body: "IBM Plex Sans", sans-serif;
+    --font-mono: "Titillium Web", monospace;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s ease-in-out;
+    --transition-slow: all 0.5s ease-in-out;
   }
 
   .dark {
@@ -124,18 +143,18 @@ All colors MUST be HSL.
 
   /* Unified Glow System - Adjusted intensities */
   .neon-text-yellow {
-    color: #e5fb52;
-    text-shadow: 0 0 8px #e5fb85, 0 0 18px #edfca0;
+    color: hsl(var(--clr-yellow));
+    text-shadow: 0 0 20px hsl(var(--clr-yellow) / 0.8), 0 0 35px hsl(var(--clr-yellow) / 0.4);
   }
 
   .neon-text-cyan {
-    color: #00ffff;
-    text-shadow: 0 0 8px #33ffff, 0 0 16px #99ffff;
+    color: hsl(var(--clr-cyan));
+    text-shadow: 0 0 15px hsl(var(--clr-cyan) / 0.7), 0 0 25px hsl(var(--clr-cyan) / 0.4);
   }
 
   .neon-text-pink {
-    color: #e84195;
-    text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
+    color: hsl(var(--clr-pink));
+    text-shadow: 0 0 15px hsl(var(--clr-pink) / 0.6), 0 0 25px hsl(var(--clr-pink) / 0.3);
   }
 
   .neon-border-cyan {
@@ -301,12 +320,31 @@ All colors MUST be HSL.
   }
 
   .hover-lift {
-    transition: all 0.4s ease-in-out;
+    transition: var(--transition-smooth);
   }
 
   .hover-lift:hover {
     transform: translateY(-8px);
     animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Project card glow effects */
+  .project-glow-cyan {
+    box-shadow: 0 0 15px hsl(var(--clr-cyan) / 0.3);
+    transition: var(--transition-smooth);
+  }
+
+  .project-glow-cyan:hover {
+    box-shadow: 0 0 25px hsl(var(--clr-cyan) / 0.5), 0 0 35px hsl(var(--clr-pink) / 0.2);
+  }
+
+  .project-glow-pink {
+    box-shadow: 0 0 15px hsl(var(--clr-pink) / 0.4);
+    transition: var(--transition-smooth);
+  }
+
+  .project-glow-pink:hover {
+    box-shadow: 0 0 25px hsl(var(--clr-pink) / 0.6), 0 0 35px hsl(var(--clr-cyan) / 0.3);
   }
 }
 
