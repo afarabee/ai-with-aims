@@ -1,14 +1,54 @@
 import { useState, useEffect } from 'react';
 import { Github, ExternalLink, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import GlowCard from '@/components/ui/glow-card';
 import { Button } from '@/components/ui/button';
 import AboutBackground from '@/components/AboutBackground';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { supabase } from '@/integrations/supabase/client';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const Projects = () => {
-  const [visibleCards, setVisibleCards] = useState<boolean[]>([false, false, false, false]);
+  const [visibleCards, setVisibleCards] = useState<boolean[]>([]);
+
+  // Fetch projects from database
+  const { data: projectsData, isLoading } = useQuery({
+    queryKey: ['projects'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('status', 'Active')
+        .order('display_order', { ascending: false })
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    }
+  });
+
+  // Map database fields to component structure
+  const projects = projectsData?.map(project => ({
+    title: project.project_title,
+    subtitle: project.subtitle,
+    description: [
+      `Challenge: ${project.challenge}`,
+      `Solution: ${project.solution}`,
+      `Impact: ${project.impact}`
+    ],
+    tags: project.technologies || [],
+    links: {
+      github: project.github_link || undefined,
+      demo: project.project_page_link || undefined
+    }
+  })) || [];
+
+  useEffect(() => {
+    // Initialize visible cards state based on projects count
+    setVisibleCards(new Array(projects.length).fill(false));
+  }, [projects.length]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,64 +71,7 @@ const Projects = () => {
     cards.forEach((card) => observer.observe(card));
 
     return () => observer.disconnect();
-  }, []);
-
-  const projects = [
-    {
-      title: 'StoryCrafter',
-      subtitle: 'AI user-story generator for Azure DevOps',
-      description: [
-        'Challenge: Manual story writing consumed 60% of sprint planning time',
-        'Solution: Automated user story generation with LangChain + Azure integration',
-        'Impact: Reduced story writing time by 80%, increased planning efficiency'
-      ],
-      tags: ['LangChain', 'Python', 'Azure DevOps', 'n8n'],
-      links: {
-        github: '#',
-        demo: '#'
-      }
-    },
-    {
-      title: 'Eval Framework',
-      subtitle: 'Prompt quality & governance toolkit',
-      description: [
-        'Challenge: No standardized way to evaluate prompt quality across teams',
-        'Solution: Built evaluation framework with metrics for accuracy, bias, and consistency',
-        'Impact: Enabled enterprise-wide prompt governance and quality standards'
-      ],
-      tags: ['Python', 'FastAPI', 'LangSmith', 'Testing'],
-      links: {
-        github: '#'
-      }
-    },
-    {
-      title: 'AI Daily Brief',
-      subtitle: 'Automated news aggregator with smart summaries',
-      description: [
-        'Challenge: Information overload from multiple AI news sources',
-        'Solution: Automated aggregation, categorization, and summarization pipeline',
-        'Impact: Saved 2+ hours daily in research and curation'
-      ],
-      tags: ['Python', 'OpenAI', 'RSS', 'Automation'],
-      links: {
-        github: '#',
-        demo: '#'
-      }
-    },
-    {
-      title: 'AI Portfolio',
-      subtitle: 'This site itself — a neon-lit showcase',
-      description: [
-        'Challenge: Create a portfolio that reflects AI expertise and design sensibility',
-        'Solution: Built with React, TypeScript, and custom neon aesthetic',
-        'Impact: Professional platform showcasing AI work and thought leadership'
-      ],
-      tags: ['React', 'TypeScript', 'Tailwind', 'Vite'],
-      links: {
-        github: '#'
-      }
-    }
-  ];
+  }, [projects.length]);
 
   return (
     <div className="min-h-screen relative bg-background">
@@ -116,7 +99,14 @@ const Projects = () => {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 gap-8 mb-16">
-            {projects.length > 0 ? projects.map((project, index) => (
+            {isLoading ? (
+              // Loading skeletons
+              Array.from({ length: 4 }).map((_, index) => (
+                <div key={index} className="space-y-4">
+                  <Skeleton className="h-64 w-full rounded-2xl" />
+                </div>
+              ))
+            ) : projects.length > 0 ? projects.map((project, index) => (
               <div
                 key={index}
                 data-index={index}
@@ -195,13 +185,9 @@ const Projects = () => {
             )) : (
               <div className="col-span-full text-center py-20">
                 <p 
-                  className="text-2xl font-josefin"
-                  style={{
-                    color: '#b8f2e3',
-                    textShadow: '0 0 10px rgba(184, 242, 227, 0.6)',
-                  }}
+                  className="text-2xl font-josefin italic neon-text-cyan"
                 >
-                  Projects coming soon — check back soon to see what I'm building next!
+                  Each shines a light on how machines and minds co-create.
                 </p>
                 <div 
                   className="w-32 h-1 mx-auto mt-4"

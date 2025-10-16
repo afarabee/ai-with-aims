@@ -50,6 +50,57 @@ export type Database = {
         }
         Relationships: []
       }
+      projects: {
+        Row: {
+          challenge: string
+          created_at: string
+          display_order: number
+          github_link: string | null
+          id: string
+          impact: string
+          project_page_link: string | null
+          project_title: string
+          solution: string
+          status: string
+          subtitle: string
+          technologies: string[]
+          thumbnail: string | null
+          updated_at: string
+        }
+        Insert: {
+          challenge: string
+          created_at?: string
+          display_order?: number
+          github_link?: string | null
+          id?: string
+          impact: string
+          project_page_link?: string | null
+          project_title: string
+          solution: string
+          status?: string
+          subtitle: string
+          technologies?: string[]
+          thumbnail?: string | null
+          updated_at?: string
+        }
+        Update: {
+          challenge?: string
+          created_at?: string
+          display_order?: number
+          github_link?: string | null
+          id?: string
+          impact?: string
+          project_page_link?: string | null
+          project_title?: string
+          solution?: string
+          status?: string
+          subtitle?: string
+          technologies?: string[]
+          thumbnail?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
