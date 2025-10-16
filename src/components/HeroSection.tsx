@@ -66,7 +66,7 @@ const HeroSection = () => {
             <p className="text-lg mb-8 font-ibm" style={{
             color: '#e6e6e6',
             lineHeight: '1.5em'
-          }}>My mission is to explore how Artificial Intelligence can amplify — not replace — Human Intelligence, by sharing hands-on experiments, frameworks, and stories from the front lines of enterprise AI adoption.</p>
+          }}>My mission is to explore how Artificial Intelligence can amplify — not replace — Human Intelligence by sharing hands-on experiments, frameworks, and stories from the front lines of enterprise AI adoption.</p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-6">
               <button onClick={() => scrollToSection("projects")} className="hero-button px-8 py-3 rounded transition-all duration-400" onMouseEnter={e => {
