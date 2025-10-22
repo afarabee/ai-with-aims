@@ -238,7 +238,7 @@ const NeuralNetworkBackground = () => {
         // Yellow flash or pink/yellow pulse
         const hasFlash = node.flashIntensity > 0;
         const useYellow = hasFlash || (node.pulseIntensity > 0.7 && Math.random() < 0.2);
-        const nodeColor = useYellow ? '247, 201, 72' : '242, 127, 155';
+        const nodeColor = useYellow ? '249, 249, 64' : '242, 127, 155';
         
         // Increased brightness by 60%
         const baseOpacity = 0.0336;

@@ -40,7 +40,7 @@ const AboutSection = () => {
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
-                    <span className="text-6xl font-rajdhani font-semibold" style={{ color: '#e5fb52', textShadow: '0 0 8px #e5fb85, 0 0 18px #edfca0' }}>
+                    <span className="text-6xl font-rajdhani font-semibold" style={{ color: '#f9f940', textShadow: '0 0 8px #fafa70, 0 0 18px #fbfba0' }}>
                       AF
                     </span>
                   </div>

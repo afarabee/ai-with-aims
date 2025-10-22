@@ -68,8 +68,8 @@ const About = () => {
                     <span 
                       className="text-8xl font-rajdhani font-semibold" 
                       style={{ 
-                        color: '#e5fb52', 
-                        textShadow: '0 0 10px #e5fb85, 0 0 20px #edfca0' 
+                        color: '#f9f940', 
+                        textShadow: '0 0 10px #fafa70, 0 0 20px #fbfba0' 
                       }}
                     >
                       AF
