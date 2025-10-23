@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import logoImage from "@/assets/ai-with-aimee-logo-transparent.png";
 import NeuralNetworkBackground from "./NeuralNetworkBackground";
 import SectionDivider from "./SectionDivider";
-import LogoPingOverlay from "./LogoPingOverlay";
 const HeroSection = () => {
   const [displayText, setDisplayText] = useState("");
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
@@ -48,12 +47,11 @@ const HeroSection = () => {
       
       <div className="max-w-6xl mx-auto px-6 py-20 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="flex justify-center relative">
+          <div className="flex justify-center">
             <img src={logoImage} alt="AI with Aimee Logo" className="w-full max-w-3xl drop-shadow-[0_0_60px_rgba(0,255,255,0.4)] scale-[1.375] opacity-0" style={{
             animation: 'fadeIn 0.5s ease-in forwards',
             animationDelay: '0.2s'
           }} />
-            <LogoPingOverlay />
           </div>
           <div>
             <h1 className="text-2xl md:text-4xl mb-4 font-rajdhani font-semibold uppercase tracking-wide neon-text-cyan">
