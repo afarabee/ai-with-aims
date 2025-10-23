@@ -60,7 +60,7 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-xl md:text-3xl font-josefin italic mb-6 neon-text-pink">
-              AI with Aimee - Turning AI curiosity into real-world capability.
+              Turning AI curiosity into real-world capability.
             </p>
             
             <p className="text-lg mb-8 font-ibm" style={{
