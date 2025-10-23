@@ -14,6 +14,7 @@ import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import AgentsArentTheAnswer from "./pages/AgentsArentTheAnswer";
+import LogoProcessor from "./components/LogoProcessor";
 
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/blog/agents-arent-always-the-answer" element={<AgentsArentTheAnswer />} />
             <Route path="/blog/agents-arent-the-answer" element={<Navigate to="/blog/agents-arent-always-the-answer" replace />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/process-logo" element={<LogoProcessor />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
