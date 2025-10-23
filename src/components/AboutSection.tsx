@@ -13,7 +13,7 @@ const AboutSection = () => {
       <div 
         className="absolute top-0 left-0 right-0 h-40 pointer-events-none z-10"
         style={{
-          background: 'linear-gradient(to bottom, rgba(244, 70, 160, 0.15), transparent)',
+          background: 'linear-gradient(to bottom, rgba(245, 12, 160, 0.15), transparent)',
         }}
       />
       
@@ -36,7 +36,7 @@ const AboutSection = () => {
                   className="w-full h-full rounded-full overflow-hidden border-4 relative"
                   style={{
                     borderColor: '#00ffff',
-                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff, inset 0 0 30px rgba(244, 70, 160, 0.15)',
+                    boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff, inset 0 0 30px rgba(245, 12, 160, 0.15)',
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
@@ -100,7 +100,7 @@ const AboutSection = () => {
                     boxShadow: '0 0 6px #33ffff, 0 0 14px #99ffff',
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#f446a0';
+                    e.currentTarget.style.borderColor = '#f50ca0';
                     e.currentTarget.style.boxShadow = '0 0 3px #cf33c3, 0 0 8px #9a00ff';
                   }}
                   onMouseLeave={(e) => {
@@ -132,8 +132,8 @@ const AboutSection = () => {
       <div 
         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[3px] w-4/5 max-w-4xl"
         style={{
-          background: 'linear-gradient(90deg, #f446a0, #b8f2e3)',
-          boxShadow: '0 0 10px rgba(244, 70, 160, 0.6), 0 0 20px rgba(184, 242, 227, 0.4)',
+          background: 'linear-gradient(90deg, #f50ca0, #b8f2e3)',
+          boxShadow: '0 0 10px rgba(245, 12, 160, 0.6), 0 0 20px rgba(184, 242, 227, 0.4)',
           filter: 'blur(0.5px)',
           zIndex: 20
         }}

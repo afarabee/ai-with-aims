@@ -157,7 +157,7 @@ const Blog = () => {
                           : '1px solid rgba(180, 242, 227, 0.3)',
                         boxShadow: isHovered
                           ? '0 0 25px rgba(57, 225, 227, 0.7), 0 0 50px rgba(57, 225, 227, 0.4)'
-                          : '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
+                          : '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(245, 12, 160, 0.2)',
                         overflow: 'hidden',
                         transition: 'all 0.4s ease-out'
                       }}
@@ -244,11 +244,11 @@ const Blog = () => {
                     onClick={() => setDisplayCount(prev => Math.min(prev + 6, blogPosts.length))}
                     className="hero-button px-10 py-4 text-base font-montserrat font-bold transition-all duration-300 focus:ring-2 focus:ring-pink-400/50 focus:outline-none"
                     style={{
-                      background: 'linear-gradient(135deg, rgba(244, 70, 160, 0.2), rgba(155, 81, 224, 0.2))',
-                      border: '2px solid #f446a0',
-                      color: '#f446a0',
-                      textShadow: '0 0 10px rgba(244, 70, 160, 0.8)',
-                      boxShadow: '0 0 20px rgba(244, 70, 160, 0.4)'
+                      background: 'linear-gradient(135deg, rgba(245, 12, 160, 0.2), rgba(155, 81, 224, 0.2))',
+                      border: '2px solid #f50ca0',
+                      color: '#f50ca0',
+                      textShadow: '0 0 10px rgba(245, 12, 160, 0.8)',
+                      boxShadow: '0 0 20px rgba(245, 12, 160, 0.4)'
                     }}
                   >
                     Load More Posts →

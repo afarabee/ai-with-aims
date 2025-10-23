@@ -154,7 +154,7 @@ const BlogSection = () => {
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0 transition-opacity duration-300"
                 style={{
-                  background: 'radial-gradient(circle, rgba(244, 70, 160, 0.2) 0%, transparent 70%)',
+                  background: 'radial-gradient(circle, rgba(245, 12, 160, 0.2) 0%, transparent 70%)',
                   opacity: isVisible ? 1 : 0,
                 }}
               />

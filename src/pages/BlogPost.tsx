@@ -67,8 +67,8 @@ const BlogPost = () => {
             <h1 
               className="text-4xl font-rajdhani font-bold mb-4"
               style={{
-                color: '#f446a0',
-                textShadow: '0 0 20px rgba(244, 70, 160, 0.8)'
+                color: '#f50ca0',
+                textShadow: '0 0 20px rgba(245, 12, 160, 0.8)'
               }}
             >
               Post Not Found
@@ -90,8 +90,8 @@ const BlogPost = () => {
                 textShadow: '0 0 15px rgba(184, 242, 227, 0.7)'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#f446a0';
-                e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.8)';
+                e.currentTarget.style.color = '#f50ca0';
+                e.currentTarget.style.textShadow = '0 0 20px rgba(245, 12, 160, 0.8)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = '#b8f2e3';
@@ -163,8 +163,8 @@ const BlogPost = () => {
               className="font-shadows text-center mb-6"
               style={{
                 fontSize: '2.2rem',
-                color: '#f446a0',
-                textShadow: '0 0 20px rgba(244, 70, 160, 0.8), 0 0 30px rgba(244, 70, 160, 0.4)',
+                color: '#f50ca0',
+                textShadow: '0 0 20px rgba(245, 12, 160, 0.8), 0 0 30px rgba(245, 12, 160, 0.4)',
                 lineHeight: '1.2'
               }}
             >
@@ -176,8 +176,8 @@ const BlogPost = () => {
               <div 
                 className="w-48 h-1 rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, rgba(244, 70, 160, 0) 0%, rgba(244, 70, 160, 0.8) 25%, rgba(184, 242, 227, 0.8) 75%, rgba(184, 242, 227, 0) 100%)',
-                  boxShadow: '0 0 20px rgba(244, 70, 160, 0.6), 0 0 30px rgba(184, 242, 227, 0.4)',
+                  background: 'linear-gradient(90deg, rgba(245, 12, 160, 0) 0%, rgba(245, 12, 160, 0.8) 25%, rgba(184, 242, 227, 0.8) 75%, rgba(184, 242, 227, 0) 100%)',
+                  boxShadow: '0 0 20px rgba(245, 12, 160, 0.6), 0 0 30px rgba(184, 242, 227, 0.4)',
                 }}
               />
             </div>
@@ -258,16 +258,16 @@ const BlogPost = () => {
                 to="/blog"
                 className="inline-flex items-center gap-2 text-base font-montserrat font-bold transition-all duration-300"
                 style={{
-                  color: '#f446a0',
-                  textShadow: '0 0 20px rgba(244, 70, 160, 0.7)'
+                  color: '#f50ca0',
+                  textShadow: '0 0 20px rgba(245, 12, 160, 0.7)'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = '#b8f2e3';
                   e.currentTarget.style.textShadow = '0 0 20px rgba(184, 242, 227, 0.8)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#f446a0';
-                  e.currentTarget.style.textShadow = '0 0 20px rgba(244, 70, 160, 0.7)';
+                  e.currentTarget.style.color = '#f50ca0';
+                  e.currentTarget.style.textShadow = '0 0 20px rgba(245, 12, 160, 0.7)';
                 }}
               >
                 <ArrowLeft size={18} />

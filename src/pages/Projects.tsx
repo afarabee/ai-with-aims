@@ -120,7 +120,7 @@ const Projects = () => {
                     backgroundColor: 'rgba(25, 10, 40, 0.85)',
                     backdropFilter: 'blur(4px)',
                     border: '1px solid rgba(180, 242, 227, 0.4)',
-                    boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(244, 70, 160, 0.2)',
+                    boxShadow: '0 0 20px rgba(0, 255, 255, 0.3), 0 0 35px rgba(245, 12, 160, 0.2)',
                     padding: '24px'
                   }}
                 >
@@ -192,8 +192,8 @@ const Projects = () => {
                 <div 
                   className="w-32 h-1 mx-auto mt-4"
                   style={{
-                    background: 'linear-gradient(90deg, transparent, #f446a0, transparent)',
-                    boxShadow: '0 0 8px rgba(244, 70, 160, 0.5)',
+                    background: 'linear-gradient(90deg, transparent, #f50ca0, transparent)',
+                    boxShadow: '0 0 8px rgba(245, 12, 160, 0.5)',
                   }}
                 />
               </div>

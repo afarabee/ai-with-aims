@@ -22,7 +22,7 @@ const About = () => {
         {/* Ambient glow effects */}
         <div 
           className="absolute top-20 left-10 w-96 h-96 rounded-full blur-3xl opacity-20 -z-10"
-          style={{ background: '#f446a0' }}
+          style={{ background: '#f50ca0' }}
         />
         <div 
           className="absolute bottom-20 right-10 w-96 h-96 rounded-full blur-3xl opacity-15 -z-10"
@@ -35,8 +35,8 @@ const About = () => {
             <h1 
               className="text-5xl md:text-6xl font-rajdhani font-bold mb-6"
               style={{
-                color: '#f446a0',
-                textShadow: '0 0 20px rgba(244, 70, 160, 0.8), 0 0 40px rgba(244, 70, 160, 0.4)',
+                color: '#f50ca0',
+                textShadow: '0 0 20px rgba(245, 12, 160, 0.8), 0 0 40px rgba(245, 12, 160, 0.4)',
               }}
             >
               Meet Aimee
@@ -61,7 +61,7 @@ const About = () => {
                   className="w-full h-full rounded-full overflow-hidden border-4 relative"
                   style={{
                     borderColor: '#00ffff',
-                    boxShadow: '0 0 8px #33ffff, 0 0 20px #99ffff, inset 0 0 40px rgba(244, 70, 160, 0.15)',
+                    boxShadow: '0 0 8px #33ffff, 0 0 20px #99ffff, inset 0 0 40px rgba(245, 12, 160, 0.15)',
                   }}
                 >
                   <div className="w-full h-full bg-gradient-to-br from-purple-900/20 to-pink-900/20 flex items-center justify-center">
@@ -119,8 +119,8 @@ const About = () => {
                   boxShadow: '0 0 8px #33ffff, 0 0 16px #99ffff',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = '#f446a0';
-                  e.currentTarget.style.boxShadow = '0 0 12px #f446a0, 0 0 20px #cf33c3';
+                  e.currentTarget.style.borderColor = '#f50ca0';
+                  e.currentTarget.style.boxShadow = '0 0 12px #f50ca0, 0 0 20px #cf33c3';
                   e.currentTarget.style.transform = 'scale(1.05)';
                 }}
                 onMouseLeave={(e) => {
@@ -140,7 +140,7 @@ const About = () => {
             <div 
               className="w-full max-w-md h-px"
               style={{
-                background: 'linear-gradient(90deg, transparent 0%, #00ffff 30%, #f446a0 70%, transparent 100%)',
+                background: 'linear-gradient(90deg, transparent 0%, #00ffff 30%, #f50ca0 70%, transparent 100%)',
                 opacity: 0.5,
                 boxShadow: '0 0 8px rgba(0, 255, 255, 0.4)',
               }}
@@ -156,7 +156,7 @@ const About = () => {
                   padding: '1rem 1.5rem'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                  e.currentTarget.style.boxShadow = '0 0 12px rgba(245, 12, 160, 0.7), 0 0 20px rgba(245, 12, 160, 0.5)';
                   e.currentTarget.style.transform = 'scale(1.05)';
                 }}
                 onMouseLeave={(e) => {
@@ -176,7 +176,7 @@ const About = () => {
                     padding: '1rem 1.5rem'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                    e.currentTarget.style.boxShadow = '0 0 12px rgba(245, 12, 160, 0.7), 0 0 20px rgba(245, 12, 160, 0.5)';
                     e.currentTarget.style.transform = 'scale(1.05)';
                   }}
                   onMouseLeave={(e) => {
@@ -197,7 +197,7 @@ const About = () => {
                     padding: '1rem 1.5rem'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.boxShadow = '0 0 12px rgba(244, 70, 160, 0.7), 0 0 20px rgba(244, 70, 160, 0.5)';
+                    e.currentTarget.style.boxShadow = '0 0 12px rgba(245, 12, 160, 0.7), 0 0 20px rgba(245, 12, 160, 0.5)';
                     e.currentTarget.style.transform = 'scale(1.05)';
                   }}
                   onMouseLeave={(e) => {
