@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 
 const LogoPingOverlay = () => {
-  // Approximate positions of yellow dots in the logo (percentage-based)
+  // Positions of yellow dots in the neural network brain (percentage-based, matching actual logo)
   const dotPositions = [
-    { top: "15%", left: "25%" },
-    { top: "25%", left: "45%" },
-    { top: "18%", left: "65%" },
-    { top: "42%", left: "75%" },
-    { top: "58%", left: "72%" },
-    { top: "72%", left: "58%" },
-    { top: "78%", left: "35%" },
+    { top: "28%", left: "35%" },
+    { top: "32%", left: "50%" },
+    { top: "28%", left: "65%" },
+    { top: "42%", left: "38%" },
+    { top: "42%", left: "50%" },
+    { top: "42%", left: "62%" },
+    { top: "56%", left: "35%" },
+    { top: "56%", left: "50%" },
+    { top: "56%", left: "65%" },
+    { top: "68%", left: "42%" },
+    { top: "68%", left: "58%" },
   ];
 
   const [activeDots, setActiveDots] = useState<Set<number>>(new Set());
@@ -52,7 +56,7 @@ const LogoPingOverlay = () => {
       {dotPositions.map((position, index) => (
         <div
           key={index}
-          className={`absolute w-4 h-4 rounded-full ${
+          className={`absolute w-3 h-3 rounded-full ${
             activeDots.has(index) ? "ping-subtle-active" : ""
           }`}
           style={{
