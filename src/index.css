@@ -21,13 +21,13 @@ All colors MUST be HSL.
     --primary: 180 100% 50%;
     --primary-foreground: 262 71% 12%;
 
-    --secondary: 328 100% 56%;
+    --secondary: 320 95% 50%;
     --secondary-foreground: 262 71% 12%;
 
     --muted: 262 60% 20%;
     --muted-foreground: 180 100% 70%;
 
-    --accent: 60 100% 50%;
+    --accent: 60 94% 61%;
     --accent-foreground: 262 71% 12%;
 
     --destructive: 0 84.2% 60.2%;
@@ -41,20 +41,20 @@ All colors MUST be HSL.
 
     /* Neon Brand Colors */
     --neon-cyan: 180 100% 50%;
-    --neon-pink: 328 100% 56%;
-    --neon-yellow: 60 100% 50%;
+    --neon-pink: 320 95% 50%;
+    --neon-yellow: 60 94% 61%;
     --neon-purple: 280 100% 50%;
     --deep-purple: 262 71% 12%;
     --dark-navy: 240 50% 8%;
     
     /* Legacy colors for compatibility */
-    --rose-quartz: 328 100% 56%;
+    --rose-quartz: 320 95% 50%;
     --sage-gray: 180 100% 70%;
     --lavender-fog: 280 100% 70%;
     --dark-graphite: 262 71% 12%;
     
     /* Case Study Brand Colors */
-    --rose-quartz-case: 328 100% 56%;
+    --rose-quartz-case: 320 95% 50%;
     --sage-gray-case: 180 100% 70%;
     --lavender-fog-case: 280 100% 70%;
     --ivory-white: 180 100% 50%;
@@ -77,7 +77,7 @@ All colors MUST be HSL.
     /* Project-specific brand colors */
     --clr-bg-dark: 262 45% 12%;
     --clr-bg-deep: 261 74% 6%;
-    --clr-pink: 328 94% 62%;
+    --clr-pink: 320 95% 50%;
     --clr-yellow: 60 94% 61%;
     --clr-cyan: 180 100% 56%;
     --clr-text-light: 0 0% 97%;
@@ -103,11 +103,11 @@ All colors MUST be HSL.
     --popover-foreground: 180 100% 50%;
     --primary: 180 100% 50%;
     --primary-foreground: 262 71% 12%;
-    --secondary: 328 100% 56%;
+    --secondary: 320 95% 50%;
     --secondary-foreground: 262 71% 12%;
     --muted: 262 60% 20%;
     --muted-foreground: 180 100% 70%;
-    --accent: 60 100% 50%;
+    --accent: 60 94% 61%;
     --accent-foreground: 262 71% 12%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 100%;
@@ -164,9 +164,9 @@ All colors MUST be HSL.
   }
 
   .neon-border-pink {
-    border: 2px solid #e84195;
-    box-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0,
-                inset 0 0 10px rgba(232, 65, 149, 0.2);
+    border: 2px solid #f50ca0;
+    box-shadow: 0 0 3px #f50ca0, 0 0 7px #8e00e0,
+                inset 0 0 10px rgba(245, 12, 160, 0.2);
   }
 
   .nav-link {
@@ -180,8 +180,8 @@ All colors MUST be HSL.
   }
 
   .nav-link:hover {
-    color: #e84195;
-    text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0;
+    color: #f50ca0;
+    text-shadow: 0 0 3px #f50ca0, 0 0 7px #8e00e0;
   }
 
   .nav-link::after {
@@ -201,12 +201,12 @@ All colors MUST be HSL.
   }
 
   @keyframes blink {
-    0%, 50% { border-color: hsl(var(--neon-cyan)); }
+    0%, 50% { border-color: hsl(var(--neon-yellow)); }
     51%, 100% { border-color: transparent; }
   }
 
   .typing-animation {
-    border-right: 3px solid hsl(var(--neon-cyan));
+    border-right: 3px solid hsl(var(--neon-yellow));
     animation: blink 1s infinite;
   }
 
@@ -224,11 +224,11 @@ All colors MUST be HSL.
   }
 
   .hero-button:hover {
-    background-color: #f446a0;
-    border-color: #f446a0;
+    background-color: #f50ca0;
+    border-color: #f50ca0;
     color: hsl(var(--background));
     transform: scale(1.05);
-    box-shadow: 0 0 12px rgba(244, 70, 160, 0.8), 0 0 20px rgba(244, 70, 160, 0.5);
+    box-shadow: 0 0 12px rgba(245, 12, 160, 0.8), 0 0 20px rgba(245, 12, 160, 0.5);
   }
 
   @keyframes neonPulseHover {
@@ -302,16 +302,16 @@ All colors MUST be HSL.
   }
 
   @keyframes flicker {
-    0%, 100% { opacity: 1; text-shadow: 0 0 3px #c02ea0, 0 0 7px #8e00e0; }
-    50% { opacity: 0.8; text-shadow: 0 0 6px #c02ea0, 0 0 10px #8e00e0; }
+    0%, 100% { opacity: 1; text-shadow: 0 0 3px #f50ca0, 0 0 7px #8e00e0; }
+    50% { opacity: 0.8; text-shadow: 0 0 6px #f50ca0, 0 0 10px #8e00e0; }
   }
 
   @keyframes glow-pulse {
     0%, 100% { 
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.35), 0 0 25px rgba(232, 65, 149, 0.2);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.35), 0 0 25px rgba(245, 12, 160, 0.2);
     }
     50% { 
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.55), 0 0 40px rgba(232, 65, 149, 0.35);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.55), 0 0 40px rgba(245, 12, 160, 0.35);
     }
   }
 
